@@ -20,6 +20,20 @@ public class CameraController : MonoBehaviour
 
     AudioSource source;
 
+    public static CameraController main;
+
+    public GameObject talkother;
+
+    public float talkZoomLevel = 2f;
+
+    Camera cam;
+
+    Quaternion origRot;
+    Quaternion goalRot;
+
+    Vector3 start;
+    Vector3 goal;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +43,52 @@ public class CameraController : MonoBehaviour
 
         source.Play();
         source.Pause();
+
+        main = this;
+        cam = GetComponent<Camera>();
+    }
+
+    public void talkzoom()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Vector3 pos = (player.transform.position + talkother.transform.position) / 2f;
+        start = transform.position;
+        goal = new Vector3(pos.x - 0.8f, transform.position.y, transform.position.z);
+        StartCoroutine(zoomIn(1f));
+    }
+
+    public void talkZoomOut()
+    {
+        StartCoroutine(zoomOut(1f));
+
+    }
+
+    IEnumerator zoomIn(float time)
+    {
+        float startSize = cam.orthographicSize;
+        float i = 0;
+        while (i < 1)
+        {
+            cam.orthographicSize = Mathf.Lerp(startSize, startSize / talkZoomLevel, i);
+            transform.position = Vector3.Lerp(start, goal, i);
+            orig = transform.position;
+            i += Time.deltaTime / time;
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
+    IEnumerator zoomOut(float time)
+    {
+        float startSize = cam.orthographicSize;
+        float i = 0;
+        while (i < 1)
+        {
+            cam.orthographicSize = Mathf.Lerp(startSize, startSize * talkZoomLevel, i);
+            transform.position = Vector3.Lerp(goal, start, i);
+            orig = transform.position;
+            i += Time.deltaTime / time;
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     // Update is called once per frame
