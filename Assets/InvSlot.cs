@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueOption : MonoBehaviour
+public class InvSlot : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -18,14 +18,6 @@ public class DialogueOption : MonoBehaviour
 
     public void clicked()
     {
-        UISound.main.clickSound();
-        if (gameObject.name == "END")
-        {
-            DialogueManager.main.continueClicked();
-        }
-        else
-        {
-            DialogueManager.main.optionClicked(int.Parse(gameObject.name));
-        }
+        InventoryManager.main.slotClicked(name);
     }
 }

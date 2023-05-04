@@ -18,8 +18,13 @@ public class Ghost : MonoBehaviour
 
         if(Time.time > 3)
         {
-            GetComponent<MeshRenderer>().enabled = true;
-            GetComponent<Talkable>().enabled = true;
+
         }
+    }
+
+    public void appear()
+    {
+        GetComponent<MeshRenderer>().enabled = true;
+        GetComponent<Talkable>().enabled = true;
     }
 }

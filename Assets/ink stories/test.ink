@@ -1,3 +1,4 @@
+VAR title = "GHOST"
 Hi! I'm a ghost!
 
  * wow! 

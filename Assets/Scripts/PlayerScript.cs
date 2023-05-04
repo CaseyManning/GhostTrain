@@ -20,7 +20,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (nav.isActiveAndEnabled && !DialogueManager.main.talking)
+            if (nav.isActiveAndEnabled && !DialogueManager.main.talking && !Popup.popping)
             {
                 RaycastHit hit;
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, 1 << 3))

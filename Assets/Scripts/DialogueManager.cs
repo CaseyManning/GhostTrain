@@ -69,10 +69,13 @@ public class DialogueManager : MonoBehaviour
         {
             Destroy(g);
         }
+        titleText.text = (string)stories[current].variablesState["title"];
         currOptions = new List<GameObject>();
         bodyText.text = stories[current].Continue();
         bodyText.GetComponent<RectTransform>().ForceUpdateRectTransforms();
         bodyText.GetComponent<ContentSizeFitter>().SetLayoutVertical();
+
+        processTags(stories[current].currentTags);
 
         float height = bodyText.GetComponent<RectTransform>().rect.height;
         float optHeight = 35;
@@ -101,6 +104,17 @@ public class DialogueManager : MonoBehaviour
             optionObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(xpos, start - optHeight);
             currOptions.Add(optionObj);
             optionObj.name = "END";
+        }
+    }
+
+    public void processTags(List<string> tags)
+    {
+        foreach(string tag in tags)
+        {
+            if(tag.StartsWith("gain"))
+            {
+                InventoryManager.main.pickup(tag.Split(" ")[1]);
+            }
         }
     }
 
