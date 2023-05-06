@@ -11,7 +11,7 @@ public class SceneController : MonoBehaviour
 
     public RawImage rawIm;
 
-    int current = 1;
+    int current = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +19,7 @@ public class SceneController : MonoBehaviour
         main = this;
         SceneManager.LoadScene(current, LoadSceneMode.Additive);
         //rawIm.CrossFadeAlpha(0, 0.5f, true);
-
+        StartCoroutine(fadeIn(0.35f));
     }
 
     // Update is called once per frame
@@ -70,11 +70,14 @@ public class SceneController : MonoBehaviour
 
     IEnumerator fadeIn(float fadeTime)
     {
-        while (rawIm.color.a < 1)
+        Color col2 = rawIm.color;
+        col2.a = 1;
+        rawIm.color = col2;
+        while (rawIm.color.a > 0)
         {
             Color col = rawIm.color;
-            col.a += Time.deltaTime / fadeTime;
-            rawIm.color += col;
+            col.a -= Time.deltaTime / fadeTime;
+            rawIm.color = col;
             yield return new WaitForEndOfFrame();
         }
     }
