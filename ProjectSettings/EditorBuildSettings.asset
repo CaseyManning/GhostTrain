@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Player.unity
+    path: Assets/_Scenes/Player.unity
     guid: df42f206861d14df5b616b72f0eab608
   - enabled: 1
-    path: Assets/Scenes/TrainCar.unity
+    path: Assets/_Scenes/TrainCar.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}
