@@ -6,9 +6,8 @@ public class IntroManager : MonoBehaviour
     public GameObject introText;
 
     string[] text = {
-        "A little introduction",
-        "Some exposition, perhaps",
-        "One could even imagine a bit of prologue"
+        "something about a kid...",
+        "who falls asleep on a train..."
     };
     // Start is called before the first frame update
     void Start()
