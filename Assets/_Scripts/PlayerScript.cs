@@ -11,11 +11,14 @@ public class PlayerScript : MonoBehaviour
     NavMeshAgent nav;
     Animator anim;
 
-    Vector3 lastPos;
+    public static int character_index = 0;
+
+    public List<GameObject> models;
 
     // Start is called before the first frame update
     void Start()
     {
+        models[character_index].SetActive(true);
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
     }
@@ -60,8 +63,26 @@ public class PlayerScript : MonoBehaviour
             anim.SetTrigger("Idle");
         }
 
+        if(Input.GetKey(KeyCode.Space))
+        {
+            StartCoroutine(trip());
+        }
+    }
 
-        lastPos = transform.position;
+    IEnumerator trip()
+    {
+        anim.SetTrigger("Trip");
+        yield return new WaitForSeconds(0.7f);
+        Vector3 oldDest = new Vector3(nav.destination.x, nav.destination.y, nav.destination.z);
+        nav.SetDestination(transform.position);
+        yield return new WaitForSeconds(5f);
+        nav.SetDestination(oldDest);
+        anim.ResetTrigger("Trip");
+        yield return new WaitForEndOfFrame();
+        nav.SetDestination(oldDest);
+        print("setting dest");
+
+
     }
 
     private void OnTriggerEnter(Collider other)

@@ -12,12 +12,12 @@ public class MenuSceneManager : MonoBehaviour
     void Start()
     {
         main = this;
+        StartCoroutine(fadeIn(1f));
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void fadeOut()
@@ -34,6 +34,21 @@ public class MenuSceneManager : MonoBehaviour
             rawIm.color = col;
             yield return new WaitForEndOfFrame();
         }
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Player");
+    }
+
+    IEnumerator fadeIn(float fadeTime)
+    {
+        Color col2 = rawIm.color;
+        col2.a = 1;
+        rawIm.color = col2;
+        while (rawIm.color.a > 0)
+        {
+            print(rawIm.color.a);
+            Color col = rawIm.color;
+            col.a -= Time.deltaTime / fadeTime;
+            rawIm.color = col;
+            yield return new WaitForEndOfFrame();
+        }
     }
 }

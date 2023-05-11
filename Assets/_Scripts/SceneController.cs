@@ -11,7 +11,7 @@ public class SceneController : MonoBehaviour
 
     public RawImage rawIm;
 
-    int current = 2;
+    int current = 3;
 
     // Start is called before the first frame update
     void Start()
