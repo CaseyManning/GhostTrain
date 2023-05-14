@@ -2215,7 +2215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e7dfecfe42341b5ad67fa7ee059b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  convoName: luggage
+  convoName: ghost_kit
 --- !u!65 &2043513526
 BoxCollider:
   m_ObjectHideFlags: 0

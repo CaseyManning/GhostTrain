@@ -11,13 +11,15 @@ public class SceneController : MonoBehaviour
 
     public RawImage rawIm;
 
-    int current = 3;
+    int current = 0;
+
+    string[] scenes = { "IntroCar", "TrainCar" };
 
     // Start is called before the first frame update
     void Start()
     {
         main = this;
-        SceneManager.LoadScene(current, LoadSceneMode.Additive);
+        SceneManager.LoadScene(scenes[current], LoadSceneMode.Additive);
         //rawIm.CrossFadeAlpha(0, 0.5f, true);
         StartCoroutine(fadeIn(0.35f));
     }
@@ -30,12 +32,29 @@ public class SceneController : MonoBehaviour
 
     public void change(bool right)
     {
-        
-        StartCoroutine(fadeOutIn(0.35f, right));
+                StartCoroutine(fadeOutIn(0.35f, right));
+        //if(right)
+        //{
+        //    if (current < scenes.Length - 1)
+        //    {
+        //        current += 1;
+        //    }
+        //} else
+        //{
+        //    if(current > 0)
+        //    {
+        //        current -= 1;
+        //        StartCoroutine(fadeOutIn(0.35f, right));
+        //    }
+        //}
     }
 
     IEnumerator fadeOutIn(float fadeTime, bool right)
     {
+        if((right && current >= scenes.Length - 1) || (!right && current < 1))
+        {
+            yield break;
+        }
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<NavMeshAgent>().enabled = false;
         while (rawIm.color.a < 1)
@@ -45,8 +64,15 @@ public class SceneController : MonoBehaviour
             rawIm.color = col;
             yield return new WaitForEndOfFrame();
         }
-        SceneManager.UnloadSceneAsync(current);
-        SceneManager.LoadScene(current, LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync(scenes[current]);
+        if(right)
+        {
+            current += 1;
+        } else
+        {
+            current -= 1;
+        }
+        SceneManager.LoadScene(scenes[current], LoadSceneMode.Additive);
 
         if (right)
         {

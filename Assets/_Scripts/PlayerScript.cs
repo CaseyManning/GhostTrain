@@ -52,7 +52,7 @@ public class PlayerScript : MonoBehaviour
         if(nav.velocity.magnitude > 0.12f)
         {
             Quaternion orig = transform.rotation;
-            transform.LookAt(nav.destination, Vector3.up);
+            transform.LookAt(transform.position + nav.velocity, Vector3.up);
             transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
             transform.rotation = Quaternion.Slerp(orig, transform.rotation, 0.25f);
             anim.ResetTrigger("Idle");
