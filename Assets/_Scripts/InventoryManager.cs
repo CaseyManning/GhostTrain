@@ -25,10 +25,15 @@ public class InventoryManager : MonoBehaviour
         inventory = new List<Item>();
         items = new Dictionary<string, Item>();
         items.Add("ghostpowder", new Item("ghostpowder", "GHOST POWDER"));
+        items.Add("glasses", new Item("ghostpowder", "GHOST POWDER"));
     }
 
     public void pickup(string name)
     {
+        if(items.ContainsKey(name)) {
+            Debug.LogWarning("No such item to add");
+            return;
+        }
         Item item = items[name];
         item.create(inventorySlot);
         item.obj.transform.SetParent(inventoryUI.transform);

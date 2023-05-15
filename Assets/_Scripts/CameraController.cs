@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class CameraController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class CameraController : MonoBehaviour
 
     public float shakeStrength;
     public float shakeSpeed;
+
+    public UniversalRendererData settings;
 
     bool shaking;
 

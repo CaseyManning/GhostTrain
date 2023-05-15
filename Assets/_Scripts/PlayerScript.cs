@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class PlayerScript : MonoBehaviour
 {
 
-    public float talkDist = 1f;
+    public static float talkDist = 1f;
 
     NavMeshAgent nav;
     Animator anim;
