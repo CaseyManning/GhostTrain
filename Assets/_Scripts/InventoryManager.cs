@@ -18,14 +18,20 @@ public class InventoryManager : MonoBehaviour
 
     Dictionary<string, Item> items;
 
+    float startPos;
+
     // Start is called before the first frame update
     void Start()
     {
+        startPos = inventorySlot.GetComponent<RectTransform>().anchoredPosition.x;
         main = this;
         inventory = new List<Item>();
         items = new Dictionary<string, Item>();
         items.Add("ghostpowder", new Item("ghostpowder", "GHOST POWDER"));
         items.Add("glasses", new Item("glasses", "Ghost Glasses", "glasss"));
+
+
+        pickup("glasses");
     }
 
     public void pickup(string name)
@@ -38,6 +44,7 @@ public class InventoryManager : MonoBehaviour
         item.create(inventorySlot);
         item.obj.transform.SetParent(inventoryUI.transform);
         inventory.Add(item);
+        layoutInventory();
     }
 
     public class Item
@@ -58,6 +65,22 @@ public class InventoryManager : MonoBehaviour
             obj = Instantiate(slot);
             obj.name = name;
             return obj;
+        }
+    }
+
+    public void layoutInventory()
+    {
+        for(int i = 0; i < inventory.Count; i++)
+        {
+            float slotWidth = 156;
+            float offset = startPos + i * slotWidth;
+            Vector2 anchored = inventory[i].obj.GetComponent<RectTransform>().anchoredPosition;
+            anchored.x = offset;
+            print(offset);
+            print(slotWidth);
+            print(startPos);
+            inventory[i].obj.GetComponent<RectTransform>().anchoredPosition = anchored;
+
         }
     }
 
