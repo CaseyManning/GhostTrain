@@ -96,12 +96,12 @@ public class DialogueManager : MonoBehaviour
             Choice c = stories[current].currentChoices[i];
             GameObject optionObj = Instantiate(option);
             optionObj.transform.SetParent(conversationScreen.transform);
-            optionObj.GetComponent<TMP_Text>().text = (i+1) + ". " + c.text;
+            //optionObj.GetComponent<TMP_Text>().text = (i+1) + ". " + c.text;
             optionObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(xpos, start - i * optHeight);
             optionObj.name = c.index.ToString();
             currOptions.Add(optionObj);
-            yield return new WaitForSeconds(0.05f);
             StartCoroutine(writeText(c.text, optionObj.GetComponent<TMP_Text>()));
+            yield return new WaitForSeconds(0.05f);
         }
 
         if(stories[current].currentChoices.Count == 0)
