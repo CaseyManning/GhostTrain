@@ -5,14 +5,16 @@ public class IntroManager : MonoBehaviour
 {
     public GameObject introText;
 
+    AudioSource source;
+
     string[] text = {
-        "something about a kid...",
-        "who falls asleep on a train..."
+        "Eastern Intercapital Express",
+        "November 1977"
     };
     // Start is called before the first frame update
     void Start()
     {
-        introText.GetComponent<TMP_Text>().alpha = 0;
+        source = GetComponent<AudioSource>();
         StartCoroutine(script());
     }
 
@@ -23,31 +25,22 @@ public class IntroManager : MonoBehaviour
     }
     IEnumerator script()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         for(int i = 0; i < text.Length; i++)
         {
-            StartCoroutine(fadeText(text[i], 2.5f));
-            yield return new WaitForSeconds(5);
+            TMP_Text tmp = introText.GetComponent<TMP_Text>();
+            tmp.text = "";
+            source.Play();
+            yield return new WaitForSeconds(0.03f);
+            foreach (char c in text[i])
+            {
+                tmp.text += c;
+                yield return new WaitForSeconds(0.025f);
+            }
+            yield return new WaitForSeconds(0.03f);
+            source.Stop();
+            yield return new WaitForSeconds(3);
         }
         MenuSceneManager.main.fadeOut();
-    }
-
-    IEnumerator fadeText(string text, float secs)
-    {
-        TMP_Text tmp = introText.GetComponent<TMP_Text>();
-        tmp.text = text;
-        float fadeTime = 0.5f;
-        while(tmp.alpha < 1)
-        {
-            tmp.alpha += Time.deltaTime / fadeTime;
-            yield return new WaitForEndOfFrame();
-        }
-        yield return new WaitForSeconds(secs);
-
-        while (tmp.alpha > 0)
-        {
-            tmp.alpha -= Time.deltaTime / fadeTime;
-            yield return new WaitForEndOfFrame();
-        }
     }
 }

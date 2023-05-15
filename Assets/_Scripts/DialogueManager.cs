@@ -59,11 +59,11 @@ public class DialogueManager : MonoBehaviour
             CameraController.main.talkzoom();
             talking = true;
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().stopMoving();
-            updateStory();
+            StartCoroutine(updateStory());
         }
     }
 
-    public void updateStory()
+    public IEnumerator updateStory()
     {
         foreach(GameObject g in currOptions)
         {
@@ -71,12 +71,17 @@ public class DialogueManager : MonoBehaviour
         }
         titleText.text = (string)stories[current].variablesState["title"];
         currOptions = new List<GameObject>();
-        bodyText.text = stories[current].Continue();
+        //bodyText.text = stories[current].Continue();
+        bodyText.text = "";
+        foreach (char c in stories[current].Continue())
+        {
+            bodyText.text += c;
+            yield return new WaitForSeconds(0.01f);
+        }
         bodyText.GetComponent<RectTransform>().ForceUpdateRectTransforms();
         bodyText.GetComponent<ContentSizeFitter>().SetLayoutVertical();
-
         processTags(stories[current].currentTags);
-
+        
         float height = bodyText.GetComponent<RectTransform>().rect.height;
         float optHeight = 35;
 
@@ -95,7 +100,10 @@ public class DialogueManager : MonoBehaviour
             optionObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(xpos, start - i * optHeight);
             optionObj.name = c.index.ToString();
             currOptions.Add(optionObj);
+            yield return new WaitForSeconds(0.05f);
+            StartCoroutine(writeText(c.text, optionObj.GetComponent<TMP_Text>()));
         }
+
         if(stories[current].currentChoices.Count == 0)
         {
             GameObject optionObj = Instantiate(option);
@@ -109,11 +117,17 @@ public class DialogueManager : MonoBehaviour
 
     public void processTags(List<string> tags)
     {
+        print(tags.Count);
         foreach(string tag in tags)
         {
             if(tag.StartsWith("gain"))
             {
                 InventoryManager.main.pickup(tag.Split(" ")[1]);
+            }
+            if(tag.StartsWith("delete"))
+            {
+                print("eee");
+                Destroy(GameObject.Find(tag.Split(" ")[1]));
             }
         }
     }
@@ -129,17 +143,27 @@ public class DialogueManager : MonoBehaviour
     {
         stories[current].ChooseChoiceIndex(index);
         stories[current].Continue();
-        updateStory();
+        StartCoroutine(updateStory());
     }
     public void continueClicked()
     {
         if (stories[current].canContinue)
         {
-            updateStory();
+            StartCoroutine(updateStory());
         }
         else
         {
             stopConvo();
+        }
+    }
+
+    IEnumerator writeText(string text, TMP_Text obj)
+    {
+        obj.text = "";
+        foreach (char c in text)
+        {
+            obj.text += c;
+            yield return new WaitForSeconds(0.025f);
         }
     }
 }

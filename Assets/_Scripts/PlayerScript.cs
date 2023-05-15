@@ -8,12 +8,14 @@ public class PlayerScript : MonoBehaviour
 
     public static float talkDist = 1f;
 
-    NavMeshAgent nav;
-    Animator anim;
+    public NavMeshAgent nav;
+    public Animator anim;
 
     public static int character_index = 0;
 
     public List<GameObject> models;
+
+    public bool frozen = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,14 +28,20 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(frozen)
+        {
+            return;
+        }
         if (Input.GetMouseButtonDown(0))
         {
             if (nav.isActiveAndEnabled && !DialogueManager.main.talking && !Popup.popping)
             {
+                print("can move");
                 RaycastHit hit;
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, 1 << 3))
                 {
                     nav.SetDestination(hit.point);
+                    print("setting dest");
                     //anim.SetTrigger("Walk");
                 }
             }
@@ -48,7 +56,7 @@ public class PlayerScript : MonoBehaviour
                     }
                 }
             }
-        } 
+        }
         if(nav.velocity.magnitude > 0.12f)
         {
             Quaternion orig = transform.rotation;

@@ -18,8 +18,8 @@ public class CharacterSelector : MonoBehaviour
     int current = 0;
 
     string[] names = { "BRICK", "JUNE", "CHARLIE" };
-    string[] desc1s = { "Age: 7", "Age: 9", "Age: 8" };
-    string[] desc2s = { "Favorite Ghost:\nSad Ghost", "Likes Frogs", "CHARLIE" };
+    string[] desc1s = { "Age: 7", "Age: 9", "Age: 0" };
+    string[] desc2s = { "Favorite Ghost:\nSad Ghost", "Likes Frogs", "Covered in Fleas" };
 
     private float _sensitivity;
     private Vector3 _mouseReference;

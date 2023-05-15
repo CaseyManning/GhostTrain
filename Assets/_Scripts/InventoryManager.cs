@@ -25,13 +25,13 @@ public class InventoryManager : MonoBehaviour
         inventory = new List<Item>();
         items = new Dictionary<string, Item>();
         items.Add("ghostpowder", new Item("ghostpowder", "GHOST POWDER"));
-        items.Add("glasses", new Item("ghostpowder", "GHOST POWDER"));
+        items.Add("glasses", new Item("glasses", "Ghost Glasses", "glasss"));
     }
 
     public void pickup(string name)
     {
-        if(items.ContainsKey(name)) {
-            Debug.LogWarning("No such item to add");
+        if(!items.ContainsKey(name)) {
+            Debug.LogWarning("No such item to add: " + name);
             return;
         }
         Item item = items[name];
@@ -44,9 +44,10 @@ public class InventoryManager : MonoBehaviour
     {
         public string name;
         public string displayname;
+        public bool usable;
         public GameObject obj;
 
-        public Item(string name, string displayname)
+        public Item(string name, string displayname, string lore="")
         {
             this.name = name;
             this.displayname = displayname;
@@ -78,8 +79,14 @@ public class InventoryManager : MonoBehaviour
         {
             if(inventory[i].name == name)
             {
-                popup.GetComponent<Popup>().open("Use " + inventory[i].displayname + "?");
-                selectedItem = inventory[i];
+                if (inventory[i].usable)
+                {
+                    popup.GetComponent<Popup>().open("Use " + inventory[i].displayname + "?");
+                    selectedItem = inventory[i];
+                } else
+                {
+                    //TODO: lore popup
+                }
             }
         }
     }

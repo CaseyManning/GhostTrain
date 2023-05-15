@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class Talkable : MonoBehaviour
 {
-    public string convoName = "ghosty";
+    public string convoName = "test";
     int startlayer;
 
     public static Texture2D cursorTex;

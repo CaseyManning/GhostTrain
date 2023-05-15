@@ -2,7 +2,7 @@
 
 * Open the box
 
-- You rip open the paper wrapping and find a round case inside. The case reads: Parapsychological Ghost Glasses!
+- You rip open the paper wrapping and find a round case inside. The case reads: Parapsychological Ghost Glasses! #delete ghostbox
 
 *Put on Ghost Glasses
 
