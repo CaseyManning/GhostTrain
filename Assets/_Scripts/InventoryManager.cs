@@ -29,9 +29,7 @@ public class InventoryManager : MonoBehaviour
         items = new Dictionary<string, Item>();
         items.Add("ghostpowder", new Item("ghostpowder", "GHOST POWDER"));
         items.Add("glasses", new Item("glasses", "Ghost Glasses", "glasss"));
-
-
-        pickup("glasses");
+        items.Add("firstGhost", new Item("firstGhost", "First Ghost"));
     }
 
     public void pickup(string name)
