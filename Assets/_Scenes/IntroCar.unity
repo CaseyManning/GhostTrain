@@ -359,6 +359,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 472644213, guid: 4ef48d3120eab44688c7b6e97b1aae2d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829526263, guid: 4ef48d3120eab44688c7b6e97b1aae2d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2327995213432474949, guid: 4ef48d3120eab44688c7b6e97b1aae2d,
         type: 3}
       propertyPath: m_Name
@@ -367,7 +375,7 @@ PrefabInstance:
     - target: {fileID: 2327995213432474949, guid: 4ef48d3120eab44688c7b6e97b1aae2d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3099993746964715519, guid: 4ef48d3120eab44688c7b6e97b1aae2d,
         type: 3}
@@ -397,12 +405,12 @@ PrefabInstance:
     - target: {fileID: 3099993746964715519, guid: 4ef48d3120eab44688c7b6e97b1aae2d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.256
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 3099993746964715519, guid: 4ef48d3120eab44688c7b6e97b1aae2d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.32
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: 3099993746964715519, guid: 4ef48d3120eab44688c7b6e97b1aae2d,
         type: 3}
@@ -444,7 +452,9 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1829526263, guid: 4ef48d3120eab44688c7b6e97b1aae2d, type: 3}
+    - {fileID: 1829526262, guid: 4ef48d3120eab44688c7b6e97b1aae2d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4ef48d3120eab44688c7b6e97b1aae2d, type: 3}
 --- !u!1 &405905318
 GameObject:
@@ -2630,7 +2640,7 @@ SphereCollider:
   m_GameObject: {fileID: 1829526261}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.0034973058
   m_Center: {x: -0.00065104454, y: 0.004239557, z: 0.000020749401}

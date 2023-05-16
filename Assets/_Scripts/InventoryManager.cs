@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -14,6 +15,13 @@ public class InventoryManager : MonoBehaviour
 
     public GameObject popup;
     public GameObject descpopup;
+
+    [System.Serializable]
+    public struct NamedImage {
+        public string name;
+        public Sprite image;
+    }
+    public NamedImage[] pictures;
 
     Item selectedItem;
 
@@ -54,18 +62,28 @@ public class InventoryManager : MonoBehaviour
         public bool usable;
         public string desc;
         public GameObject obj;
+        public Sprite objImage;
 
         public Item(string name, string displayname, string desc="")
         {
             this.name = name;
             this.displayname = displayname;
             this.desc = desc;
+
+            foreach (NamedImage pic in InventoryManager.main.pictures) {
+                if(pic.name == name) {
+                    objImage = pic.image;
+                    Debug.Log(name);
+                }
+            }
         }
 
         public GameObject create(GameObject slot)
         {
             obj = Instantiate(slot);
             obj.name = name;
+            obj.transform.GetChild(0).GetComponent<Image>().sprite = objImage;
+            Debug.Log("image changed into " + name);
             return obj;
         }
     }

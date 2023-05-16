@@ -3398,6 +3398,9 @@ MonoBehaviour:
   inventoryUI: {fileID: 1093937103}
   popup: {fileID: 2015789576}
   descpopup: {fileID: 1142494197}
+  pictures:
+  - name: glasses
+    image: {fileID: 21300000, guid: 1ed776bb93d19415a9acaad9a6ff34b6, type: 3}
 --- !u!4 &2141255644
 Transform:
   m_ObjectHideFlags: 0
