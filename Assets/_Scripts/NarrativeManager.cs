@@ -14,6 +14,8 @@ public class NarrativeManager : MonoBehaviour
 
     public RawImage fadeImg;
 
+    bool enablednav = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,14 @@ public class NarrativeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(InventoryManager.main.inventory.Count > 0 && !enablednav)
+        {
+            enablednav = true;
+            player.gameObject.GetComponent<NavMeshAgent>().enabled = true;
+            player.gameObject.GetComponentInChildren<Animator>().ResetTrigger("Sit");
+            player.gameObject.GetComponentInChildren<Animator>().SetTrigger("Idle");
+            player.GetComponent<Collider>().enabled = true;
+        }
     }
 
     IEnumerator startingSequence()
@@ -47,11 +57,9 @@ public class NarrativeManager : MonoBehaviour
         //StartCoroutine(fadeTo(0f, 2.5f));
         //yield return new WaitForSeconds(2.5f);
         GameObject.Find("z_particles").SetActive(false);
-        player.gameObject.GetComponent<NavMeshAgent>().enabled = true;
+        //player.gameObject.GetComponent<NavMeshAgent>().enabled = true;
         player.frozen = false;
-        player.gameObject.GetComponentInChildren<Animator>().ResetTrigger("Sit");
-        player.gameObject.GetComponentInChildren<Animator>().SetTrigger("Idle");
-        player.GetComponent<Collider>().enabled = true;
+        
     }
 
     IEnumerator fadeTo(float endAlpha, float fadeTime)

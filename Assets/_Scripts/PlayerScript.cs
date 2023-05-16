@@ -67,8 +67,11 @@ public class PlayerScript : MonoBehaviour
             anim.SetTrigger("Walk");
         } else
         {
-            anim.ResetTrigger("Walk");
-            anim.SetTrigger("Idle");
+            if (nav.enabled == true)
+            {
+                anim.ResetTrigger("Walk");
+                anim.SetTrigger("Idle");
+            }
         }
 
         if(Input.GetKey(KeyCode.Space))

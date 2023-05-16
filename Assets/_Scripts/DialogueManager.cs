@@ -60,6 +60,14 @@ public class DialogueManager : MonoBehaviour
             talking = true;
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().stopMoving();
             StartCoroutine(updateStory());
+        } else if ((bool)stories[current].variablesState["replayable"] == true)
+        {
+            stories[current].ResetState();
+            conversationScreen.SetActive(true);
+            CameraController.main.talkzoom();
+            talking = true;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().stopMoving();
+            StartCoroutine(updateStory());
         }
     }
 

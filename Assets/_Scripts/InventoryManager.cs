@@ -32,7 +32,7 @@ public class InventoryManager : MonoBehaviour
         items.Add("glasses", new Item("glasses", "Ghost Glasses", "glasss"));
 
 
-        pickup("glasses");
+        //pickup("glasses");
     }
 
     public void pickup(string name)
