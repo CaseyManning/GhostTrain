@@ -171,7 +171,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char c in text)
         {
             obj.text += c;
-            yield return new WaitForSeconds(0.025f);
+            yield return new WaitForSeconds(0.015f);
         }
     }
 }

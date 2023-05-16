@@ -13,7 +13,7 @@ public class SceneController : MonoBehaviour
 
     int current = 0;
 
-    string[] scenes = { "IntroCar", "TrainCar" };
+    string[] scenes = { "IntroCar", "TrainCar"};
 
     // Start is called before the first frame update
     void Start()
