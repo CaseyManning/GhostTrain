@@ -41,6 +41,10 @@ public class Talkable : MonoBehaviour
         //    print("gray");
         //}
         gameObject.layer = 6;
+        if(transform.childCount > 0 && transform.GetChild(0).name == "outline")
+        {
+            transform.GetChild(0).gameObject.layer = 9;
+        }
         Vector2 hotspot = new Vector2(cursorTex.width / 2, cursorTex.height / 2);
         Cursor.SetCursor(cursorTex, hotspot, CursorMode.Auto);
     }
@@ -48,6 +52,10 @@ public class Talkable : MonoBehaviour
     private void OnMouseExit()
     {
         gameObject.layer = startlayer;
+        if (transform.childCount > 0 && transform.GetChild(0).name == "outline")
+        {
+            transform.GetChild(0).gameObject.layer = 10;
+        }
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 }
