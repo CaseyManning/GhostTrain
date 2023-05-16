@@ -92,7 +92,7 @@ public class InventoryManager : MonoBehaviour
     {
         for(int i = 0; i < inventory.Count; i++)
         {
-            float slotWidth = 156;
+            float slotWidth = 100;
             float offset = startPos + i * slotWidth;
             Vector2 anchored = inventory[i].obj.GetComponent<RectTransform>().anchoredPosition;
             anchored.x = offset;
