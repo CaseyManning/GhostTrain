@@ -102,6 +102,11 @@ public class PlayerScript : MonoBehaviour
         {
             other.gameObject.GetComponent<TrainDoor>().entered();
         }
+        
+        if(other.gameObject.TryGetComponent<GhostBox>(out GhostBox box))
+        {
+            box.entered();
+        }
     }
 
     public void stopMoving()
