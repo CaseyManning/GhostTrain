@@ -17,7 +17,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/IntroCar.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
-    path: Assets/_Scenes/TrainCar.unity
-    guid: 6e47235f41e0541938f17fb8a62e6a8f
   m_configObjects: {}
