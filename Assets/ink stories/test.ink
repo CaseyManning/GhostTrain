@@ -1,4 +1,5 @@
 VAR title = "GHOST"
+VAR replayable = true
 Hi! I'm a ghost!
 
  * wow! 

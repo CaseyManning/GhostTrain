@@ -13,6 +13,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject inventoryUI;
 
     public GameObject popup;
+    public GameObject descpopup;
 
     Item selectedItem;
 
@@ -30,6 +31,7 @@ public class InventoryManager : MonoBehaviour
         items.Add("ghostpowder", new Item("ghostpowder", "GHOST POWDER"));
         items.Add("glasses", new Item("glasses", "Ghost Glasses", "glasss"));
         items.Add("firstGhost", new Item("firstGhost", "First Ghost"));
+        //pickup("glasses");
     }
 
     public void pickup(string name)
@@ -50,12 +52,14 @@ public class InventoryManager : MonoBehaviour
         public string name;
         public string displayname;
         public bool usable;
+        public string desc;
         public GameObject obj;
 
-        public Item(string name, string displayname, string lore="")
+        public Item(string name, string displayname, string desc="")
         {
             this.name = name;
             this.displayname = displayname;
+            this.desc = desc;
         }
 
         public GameObject create(GameObject slot)
@@ -102,11 +106,12 @@ public class InventoryManager : MonoBehaviour
             {
                 if (inventory[i].usable)
                 {
-                    popup.GetComponent<Popup>().open("Use " + inventory[i].displayname + "?");
+                    popup.GetComponent<Popup>().open("Use " + inventory[i].displayname + "?", true);
                     selectedItem = inventory[i];
                 } else
                 {
-                    //TODO: lore popup
+                    descpopup.GetComponent<Popup>().open(inventory[i].displayname + "\n\n" + inventory[i].desc, false);
+                    selectedItem = inventory[i];
                 }
             }
         }
