@@ -1,1 +1,2 @@
-- You look inside the box and find an arm of the teddybear #gain otherhalfteddybear
+- You look inside the box and find an arm of the teddybear 
+#gain rightArmOfTeddyBear

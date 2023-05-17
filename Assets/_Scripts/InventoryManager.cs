@@ -36,11 +36,13 @@ public class InventoryManager : MonoBehaviour
         main = this;
         inventory = new List<Item>();
         items = new Dictionary<string, Item>();
-        items.Add("ghostpowder", new Item("ghostpowder", "GHOST POWDER"));
-        items.Add("glasses", new Item("glasses", "Ghost Glasses", "glasss"));
-        items.Add("firstGhost", new Item("firstGhost", "First Ghost"));
-        items.Add("halfteddybear", new Item("halfteddybear", "Half a teddybear"));
-        items.Add("otherhalfteddybear", new Item("otherhalfteddybear", "Other Half of a teddybear"));
+        items.Add("ghostpowder", new Item("ghostpowder", "GHOST POWDER", true));
+        items.Add("glasses", new Item("glasses", "Ghost Glasses", true, "glasss"));
+        items.Add("firstGhost", new Item("firstGhost", "First Ghost", false));
+        items.Add("spool", new Item("spool", "Spool", true));
+        items.Add("noArmTeddyBear", new Item("noArmTeddyBear", "Teddy Bear without an arm", false));
+        items.Add("rightArmOfTeddyBear", new Item("rightArmOfTeddyBear", "Right arm of a Teddy Bear", false));
+        items.Add("fullTeddyBear", new Item("fullTeddyBear", "Ghosty's TeddyBear", false));
         //pickup("glasses");
     }
 
@@ -57,6 +59,19 @@ public class InventoryManager : MonoBehaviour
         layoutInventory();
     }
 
+    public void dropoff(string name)
+    {
+        if (!items.ContainsKey(name))
+        {
+            Debug.LogWarning("No such item to dropoff: " + name);
+            return;
+        }
+        Item item = items[name];
+        inventory.Remove(item);
+        Destroy(item.obj);
+        layoutInventory();
+    }
+
     public class Item
     {
         public string name;
@@ -66,10 +81,11 @@ public class InventoryManager : MonoBehaviour
         public GameObject obj;
         public Sprite objImage;
 
-        public Item(string name, string displayname, string desc="")
+        public Item(string name, string displayname, bool usable, string desc="")
         {
             this.name = name;
             this.displayname = displayname;
+            this.usable = usable;
             this.desc = desc;
 
             foreach (NamedImage pic in InventoryManager.main.pictures) {
@@ -90,8 +106,10 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    //code for displaying inventory stuff. 
     public void layoutInventory()
     {
+        Debug.Log(inventory.Count);
         for(int i = 0; i < inventory.Count; i++)
         {
             float slotWidth = 100;
@@ -102,19 +120,31 @@ public class InventoryManager : MonoBehaviour
             print(slotWidth);
             print(startPos);
             inventory[i].obj.GetComponent<RectTransform>().anchoredPosition = anchored;
-
         }
+    }
+
+    public void Reset()
+    {
+    
     }
 
     public void use()
     {
-        if(selectedItem.name == "ghostpowder")
+        Debug.Log("use damaged");
+        if (selectedItem.name == "ghostpowder")
         {
             GameObject.Find("ghosty").GetComponent<Ghost>().appear();
         }
-
-        inventory.Remove(selectedItem);
-        Destroy(selectedItem.obj);
+        if(selectedItem.name == "spool")
+        {
+            Debug.Log("spool damaaged " + name);
+            //add dialogue
+         
+                Debug.Log("what is happening " + name);
+                DialogueManager.main.startConvo("fixBear");
+            
+        }
+        layoutInventory();
         selectedItem = null;
     }
 

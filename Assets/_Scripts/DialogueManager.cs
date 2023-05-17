@@ -145,16 +145,16 @@ public class DialogueManager : MonoBehaviour
     public void processTags(List<string> tags)
     {
         print(tags.Count);
-        foreach(string tag in tags)
+        foreach (string tag in tags)
         {
-            if(tag.StartsWith("gain"))
+            if (tag.StartsWith("gain"))
             {
                 InventoryManager.main.pickup(tag.Split(" ")[1]);
-                if (tag.Split(" ")[1] == "halfteddybear")
+                if (tag.Split(" ")[1] == "rightArmOfTeddyBear")
                 {
                     halfTeddyBear = true;
                 }
-                if (tag.Split(" ")[1] == "otherhalfteddybear")
+                if (tag.Split(" ")[1] == "noArmTeddyBear")
                 {
                     otherHalfTeddyBear = true;
                 }
@@ -163,10 +163,15 @@ public class DialogueManager : MonoBehaviour
                     foundTeddyBear = true;
                 }
             }
-            if(tag.StartsWith("delete"))
+            if (tag.StartsWith("delete"))
             {
                 print("eee");
                 Destroy(GameObject.Find(tag.Split(" ")[1]));
+            }
+            if (tag.StartsWith("inactivate"))
+            {
+                print("inactivated");
+                GameObject.Find(tag.Split(" ")[1]).SetActive(false);
             }
             if (tag.StartsWith("test1"))
             {
@@ -174,6 +179,11 @@ public class DialogueManager : MonoBehaviour
                 {
                     stories[current].variablesState["teddyBearFound"] = true;
                 }
+            }
+            if (tag.StartsWith("remove"))
+            {
+                print("remove what object?");
+                InventoryManager.main.dropoff(tag.Split(" ")[1]);
             }
         }
     }

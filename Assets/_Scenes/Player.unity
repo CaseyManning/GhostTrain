@@ -2892,6 +2892,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 607446a32f4144bf6a278635a2133f5a, type: 3}
   - {fileID: 4900000, guid: 80b20d8f3f50e4323b90c0f7fa163293, type: 3}
   - {fileID: 4900000, guid: dd3d9339263d44e0799d48bf2d1735bc, type: 3}
+  - {fileID: 4900000, guid: 0007328e39613496d81ee032d972bd9f, type: 3}
   foundTeddyBear: 0
   halfTeddyBear: 0
   otherHalfTeddyBear: 0
@@ -3421,6 +3422,16 @@ MonoBehaviour:
   pictures:
   - name: glasses
     image: {fileID: 21300000, guid: 1ed776bb93d19415a9acaad9a6ff34b6, type: 3}
+  - name: glasses
+    image: {fileID: 21300000, guid: 1ed776bb93d19415a9acaad9a6ff34b6, type: 3}
+  - name: spool
+    image: {fileID: 21300000, guid: 5ea9348ffae3d4fc78514f6f4dce733c, type: 3}
+  - name: noArmTeddyBear
+    image: {fileID: 21300000, guid: 0f47248ecbdaa43bf87b652f6ffe844c, type: 3}
+  - name: rightArmOfTeddyBear
+    image: {fileID: 21300000, guid: bcb92a834fcd94c0989b8cddda65183b, type: 3}
+  - name: fullTeddyBear
+    image: {fileID: 21300000, guid: 5a598adc6223d4ec08a3751b445a9e2d, type: 3}
 --- !u!4 &2141255644
 Transform:
   m_ObjectHideFlags: 0
