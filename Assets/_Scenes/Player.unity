@@ -2888,7 +2888,10 @@ MonoBehaviour:
   - {fileID: 4900000, guid: c7942e2fd258f4963b53c8567e19d14c, type: 3}
   - {fileID: 4900000, guid: 7aca550dce9c049839a57ebe0083caef, type: 3}
   - {fileID: 4900000, guid: be4f92a44c908430f9fbbb2552a0660f, type: 3}
-  - {fileID: 4900000, guid: 9c69409c8a707403488580e6ab63ac7c, type: 3}
+  - {fileID: 4900000, guid: 1c5f84018c8ba4d259972fe4389ae8d5, type: 3}
+  foundTeddyBear: 0
+  halfTeddyBear: 0
+  otherHalfTeddyBear: 0
 --- !u!4 &2057475981
 Transform:
   m_ObjectHideFlags: 0

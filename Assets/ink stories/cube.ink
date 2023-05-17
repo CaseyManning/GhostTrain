@@ -2,4 +2,4 @@
 
 * take it!
 
-- cube is taken #gain cube
+- cube is taken #delete cube

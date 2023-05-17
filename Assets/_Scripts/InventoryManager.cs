@@ -36,9 +36,9 @@ public class InventoryManager : MonoBehaviour
         main = this;
         inventory = new List<Item>();
         items = new Dictionary<string, Item>();
-        items.Add("ghostpowder", new Item("ghostpowder", "GHOST POWDER"));
-        items.Add("glasses", new Item("glasses", "Ghost Glasses", "glasss"));
-        items.Add("firstGhost", new Item("firstGhost", "First Ghost"));
+        items.Add("ghostpowder", new Item("ghostpowder", "GHOST POWDER", true));
+        items.Add("glasses", new Item("glasses", "Ghost Glasses", true, "glasss"));
+        items.Add("firstGhost", new Item("firstGhost", "First Ghost", false));
     }
 
     public void pickup(string name)
@@ -63,17 +63,23 @@ public class InventoryManager : MonoBehaviour
         public GameObject obj;
         public Sprite objImage;
 
-        public Item(string name, string displayname, string desc="")
+        public Item(string name, string displayname, bool usable, string desc="")
         {
             this.name = name;
             this.displayname = displayname;
+            this.usable = usable;
             this.desc = desc;
 
             foreach (NamedImage pic in InventoryManager.main.pictures) {
                 if(pic.name == name) {
                     objImage = pic.image;
-                    Debug.Log(name);
+                    // Debug.Log(name);
                 }
+            }
+
+            if (usable) {
+                // make it appear differently
+                Debug.Log(name + " is usable");
             }
         }
 
@@ -82,7 +88,7 @@ public class InventoryManager : MonoBehaviour
             obj = Instantiate(slot);
             obj.name = name;
             obj.transform.GetChild(0).GetComponent<Image>().sprite = objImage;
-            Debug.Log("image changed into " + name);
+            // Debug.Log("image changed into " + name);
             return obj;
         }
     }
