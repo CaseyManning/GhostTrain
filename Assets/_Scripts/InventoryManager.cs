@@ -39,7 +39,6 @@ public class InventoryManager : MonoBehaviour
         items.Add("ghostpowder", new Item("ghostpowder", "GHOST POWDER"));
         items.Add("glasses", new Item("glasses", "Ghost Glasses", "glasss"));
         items.Add("firstGhost", new Item("firstGhost", "First Ghost"));
-        //pickup("glasses");
     }
 
     public void pickup(string name)
