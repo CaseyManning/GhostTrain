@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_ghost_test
+  m_Name: ghosttestmat
   m_Shader: {fileID: -6465566751694194690, guid: 1b135ca396a144b0dba7da210b781900,
     type: 3}
   m_ValidKeywords: []
@@ -48,7 +48,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Fresnel_Power: 1.17
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _emission_power: 0.48
     m_Colors: []
   m_BuildTextureStacks: []
