@@ -43,7 +43,7 @@ public class InventoryManager : MonoBehaviour
         items.Add("noArmTeddyBear", new Item("noArmTeddyBear", "Teddy Bear without an arm", false));
         items.Add("rightArmOfTeddyBear", new Item("rightArmOfTeddyBear", "Right arm of a Teddy Bear", false));
         items.Add("fullTeddyBear", new Item("fullTeddyBear", "Ghosty's TeddyBear", false));
-        //pickup("glasses");
+ 
     }
 
     public void pickup(string name)
@@ -91,8 +91,13 @@ public class InventoryManager : MonoBehaviour
             foreach (NamedImage pic in InventoryManager.main.pictures) {
                 if(pic.name == name) {
                     objImage = pic.image;
-                    Debug.Log(name);
+                    // Debug.Log(name);
                 }
+            }
+
+            if (usable) {
+                // make it appear differently
+                Debug.Log(name + " is usable");
             }
         }
 
@@ -101,7 +106,7 @@ public class InventoryManager : MonoBehaviour
             obj = Instantiate(slot);
             obj.name = name;
             obj.transform.GetChild(0).GetComponent<Image>().sprite = objImage;
-            Debug.Log("image changed into " + name);
+            // Debug.Log("image changed into " + name);
             return obj;
         }
     }
