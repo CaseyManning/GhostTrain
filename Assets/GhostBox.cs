@@ -31,17 +31,10 @@ public class GhostBox : MonoBehaviour
     IEnumerator ghostMode()
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().frozen = true;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().nav.Stop();
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().stopMoving();
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().nav.enabled = false;
         VolumeController.main.ghostmode(true);
-        yield return new WaitForSeconds(0.05f);
-        VolumeController.main.ghostmode(false);
         particles.Play();
-        yield return new WaitForSeconds(0.05f);
-        VolumeController.main.ghostmode(true);
-        yield return new WaitForSeconds(0.05f);
-        VolumeController.main.ghostmode(false);
-        yield return new WaitForSeconds(0.05f);
-        VolumeController.main.ghostmode(true);
-
+        yield return new WaitForEndOfFrame();
     }
 }

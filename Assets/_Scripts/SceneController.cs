@@ -13,15 +13,20 @@ public class SceneController : MonoBehaviour
 
     int current = 0;
 
+    public static bool dontload = false;
+
     string[] scenes = { "IntroCar", "TrainCar", "TrainCar_01"};
 
     // Start is called before the first frame update
     void Start()
     {
         main = this;
-        SceneManager.LoadScene(scenes[current], LoadSceneMode.Additive);
-        //rawIm.CrossFadeAlpha(0, 0.5f, true);
-        StartCoroutine(fadeIn(0.35f));
+        if (!dontload)
+        {
+            SceneManager.LoadScene(scenes[current], LoadSceneMode.Additive);
+            //rawIm.CrossFadeAlpha(0, 0.5f, true);
+        }
+            StartCoroutine(fadeIn(0.35f));
     }
 
     // Update is called once per frame
