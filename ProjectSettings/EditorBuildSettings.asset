@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/TrainCar_01.unity
     guid: 8e2f344b3567148d4982df90d2a3b8c1
+  - enabled: 1
+    path: Assets/_Scenes/Kitchen_Testing.unity
+    guid: 1ceefd2a0de5a48d7bcae412bd617f46
   m_configObjects: {}
