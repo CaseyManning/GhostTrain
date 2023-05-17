@@ -24,6 +24,8 @@ public class DialogueManager : MonoBehaviour
     Dictionary<string, Story> stories;
     string current;
 
+    bool textwriting = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,12 +81,17 @@ public class DialogueManager : MonoBehaviour
         }
         titleText.text = (string)stories[current].variablesState["title"];
         currOptions = new List<GameObject>();
-        //bodyText.text = stories[current].Continue();
-        bodyText.text = "";
-        foreach (char c in stories[current].Continue())
+        if (textwriting)
         {
-            bodyText.text += c;
-            yield return new WaitForSeconds(0.01f);
+            bodyText.text = "";
+            foreach (char c in stories[current].Continue())
+            {
+                bodyText.text += c;
+                yield return new WaitForSeconds(0.01f);
+            }
+        } else
+        {
+            bodyText.text = stories[current].Continue();
         }
         bodyText.GetComponent<RectTransform>().ForceUpdateRectTransforms();
         bodyText.GetComponent<ContentSizeFitter>().SetLayoutVertical();
@@ -104,11 +111,17 @@ public class DialogueManager : MonoBehaviour
             Choice c = stories[current].currentChoices[i];
             GameObject optionObj = Instantiate(option);
             optionObj.transform.SetParent(conversationScreen.transform);
-            //optionObj.GetComponent<TMP_Text>().text = (i+1) + ". " + c.text;
             optionObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(xpos, start - i * optHeight);
+            optionObj.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
             optionObj.name = c.index.ToString();
             currOptions.Add(optionObj);
-            StartCoroutine(writeText(c.text, optionObj.GetComponent<TMP_Text>()));
+            if (textwriting)
+            {
+                StartCoroutine(writeText(c.text, optionObj.GetComponent<TMP_Text>()));
+            } else
+            {
+                optionObj.GetComponent<TMP_Text>().text = (i + 1) + ". " + c.text;
+            }
             yield return new WaitForSeconds(0.05f);
         }
 

@@ -1,8 +1,12 @@
-- Oh look! The junior parapsychology kit my parents got me! I can’t wait to see what's inside. 
+- Hey look, theres a box next to me!
 
-* Open the box
+* Inspect the box
 
-- You rip open the paper wrapping and find a round case inside. The case reads: Parapsychological Ghost Glasses! #delete ghostbox
+- This isn't just any box. That's the  Junior Parapsychologist's Weekly Gift Box that my parents got for me! You read the slogan on the side: "The Essential tools that any ghost reseacher needs!" Maybe one day you'll be a ghost reseacher.
+
+* Open the Junior Parapsychologist's Weekly Gift Box
+
+- You rip open the paper wrapping and find a round case inside. The case reads: Parapsychological Ghost Glasses #delete ghostbox
 
 *Put on Ghost Glasses
 

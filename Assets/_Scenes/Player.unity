@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.014373739, g: 0.013628444, b: 0.014373739, a: 1}
+  m_IndirectSpecularColor: {r: 0.09542581, g: 0.08337059, b: 0.096559025, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -777,7 +777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ee6c7c9db9d418ebf7942d2fe5fc7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vignette: {fileID: 0}
+  coloradjust: {fileID: 0}
 --- !u!1 &560652212
 GameObject:
   m_ObjectHideFlags: 0
@@ -3262,8 +3262,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -186.47, y: -97}
-  m_SizeDelta: {x: 312.94, y: 66.22}
+  m_AnchoredPosition: {x: -189.30025, y: -97}
+  m_SizeDelta: {x: 307.2795, y: 95.37}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2125385278
 MonoBehaviour:
@@ -3314,8 +3314,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
