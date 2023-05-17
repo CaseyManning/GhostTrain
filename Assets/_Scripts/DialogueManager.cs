@@ -24,6 +24,12 @@ public class DialogueManager : MonoBehaviour
     Dictionary<string, Story> stories;
     string current;
 
+
+    public bool foundTeddyBear = false;
+    public bool halfTeddyBear = false;
+    public bool otherHalfTeddyBear = false;
+
+
     bool textwriting = false;
 
     // Start is called before the first frame update
@@ -144,11 +150,30 @@ public class DialogueManager : MonoBehaviour
             if(tag.StartsWith("gain"))
             {
                 InventoryManager.main.pickup(tag.Split(" ")[1]);
+                if (tag.Split(" ")[1] == "halfteddybear")
+                {
+                    halfTeddyBear = true;
+                }
+                if (tag.Split(" ")[1] == "otherhalfteddybear")
+                {
+                    otherHalfTeddyBear = true;
+                }
+                if (halfTeddyBear && otherHalfTeddyBear)
+                {
+                    foundTeddyBear = true;
+                }
             }
             if(tag.StartsWith("delete"))
             {
                 print("eee");
                 Destroy(GameObject.Find(tag.Split(" ")[1]));
+            }
+            if (tag.StartsWith("test1"))
+            {
+                if (foundTeddyBear)
+                {
+                    stories[current].variablesState["teddyBearFound"] = true;
+                }
             }
         }
     }

@@ -2889,6 +2889,12 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 7aca550dce9c049839a57ebe0083caef, type: 3}
   - {fileID: 4900000, guid: be4f92a44c908430f9fbbb2552a0660f, type: 3}
   - {fileID: 4900000, guid: 9c69409c8a707403488580e6ab63ac7c, type: 3}
+  - {fileID: 4900000, guid: 607446a32f4144bf6a278635a2133f5a, type: 3}
+  - {fileID: 4900000, guid: 80b20d8f3f50e4323b90c0f7fa163293, type: 3}
+  - {fileID: 4900000, guid: dd3d9339263d44e0799d48bf2d1735bc, type: 3}
+  foundTeddyBear: 0
+  halfTeddyBear: 0
+  otherHalfTeddyBear: 0
 --- !u!4 &2057475981
 Transform:
   m_ObjectHideFlags: 0
