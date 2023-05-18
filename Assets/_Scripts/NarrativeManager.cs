@@ -9,7 +9,7 @@ public class NarrativeManager : MonoBehaviour
 {
     public GameObject globalVol;
 
-    public bool starting = false;
+    public bool starting = true;
 
     PlayerScript player;
 

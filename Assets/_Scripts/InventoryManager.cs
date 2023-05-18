@@ -43,6 +43,7 @@ public class InventoryManager : MonoBehaviour
         items.Add("noArmTeddyBear", new Item("noArmTeddyBear", "Teddy Bear without an arm", false));
         items.Add("rightArmOfTeddyBear", new Item("rightArmOfTeddyBear", "Right arm of a Teddy Bear", false));
         items.Add("fullTeddyBear", new Item("fullTeddyBear", "Ghosty's TeddyBear", false));
+        items.Add("fryingpan", new Item("fryingpan", "A Frying Pan", false));
  
     }
 

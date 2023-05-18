@@ -5,6 +5,8 @@ using UnityEngine.AI;
 using Ink.Runtime;
 using UnityEngine.UI;
 using TMPro;
+using static InventoryManager;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -49,6 +51,8 @@ public class DialogueManager : MonoBehaviour
             stories.Add(storyFiles[i].name, s);
         }
         print("loaded " + storyFiles.Count + " stories.");
+
+        //stories["kitchenGhost"].ChoosePathString("replay");
     }
 
     // Update is called once per frame
@@ -65,38 +69,57 @@ public class DialogueManager : MonoBehaviour
         }
         current = pname;
         //if the teddy bear has not been found
-        if(pname == "firstGhost")
+        if (pname == "firstGhost")
         {
             firstGhostInteraction = true;
         }
-        if(pname == "fixBear")
-        {
-            bearFixed = true;
-        }
+        //if(pname == "fixBear")
+        //{
+        //    bearFixed = true;
+        //}
+
+        //if (foundTeddyBear && (pname == "firstGhost") && bearFixed)
+        //{
+        //    current = "bearPuzzleComplete";
+        //} else if(foundTeddyBear && (pname == "firstGhost") && !bearFixed)
+        //{
+        //    current = "useSpool";
+        //} 
         
-        if (foundTeddyBear && (pname == "firstGhost") && bearFixed)
+        foreach (Item i in InventoryManager.main.inventory)
         {
-            current = "bearPuzzleComplete";
-        } else if(foundTeddyBear && (pname == "firstGhost") && !bearFixed)
-        {
-            current = "useSpool";
+            if (stories[current].variablesState.GlobalVariableExistsWithName("has" + i.name))
+            {
+                stories[current].variablesState["has" + i.name] = true;
+            }
         }
-            if (stories[current].canContinue)
+        print(current);
+        print(stories[current].path);
+        print(stories[current].variablesState.GlobalVariableExistsWithName("replayable"));
+        if (stories[current].canContinue)
         {
             conversationScreen.SetActive(true);
             CameraController.main.talkzoom();
             talking = true;
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().stopMoving();
             StartCoroutine(updateStory());
-        } else if ((bool)stories[current].variablesState["replayable"] == true)
-        {
-            stories[current].ResetState();
-            conversationScreen.SetActive(true);
-            CameraController.main.talkzoom();
-            talking = true;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().stopMoving();
-            StartCoroutine(updateStory());
-        }
+        } else if ((bool)stories[current].variablesState["replayable"])
+
+             {
+                //
+                //{
+                //stories[current].ResetState();
+                stories[current].ChoosePathString("replay");
+                conversationScreen.SetActive(true);
+                CameraController.main.talkzoom();
+                talking = true;
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().stopMoving();
+                StartCoroutine(updateStory());
+            //} catch (Exception e)
+            //{
+            //    print(e);
+            //}
+            }
        
     }
 
@@ -210,6 +233,11 @@ public class DialogueManager : MonoBehaviour
                 print("remove what object?");
                 InventoryManager.main.dropoff(tag.Split(" ")[1]);
                 GameObject.Find(tag.Split(" ")[1]).SetActive(false);
+            }
+            if(tag.StartsWith("startcooking"))
+            {
+                GameObject.FindGameObjectWithTag("Player").SetActive(false);
+                GameObject.Find("minigame").transform.GetChild(0).gameObject.SetActive(true) ;
             }
         }
     }

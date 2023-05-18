@@ -2897,12 +2897,15 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 1c5f84018c8ba4d259972fe4389ae8d5, type: 3}
   - {fileID: 4900000, guid: 4db077e067e34496b8666f2072032ef9, type: 3}
   - {fileID: 4900000, guid: 58f090f3fef9e4fedae113dab4210544, type: 3}
+  - {fileID: 4900000, guid: d55cf2e3bda4f4fc28dd796a12974b2f, type: 3}
+  - {fileID: 4900000, guid: e5091f51531704316ae9ae39c349f900, type: 3}
   current: 
   foundTeddyBear: 0
   halfTeddyBear: 0
   otherHalfTeddyBear: 0
   firstGhostInteraction: 0
   bearFixed: 0
+  spoolCollected: 0
 --- !u!4 &2057475981
 Transform:
   m_ObjectHideFlags: 0
@@ -3299,9 +3302,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'a;oisdjfaosijfdo;isadjfasdo;ijfds;oaijfasoijfo;dsajf;dasfjdasoifjda;oifjaodijfasodijf;oadijf;asidjfa;osijdijf;oasijfd;aoisjfoiajsdf;ojsioj;aisjdsddddsdssdsdsdsdsdsdfdsfdsfsdfds
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3438,6 +3439,8 @@ MonoBehaviour:
   - name: rightArmOfTeddyBear
     image: {fileID: 21300000, guid: bcb92a834fcd94c0989b8cddda65183b, type: 3}
   - name: fullTeddyBear
+    image: {fileID: 21300000, guid: 5a598adc6223d4ec08a3751b445a9e2d, type: 3}
+  - name: fryingpan
     image: {fileID: 21300000, guid: 5a598adc6223d4ec08a3751b445a9e2d, type: 3}
 --- !u!4 &2141255644
 Transform:
