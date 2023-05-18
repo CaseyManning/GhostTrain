@@ -1,11 +1,12 @@
 #test1
 VAR teddyBearFound = false
--Oh look! Maybe I can use this spool for something useful!
+-Oh look! Perhaps I can use this spool of thread to fix the teddy bear!
 { teddyBearFound:
-    - Use the spool to stitch the bear back to one piece -> bear_fixed
-    - Find the rest of the teddy bear first to use the spool! -> DONE
+    *Use the spool to stitch the teddy bear back to one piece.-> bear_fixed
+    *Find the rest of the teddy bear first to use the spool! -> DONE
 }
 == bear_fixed== 
+
 #remove rightArmOfTeddyBear
 #remove noArmTeddyBear
 #remove spool

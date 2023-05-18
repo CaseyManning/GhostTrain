@@ -14,6 +14,8 @@ public class DialogueManager : MonoBehaviour
 
     public GameObject option;
 
+    public GameObject teddyBear;
+
     public bool talking = false;
 
     public static DialogueManager main;
@@ -22,13 +24,14 @@ public class DialogueManager : MonoBehaviour
 
     public List<TextAsset> storyFiles;
     Dictionary<string, Story> stories;
-    string current;
+    public string current;
 
 
     public bool foundTeddyBear = false;
     public bool halfTeddyBear = false;
     public bool otherHalfTeddyBear = false;
-
+    public bool firstGhostInteraction = false;
+    public bool bearFixed = false;
 
     bool textwriting = false;
 
@@ -60,8 +63,24 @@ public class DialogueManager : MonoBehaviour
             Debug.LogWarning(" invalid story name " + pname);
         }
         current = pname;
-
-        if (stories[current].canContinue)
+        //if the teddy bear has not been found
+        if(pname == "firstGhost")
+        {
+            firstGhostInteraction = true;
+        }
+        if(pname == "fixBear")
+        {
+            bearFixed = true;
+        }
+        
+        if (foundTeddyBear && (pname == "firstGhost") && bearFixed)
+        {
+            current = "bearPuzzleComplete";
+        } else if(foundTeddyBear && (pname == "firstGhost") && !bearFixed)
+        {
+            current = "useSpool";
+        }
+            if (stories[current].canContinue)
         {
             conversationScreen.SetActive(true);
             CameraController.main.talkzoom();
@@ -77,6 +96,7 @@ public class DialogueManager : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().stopMoving();
             StartCoroutine(updateStory());
         }
+       
     }
 
     public IEnumerator updateStory()
@@ -97,7 +117,10 @@ public class DialogueManager : MonoBehaviour
             }
         } else
         {
-            bodyText.text = stories[current].Continue();
+            if (stories[current].canContinue)
+            {
+                bodyText.text = stories[current].Continue();
+            }
         }
         bodyText.GetComponent<RectTransform>().ForceUpdateRectTransforms();
         bodyText.GetComponent<ContentSizeFitter>().SetLayoutVertical();
@@ -184,6 +207,7 @@ public class DialogueManager : MonoBehaviour
             {
                 print("remove what object?");
                 InventoryManager.main.dropoff(tag.Split(" ")[1]);
+                GameObject.Find(tag.Split(" ")[1]).SetActive(false);
             }
         }
     }
@@ -198,7 +222,10 @@ public class DialogueManager : MonoBehaviour
     public void optionClicked(int index)
     {
         stories[current].ChooseChoiceIndex(index);
-        stories[current].Continue();
+        if (stories[current].canContinue)
+        {
+            stories[current].Continue();
+        }
         StartCoroutine(updateStory());
     }
     public void continueClicked()
