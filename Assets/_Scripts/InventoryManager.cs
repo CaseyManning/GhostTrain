@@ -143,11 +143,9 @@ public class InventoryManager : MonoBehaviour
         if(selectedItem.name == "spool")
         {
             Debug.Log("spool damaaged " + name);
-            //add dialogue
          
                 Debug.Log("what is happening " + name);
                 DialogueManager.main.startConvo("fixBear");
-            
         }
         layoutInventory();
         selectedItem = null;

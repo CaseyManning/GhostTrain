@@ -2883,6 +2883,7 @@ MonoBehaviour:
   titleText: {fileID: 1985508356}
   bodyText: {fileID: 2125385278}
   option: {fileID: 7587597832519587302, guid: eb3fc5a4bd7ea43d6b533c312ddb4521, type: 3}
+  teddyBear: {fileID: 0}
   talking: 0
   storyFiles:
   - {fileID: 4900000, guid: c7942e2fd258f4963b53c8567e19d14c, type: 3}
@@ -2895,10 +2896,13 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 0007328e39613496d81ee032d972bd9f, type: 3}
   - {fileID: 4900000, guid: 1c5f84018c8ba4d259972fe4389ae8d5, type: 3}
   - {fileID: 4900000, guid: 4db077e067e34496b8666f2072032ef9, type: 3}
+  - {fileID: 4900000, guid: 58f090f3fef9e4fedae113dab4210544, type: 3}
+  current: 
   foundTeddyBear: 0
   halfTeddyBear: 0
   otherHalfTeddyBear: 0
   firstGhostInteraction: 0
+  bearFixed: 0
 --- !u!4 &2057475981
 Transform:
   m_ObjectHideFlags: 0
