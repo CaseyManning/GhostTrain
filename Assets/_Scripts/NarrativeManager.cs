@@ -21,7 +21,7 @@ public class NarrativeManager : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
-      //  StartCoroutine(startingSequence());
+        StartCoroutine(startingSequence());
     }
 
     // Update is called once per frame

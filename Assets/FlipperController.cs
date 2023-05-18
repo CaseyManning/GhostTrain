@@ -32,7 +32,7 @@ public class FlipperController : MonoBehaviour
         flipAnim["pancake"].speed = 0.0f;
         flipAnim.Play("pancake");
 
-        if(Input.GetKey(KeyCode.Space))
+        if(Input.GetMouseButton(0))
         {
             position += Time.deltaTime * movespeed;
         } else
@@ -40,7 +40,7 @@ public class FlipperController : MonoBehaviour
             position -= Time.deltaTime * movespeed;
         }
 
-        position = Mathf.Clamp(position, 0, 0.8f);
+        position = Mathf.Clamp(position, 0, 0.7f);
 
 
         float xoffset = Camera.main.WorldToScreenPoint(transform.position).x - Input.mousePosition.x;

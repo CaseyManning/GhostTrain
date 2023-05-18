@@ -47,12 +47,17 @@ public class PlayerScript : MonoBehaviour
             }
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hitt, 100))
             {
-                if (hitt.collider.gameObject.TryGetComponent<Talkable>(out Talkable t))
+                if (hitt.collider.gameObject.TryGetComponent(out Talkable t))
                 {
                     if (Vector3.Distance(hitt.collider.gameObject.transform.position, transform.position) < talkDist)
                     {
                         CameraController.main.talkother = hitt.collider.gameObject;
                         DialogueManager.main.startConvo(t.convoName);
+                    } else
+                    {
+                        print("setting");
+                        //TODO: not working
+                        nav.SetDestination(hitt.point);
                     }
                 }
             }
@@ -102,8 +107,8 @@ public class PlayerScript : MonoBehaviour
         {
             other.gameObject.GetComponent<TrainDoor>().entered();
         }
-        
-        if(other.gameObject.TryGetComponent<GhostBox>(out GhostBox box))
+
+        if (other.gameObject.TryGetComponent<GhostBox>(out GhostBox box))
         {
             box.entered();
         }

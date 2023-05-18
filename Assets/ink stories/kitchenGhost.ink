@@ -36,9 +36,11 @@ Have you found my frying pan?
 - Trying looking around on the counters, I must have left it around here somewhere. -> END
 
 ===foundpan===
-- Excellent, now lets get cooking! 
+Excellent, now lets get cooking! 
 
 * How can I help?
 
-- My special pancakes need to be flipped six times before they are ready. Just take the pan and keep flipping until it looks done! #startcooking
+- My special pancakes need to be flipped six times before they are ready. Just take the pan and keep flipping until it looks done!
+
+My pancakes have a tendency to go flying, so make sure you catch them on the way down! #startcooking
 -> END

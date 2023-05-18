@@ -20,6 +20,12 @@ public class Pancake : MonoBehaviour
 
     float travelled = 0;
 
+    int timesCaught = 0;
+
+    public GameObject exclamation;
+
+    bool grounded = false;
+
     Vector3 launchForce = new Vector3(0, 30, 0);
     // Start is called before the first frame update
     void Start()
@@ -39,7 +45,7 @@ public class Pancake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!flying && Input.GetKeyUp(KeyCode.Space) && FlipperController.main.position > FlipperController.main.launchthreshold)
+        if(!flying && ((Input.GetMouseButtonUp(0) && FlipperController.main.position > FlipperController.main.launchthreshold) || FlipperController.main.position > 0.69))
         {
             transform.SetParent(null);
             flying = true;
@@ -74,19 +80,41 @@ public class Pancake : MonoBehaviour
                 travelled += move;
                 transform.position += (endPos - startPos_global).normalized * move;
             }
-
+            if(transform.position.y < 0.12f && !grounded)
+            {
+                grounded = true;
+                StartCoroutine(fallen());
+            }
         }
 
         if (flying && launchTime > 0.3f && Vector3.Distance(righthand.TransformPoint(startPos_local), transform.position) < 0.1f)
         {
-            transform.SetParent(righthand);
-            transform.localPosition = startPos_local;
-            transform.localRotation = startRot_local;
-            flying = false;
-            rb.isKinematic = true;
-            rb.detectCollisions = false;
+            timesCaught += 1;
+            resetcake();
         }
     }
 
-    
+    IEnumerator fallen()
+    {
+        exclamation.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        exclamation.SetActive(false);
+        yield return new WaitForSeconds(1);
+        GameObject corpse = Instantiate(gameObject);
+        corpse.transform.position = transform.position;
+        corpse.transform.rotation = transform.rotation;
+        Destroy(corpse.GetComponent<Pancake>());
+        resetcake();
+    }
+
+    public void resetcake()
+    {
+        transform.SetParent(righthand);
+        transform.localPosition = startPos_local;
+        transform.localRotation = startRot_local;
+        flying = false;
+        rb.isKinematic = true;
+        rb.detectCollisions = false;
+        grounded = false;
+    }
 }

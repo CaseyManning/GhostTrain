@@ -2135,7 +2135,7 @@ PrefabInstance:
     - target: {fileID: 1988407200662071239, guid: 38caf3fcf0a7941dbb01ea266dfee9bb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.74
+      value: 3.128
       objectReference: {fileID: 0}
     - target: {fileID: 1988407200662071239, guid: 38caf3fcf0a7941dbb01ea266dfee9bb,
         type: 3}
@@ -2145,7 +2145,7 @@ PrefabInstance:
     - target: {fileID: 1988407200662071239, guid: 38caf3fcf0a7941dbb01ea266dfee9bb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.311
       objectReference: {fileID: 0}
     - target: {fileID: 1988407200662071239, guid: 38caf3fcf0a7941dbb01ea266dfee9bb,
         type: 3}
@@ -2186,6 +2186,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Door_L
+      objectReference: {fileID: 0}
+    - target: {fileID: 1988407200662071240, guid: 38caf3fcf0a7941dbb01ea266dfee9bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1988407200662071240, guid: 38caf3fcf0a7941dbb01ea266dfee9bb,
         type: 3}
@@ -3179,17 +3184,17 @@ PrefabInstance:
     - target: {fileID: 1988407200662071239, guid: 38caf3fcf0a7941dbb01ea266dfee9bb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.8
+      value: -3.1317
       objectReference: {fileID: 0}
     - target: {fileID: 1988407200662071239, guid: 38caf3fcf0a7941dbb01ea266dfee9bb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.43
+      value: 0.4649
       objectReference: {fileID: 0}
     - target: {fileID: 1988407200662071239, guid: 38caf3fcf0a7941dbb01ea266dfee9bb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.3528
       objectReference: {fileID: 0}
     - target: {fileID: 1988407200662071239, guid: 38caf3fcf0a7941dbb01ea266dfee9bb,
         type: 3}
@@ -3230,16 +3235,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Door_R
-      objectReference: {fileID: 0}
-    - target: {fileID: 1988407200662071240, guid: 38caf3fcf0a7941dbb01ea266dfee9bb,
-        type: 3}
-      propertyPath: m_TagString
-      value: Door
-      objectReference: {fileID: 0}
-    - target: {fileID: 1988407200662071243, guid: 38caf3fcf0a7941dbb01ea266dfee9bb,
-        type: 3}
-      propertyPath: right
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38caf3fcf0a7941dbb01ea266dfee9bb, type: 3}
