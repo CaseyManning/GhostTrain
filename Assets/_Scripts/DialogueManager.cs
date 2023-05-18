@@ -237,7 +237,8 @@ public class DialogueManager : MonoBehaviour
             if(tag.StartsWith("startcooking"))
             {
                 GameObject.FindGameObjectWithTag("Player").SetActive(false);
-                GameObject.Find("minigame").transform.GetChild(0).gameObject.SetActive(true) ;
+                GameObject.Find("minigame").transform.GetChild(0).gameObject.SetActive(true);
+                //CameraController.main.zoomInOnPlayer();
             }
         }
     }

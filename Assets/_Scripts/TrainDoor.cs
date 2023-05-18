@@ -8,6 +8,7 @@ public class TrainDoor : MonoBehaviour
     public bool right;
     int s_layer;
     bool inside = false;
+    bool changed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -18,15 +19,18 @@ public class TrainDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) && inside && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) < 0.5f)
+        if (Input.GetMouseButtonDown(0) && inside && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) < 0.5f)
         {
-            entered();
-            inside = false;
+            if (!changed)
+            {
+                entered();
+            }
         }
     }
 
     public void entered()
     {
+        changed = true;
         SceneController.main.change(right);
     }
 

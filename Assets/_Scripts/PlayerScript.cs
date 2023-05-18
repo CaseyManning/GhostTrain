@@ -17,12 +17,15 @@ public class PlayerScript : MonoBehaviour
 
     public bool frozen = false;
 
+    public static GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
         models[character_index].SetActive(true);
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
+        player = gameObject;
     }
 
     // Update is called once per frame
@@ -103,10 +106,10 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Door"))
-        {
-            other.gameObject.GetComponent<TrainDoor>().entered();
-        }
+        //if (other.gameObject.CompareTag("Door"))
+        //{
+        //    other.gameObject.GetComponent<TrainDoor>().entered();
+        //}
 
         if (other.gameObject.TryGetComponent<GhostBox>(out GhostBox box))
         {

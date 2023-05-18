@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GhostBox : MonoBehaviour
 {
-
+    public SceneGhostt ghost;
     public ParticleSystem particles;
     // Start is called before the first frame update
     void Start()
@@ -36,5 +36,6 @@ public class GhostBox : MonoBehaviour
         VolumeController.main.ghostmode(true);
         particles.Play();
         yield return new WaitForEndOfFrame();
+        StartCoroutine(ghost.go());
     }
 }

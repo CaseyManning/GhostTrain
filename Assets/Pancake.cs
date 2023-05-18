@@ -8,6 +8,8 @@ public class Pancake : MonoBehaviour
     bool flying = false;
     Rigidbody rb;
 
+    public Pancake main;
+
     Vector3 startPos_local;
     Vector3 startPos_global;
     Quaternion startRot_local;
@@ -30,6 +32,11 @@ public class Pancake : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        init();
+    }
+
+    public void init()
+    {
         righthand = transform.parent;
         rb = GetComponent<Rigidbody>();
         rb.detectCollisions = false;
@@ -39,13 +46,16 @@ public class Pancake : MonoBehaviour
         Vector3 p1 = new Vector3(FlipperController.main.transform.position.x, 0, FlipperController.main.transform.position.z);
         Vector3 p2 = new Vector3(transform.position.x, 0, transform.position.z);
         radius = Vector3.Distance(p1, p2);
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!flying && ((Input.GetMouseButtonUp(0) && FlipperController.main.position > FlipperController.main.launchthreshold) || FlipperController.main.position > 0.69))
+        Vector3 pp1 = new Vector3(FlipperController.main.transform.position.x, 0, FlipperController.main.transform.position.z);
+        Vector3 pp2 = new Vector3(transform.position.x, 0, transform.position.z);
+        radius = Vector3.Distance(pp1, pp2);
+
+        if (!flying && ((Input.GetMouseButtonUp(0) && FlipperController.main.position > FlipperController.main.launchthreshold) || FlipperController.main.position > 0.69))
         {
             transform.SetParent(null);
             flying = true;
@@ -59,7 +69,7 @@ public class Pancake : MonoBehaviour
             startPos_global = transform.position;
 
             Vector3 p1 = FlipperController.main.transform.position;
-            Vector3 p2 = transform.position;
+            Vector3 p2 = transform.position;    
             float angle = Mathf.Atan2((p2 - p1).x, (p2 - p1).z);
 
             float endAngle = angle + ((Random.value - 0.5f) * 60f);
@@ -70,6 +80,7 @@ public class Pancake : MonoBehaviour
 
             Debug.DrawLine(p1, p2, Color.red, 20);
             Debug.DrawLine(p1, endPos, Color.green, 20);
+            print("radius: " + radius);
         }
         if(flying)
         {
@@ -83,6 +94,7 @@ public class Pancake : MonoBehaviour
             if(transform.position.y < 0.12f && !grounded)
             {
                 grounded = true;
+                timesCaught = 0;
                 StartCoroutine(fallen());
             }
         }
@@ -91,6 +103,14 @@ public class Pancake : MonoBehaviour
         {
             timesCaught += 1;
             resetcake();
+            if(timesCaught > 5)
+            {
+                FlipperController.main.gameObject.SetActive(false);
+                PlayerScript.player.SetActive(true);
+                CameraController.main.talkother = GameObject.Find("gordon");
+                DialogueManager.main.startConvo("finishpancake");
+                //CameraController.main.talkZoomOut();
+            }
         }
     }
 

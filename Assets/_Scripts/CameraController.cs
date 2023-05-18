@@ -53,6 +53,10 @@ public class CameraController : MonoBehaviour
 
     public void talkzoom()
     {
+        if(talkother == null)
+        {
+            return;
+        }
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Vector3 pos = (player.transform.position + talkother.transform.position) / 2f;
         start = transform.position;
@@ -64,6 +68,13 @@ public class CameraController : MonoBehaviour
     {
         StartCoroutine(zoomOut(1f));
 
+    }
+
+    public void zoomInOnPlayer()
+    {
+        start = transform.position;
+        goal = PlayerScript.player.transform.position;
+        StartCoroutine(zoomIn(1f));
     }
 
     IEnumerator zoomIn(float time)
