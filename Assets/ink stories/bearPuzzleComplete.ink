@@ -1,6 +1,6 @@
 [Ghosty seems sad about their teddy bear]
 
-*Hey, I found and fixed your teddy bear!
+*Hey, I found and repaired your teddy bear!
 
 - Omg yay, Thank you for finding my teddy bear! 
 

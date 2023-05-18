@@ -39,7 +39,7 @@ public class InventoryManager : MonoBehaviour
         items.Add("ghostpowder", new Item("ghostpowder", "GHOST POWDER", true));
         items.Add("glasses", new Item("glasses", "Ghost Glasses", true, "glasss"));
         items.Add("firstGhost", new Item("firstGhost", "First Ghost", false));
-        items.Add("spool", new Item("spool", "Spool", true));
+        items.Add("spool", new Item("spool", "Spool of Thread and Needle", true));
         items.Add("noArmTeddyBear", new Item("noArmTeddyBear", "Teddy Bear without an arm", false));
         items.Add("rightArmOfTeddyBear", new Item("rightArmOfTeddyBear", "Right arm of a Teddy Bear", false));
         items.Add("fullTeddyBear", new Item("fullTeddyBear", "Ghosty's TeddyBear", false));
@@ -135,16 +135,13 @@ public class InventoryManager : MonoBehaviour
 
     public void use()
     {
-        Debug.Log("use damaged");
+      
         if (selectedItem.name == "ghostpowder")
         {
             GameObject.Find("ghosty").GetComponent<Ghost>().appear();
         }
         if(selectedItem.name == "spool")
         {
-            Debug.Log("spool damaaged " + name);
-         
-                Debug.Log("what is happening " + name);
                 DialogueManager.main.startConvo("fixBear");
         }
         layoutInventory();

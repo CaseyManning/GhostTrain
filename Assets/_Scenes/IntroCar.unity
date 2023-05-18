@@ -1926,25 +1926,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176276157}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1299138669 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1988407200662071240, guid: 38caf3fcf0a7941dbb01ea266dfee9bb,
-    type: 3}
-  m_PrefabInstance: {fileID: 1475123318}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1299138674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1299138669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 192415f18d9bc4301bbac81828d45905, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bear: {fileID: 2379308509278533372}
 --- !u!1 &1308830345
 GameObject:
   m_ObjectHideFlags: 0
@@ -2685,6 +2666,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   convoName: bearPuzzleComplete
   curs: {fileID: 0}
+--- !u!114 &1829526266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829526261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 192415f18d9bc4301bbac81828d45905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bear: {fileID: 2379308509278533372}
 --- !u!1 &1872446725
 GameObject:
   m_ObjectHideFlags: 0

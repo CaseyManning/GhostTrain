@@ -32,6 +32,7 @@ public class DialogueManager : MonoBehaviour
     public bool otherHalfTeddyBear = false;
     public bool firstGhostInteraction = false;
     public bool bearFixed = false;
+    public bool spoolCollected = false;
 
     bool textwriting = false;
 
@@ -185,17 +186,17 @@ public class DialogueManager : MonoBehaviour
                 {
                     foundTeddyBear = true;
                 }
+                if(tag.Split(" ")[1] == "spool")
+                {
+                    spoolCollected = true;
+                }
             }
             if (tag.StartsWith("delete"))
             {
                 print("eee");
                 Destroy(GameObject.Find(tag.Split(" ")[1]));
             }
-            if (tag.StartsWith("inactivate"))
-            {
-                print("inactivated");
-                GameObject.Find(tag.Split(" ")[1]).SetActive(false);
-            }
+            
             if (tag.StartsWith("test1"))
             {
                 if (foundTeddyBear)

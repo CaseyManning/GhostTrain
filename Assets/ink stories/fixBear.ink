@@ -1,12 +1,12 @@
 #test1
 VAR teddyBearFound = false
-[Oh look! Perhaps I can use this spool of thread]
+[Oh look! Perhaps I can use this spool of thread and needle]
 {teddyBearFound:
-    - Maybe I can use this to fix the teddy bear!->bear_fixed
-    -Find the rest of the teddy bear first to use the spool! -> DONE
+    - Maybe I can use this to repair the teddy bear's arm!->bear_fixed
+    -Find the rest of the teddy bear first to use the spool of thread and needle! -> DONE
 }
 == bear_fixed== 
-* Use the spool of thread to fix the teddy bear.
+* Use the spool of thread and needle to fix the teddy bear.
 #remove rightArmOfTeddyBear
 #remove noArmTeddyBear
 #remove spool
