@@ -137,6 +137,7 @@ public class DialogueManager : MonoBehaviour
             optionObj.transform.SetParent(conversationScreen.transform);
             optionObj.GetComponent<TMP_Text>().text = "Continue";
             optionObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(xpos, start - optHeight);
+            optionObj.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
             currOptions.Add(optionObj);
             optionObj.name = "END";
         }

@@ -15,12 +15,14 @@ public class FlipperController : MonoBehaviour
 
     public static FlipperController main;
 
+    Quaternion startRot;
+
     // Start is called before the first frame update
     void Start()
     {
         main = this;
         flipAnim = GetComponent<Animation>();
-        
+        startRot = transform.rotation;
     }
 
     // Update is called once per frame
@@ -39,6 +41,12 @@ public class FlipperController : MonoBehaviour
         }
 
         position = Mathf.Clamp(position, 0, 0.8f);
+
+
+        float xoffset = Camera.main.WorldToScreenPoint(transform.position).x - Input.mousePosition.x;
+        float rotscale = 0.2f;
+        transform.rotation = startRot;
+        transform.Rotate(Vector3.up, xoffset * rotscale);
     }
 
 }

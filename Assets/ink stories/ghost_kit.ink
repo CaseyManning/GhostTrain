@@ -1,3 +1,4 @@
+VAR title = "BLUE BOX"
 - Hey look, theres a box next to me!
 
 * Inspect the box
