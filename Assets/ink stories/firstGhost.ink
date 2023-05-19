@@ -1,5 +1,9 @@
 VAR title="GHOST CHILD"
-
+VAR replayable = true
+VAR hasnoArmTeddyBear = false
+VAR hasrightArmOfTeddyBear = false
+VAR hasfullTeddyBear = false
+VAR completedQuest = true
 [You have encountered a ghost child and you start a conversation with the ghost child.]
 
 *Do you like my new goggles? 
@@ -45,3 +49,34 @@ Make sure to check everywhere in this carriage, I miss my toy :(
 *I will help you!
 
 - Navigate to the next train car and look for the missing toy -> DONE
+
+===replay===
+{not completedQuest: Have you found my teddy bear yet?}
+
+{completedQuest: Thank you for finding my teddy bear! -> END}
+
+* { not hasnoArmTeddyBear }{ not hasfullTeddyBear} No I'm still looking -> END
+
+* { hasnoArmTeddyBear } { not hasrightArmOfTeddyBear} I found this! -> noarm
+
+* {hasrightArmOfTeddyBear} {hasnoArmTeddyBear} I've got the pieces -> pieces
+
+* { hasfullTeddyBear } Here it is! ->foundit
+
+===noarm===
+- Hey that looks like it! But wait a minute, its missing one of it's arms...
+
+- It's not a teddy bear without both arms! Try looking around some more. -> END
+===foundit===
+- Wow!
+
+you found my teddy bear!! 
+~completedQuest = true
+#remove fullTeddyBear
+Thanks so much :D -> END
+
+===pieces===
+My bear is in pieces! That's no good, what am I supposed to do with two pieces of a teddy bear?
+
+Do you think you could put it together for me?
+->END

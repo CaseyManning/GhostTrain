@@ -28,13 +28,7 @@ public class DialogueManager : MonoBehaviour
     Dictionary<string, Story> stories;
     public string current;
 
-
-    public bool foundTeddyBear = false;
-    public bool halfTeddyBear = false;
-    public bool otherHalfTeddyBear = false;
     public bool firstGhostInteraction = false;
-    public bool bearFixed = false;
-    public bool spoolCollected = false;
 
     bool textwriting = false;
 
@@ -52,7 +46,6 @@ public class DialogueManager : MonoBehaviour
         }
         print("loaded " + storyFiles.Count + " stories.");
 
-        //stories["kitchenGhost"].ChoosePathString("replay");
     }
 
     // Update is called once per frame
@@ -73,18 +66,6 @@ public class DialogueManager : MonoBehaviour
         {
             firstGhostInteraction = true;
         }
-        //if(pname == "fixBear")
-        //{
-        //    bearFixed = true;
-        //}
-
-        //if (foundTeddyBear && (pname == "firstGhost") && bearFixed)
-        //{
-        //    current = "bearPuzzleComplete";
-        //} else if(foundTeddyBear && (pname == "firstGhost") && !bearFixed)
-        //{
-        //    current = "useSpool";
-        //} 
         
         foreach (Item i in InventoryManager.main.inventory)
         {
@@ -104,10 +85,7 @@ public class DialogueManager : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().stopMoving();
             StartCoroutine(updateStory());
         } else if ((bool)stories[current].variablesState["replayable"])
-
              {
-                //
-                //{
                 //stories[current].ResetState();
                 stories[current].ChoosePathString("replay");
                 conversationScreen.SetActive(true);
@@ -198,35 +176,11 @@ public class DialogueManager : MonoBehaviour
             if (tag.StartsWith("gain"))
             {
                 InventoryManager.main.pickup(tag.Split(" ")[1]);
-                if (tag.Split(" ")[1] == "rightArmOfTeddyBear")
-                {
-                    halfTeddyBear = true;
-                }
-                if (tag.Split(" ")[1] == "noArmTeddyBear")
-                {
-                    otherHalfTeddyBear = true;
-                }
-                if (halfTeddyBear && otherHalfTeddyBear)
-                {
-                    foundTeddyBear = true;
-                }
-                if(tag.Split(" ")[1] == "spool")
-                {
-                    spoolCollected = true;
-                }
             }
             if (tag.StartsWith("delete"))
             {
                 print("eee");
                 Destroy(GameObject.Find(tag.Split(" ")[1]));
-            }
-            
-            if (tag.StartsWith("test1"))
-            {
-                if (foundTeddyBear)
-                {
-                    stories[current].variablesState["teddyBearFound"] = true;
-                }
             }
             if (tag.StartsWith("remove"))
             {

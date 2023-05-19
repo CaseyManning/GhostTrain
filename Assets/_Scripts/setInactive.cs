@@ -16,10 +16,10 @@ public class setInactive : MonoBehaviour
     {
 
         //check if the bear puzzle story has been completed 
-        if (DialogueManager.main.spoolCollected )
-        {
-            bear.SetActive(false);
-        }
+        //if (DialogueManager.main.spoolCollected )
+        //{
+        //    bear.SetActive(false);
+        //}
     }
 }
 

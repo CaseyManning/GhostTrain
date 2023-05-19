@@ -1,1 +1,1 @@
-﻿{"inkVersion":20,"root":[["^You take the frying pan from the counter. ",{"#":"gain fryingpan"},"\n","end",["done",{"#f":5,"#n":"g-0"}],null],"done",{"#f":1}],"listDefs":{}}
+﻿{"inkVersion":20,"root":[["^You take the frying pan from the counter. ",{"#":"gain fryingpan"},{"#":"delete fryingpan"},"\n","end",["done",{"#f":5,"#n":"g-0"}],null],"done",{"#f":1}],"listDefs":{}}

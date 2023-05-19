@@ -37,6 +37,8 @@ public class CameraController : MonoBehaviour
     Vector3 start;
     Vector3 goal;
 
+    float startSize;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,11 +46,14 @@ public class CameraController : MonoBehaviour
         orig = transform.position;
         source = GetComponent<AudioSource>();
 
+        cam = GetComponent<Camera>();
+        startSize = cam.orthographicSize;
+
+
         source.Play();
         source.Pause();
 
         main = this;
-        cam = GetComponent<Camera>();
     }
 
     public void talkzoom()
@@ -79,7 +84,6 @@ public class CameraController : MonoBehaviour
 
     IEnumerator zoomIn(float time)
     {
-        float startSize = cam.orthographicSize;
         float i = 0;
         while (i < 1)
         {
@@ -93,11 +97,10 @@ public class CameraController : MonoBehaviour
 
     IEnumerator zoomOut(float time)
     {
-        float startSize = cam.orthographicSize;
         float i = 0;
         while (i < 1)
         {
-            cam.orthographicSize = Mathf.Lerp(startSize, startSize * talkZoomLevel, i);
+            cam.orthographicSize = Mathf.Lerp(startSize / talkZoomLevel, startSize, i);
             transform.position = Vector3.Lerp(goal, start, i);
             orig = transform.position;
             i += Time.deltaTime / time;

@@ -1439,7 +1439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -30, y: -3.2750244}
+  m_AnchoredPosition: {x: -30, y: -3.2750092}
   m_SizeDelta: {x: 312.9355, y: -64.2707}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1165565614
@@ -2889,25 +2889,18 @@ MonoBehaviour:
   - {fileID: 4900000, guid: c7942e2fd258f4963b53c8567e19d14c, type: 3}
   - {fileID: 4900000, guid: 7aca550dce9c049839a57ebe0083caef, type: 3}
   - {fileID: 4900000, guid: be4f92a44c908430f9fbbb2552a0660f, type: 3}
-  - {fileID: 4900000, guid: 9c69409c8a707403488580e6ab63ac7c, type: 3}
   - {fileID: 4900000, guid: 607446a32f4144bf6a278635a2133f5a, type: 3}
   - {fileID: 4900000, guid: 80b20d8f3f50e4323b90c0f7fa163293, type: 3}
   - {fileID: 4900000, guid: dd3d9339263d44e0799d48bf2d1735bc, type: 3}
   - {fileID: 4900000, guid: 0007328e39613496d81ee032d972bd9f, type: 3}
   - {fileID: 4900000, guid: 1c5f84018c8ba4d259972fe4389ae8d5, type: 3}
   - {fileID: 4900000, guid: 4db077e067e34496b8666f2072032ef9, type: 3}
-  - {fileID: 4900000, guid: 58f090f3fef9e4fedae113dab4210544, type: 3}
   - {fileID: 4900000, guid: d55cf2e3bda4f4fc28dd796a12974b2f, type: 3}
   - {fileID: 4900000, guid: e5091f51531704316ae9ae39c349f900, type: 3}
   - {fileID: 4900000, guid: 0c47322189d0d449a8944afa05efc344, type: 3}
   - {fileID: 4900000, guid: 67374848cce9841c08d61974b84f0f7b, type: 3}
   current: 
-  foundTeddyBear: 0
-  halfTeddyBear: 0
-  otherHalfTeddyBear: 0
   firstGhostInteraction: 0
-  bearFixed: 0
-  spoolCollected: 0
 --- !u!4 &2057475981
 Transform:
   m_ObjectHideFlags: 0
