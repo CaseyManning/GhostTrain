@@ -37,9 +37,9 @@ public class SceneController : MonoBehaviour
 
     public void change(bool right)
     {
-        if (DialogueManager.main.firstGhostInteraction){
+        //if (DialogueManager.main.firstGhostInteraction){
             StartCoroutine(fadeOutIn(0.35f, right));
-        }
+        //}
         //if(right)
         //{
         //    if (current < scenes.Length - 1)

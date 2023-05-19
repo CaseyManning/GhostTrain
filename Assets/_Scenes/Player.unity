@@ -1439,7 +1439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -30, y: -3.2750092}
+  m_AnchoredPosition: {x: -30, y: -3.2750244}
   m_SizeDelta: {x: 312.9355, y: -64.2707}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1165565614
@@ -3436,7 +3436,7 @@ MonoBehaviour:
   - name: fullTeddyBear
     image: {fileID: 21300000, guid: 5a598adc6223d4ec08a3751b445a9e2d, type: 3}
   - name: fryingpan
-    image: {fileID: 21300000, guid: 5a598adc6223d4ec08a3751b445a9e2d, type: 3}
+    image: {fileID: 21300000, guid: 23877e6c506664436b9c866a8a142369, type: 3}
 --- !u!4 &2141255644
 Transform:
   m_ObjectHideFlags: 0
