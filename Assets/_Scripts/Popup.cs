@@ -30,6 +30,7 @@ public class Popup : MonoBehaviour
         m_Raycaster = GetComponentInParent<GraphicRaycaster>();
         //Fetch the Event System from the Scene
         m_EventSystem = GetComponent<EventSystem>();
+        gameObject.SetActive(false);
     }
 
     public void open(string text, bool usable)

@@ -19,6 +19,7 @@ public class TrainDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetMouseButtonDown(0) && inside && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) < 0.5f)
         {
             entered();
@@ -29,6 +30,11 @@ public class TrainDoor : MonoBehaviour
     {
         if(changed)
         {
+            return;
+        }
+        if(InventoryManager.main.inventory.Count > 0 && InventoryManager.main.inventory[0].name == "glasses")
+        {
+            Popup.main.open("You sense that there might be more to discover in this room if you use the Ghost Glasses", false);
             return;
         }
         changed = true;

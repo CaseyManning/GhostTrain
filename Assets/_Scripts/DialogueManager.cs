@@ -86,14 +86,15 @@ public class DialogueManager : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().stopMoving();
             StartCoroutine(updateStory());
         } else if ((bool)stories[current].variablesState["replayable"])
-             {
-                stories[current].ResetState();
-                stories[current].ChoosePathString("replay");
-                conversationScreen.SetActive(true);
-                CameraController.main.talkzoom();
-                talking = true;
-                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().stopMoving();
-                StartCoroutine(updateStory());
+        {
+            //stories[current].ResetState();
+            stories[current].ResetCallstack();
+            stories[current].ChoosePathString("replay");
+            conversationScreen.SetActive(true);
+            CameraController.main.talkzoom();
+            talking = true;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().stopMoving();
+            StartCoroutine(updateStory());
             //} catch (Exception e)
             //{
             //    print(e);

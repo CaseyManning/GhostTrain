@@ -153,7 +153,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   globalVol: {fileID: 484195613}
-  starting: 1
   fadeImg: {fileID: 1995111225}
   vol: {fileID: 484195616}
   excMark: {fileID: 1369284754}
@@ -1176,8 +1175,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 200, y: 87.401}
-  m_SizeDelta: {x: 400, y: 165.2}
+  m_AnchoredPosition: {x: 195.19998, y: 87.399994}
+  m_SizeDelta: {x: 350.7497, y: 165.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1036813768
 MonoBehaviour:
@@ -1334,7 +1333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1142494198
 RectTransform:
   m_ObjectHideFlags: 0
