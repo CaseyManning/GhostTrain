@@ -7,8 +7,8 @@ VAR replayable = true
 ->replay
 ===replay===
 - Perhaps I could use it?
-    * {hasnoArmTeddyBear} {hasrightArmOfTeddyBear} Maybe I can use this to repair the teddy bear's arm!->bear_fixed
-    * {(not hasrightArmOfTeddyBear) || (not hasnoArmTeddyBear)} Find the rest of the teddy bear first to use the spool of thread and needle! -> DONE
+    * {hasnoArmTeddyBear} {hasrightArmOfTeddyBear}[ Maybe I can use this to repair the teddy bear's arm!]->bear_fixed
+    * {(not hasrightArmOfTeddyBear) || (not hasnoArmTeddyBear)} [Find the rest of the teddy bear first to use the spool of thread and needle!] -> DONE
 
 ===bear_fixed===
 // * Use the spool of thread and needle to fix the teddy bear.

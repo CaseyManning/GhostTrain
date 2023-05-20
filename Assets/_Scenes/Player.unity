@@ -155,6 +155,7 @@ MonoBehaviour:
   globalVol: {fileID: 484195613}
   starting: 1
   fadeImg: {fileID: 1995111225}
+  vol: {fileID: 484195616}
 --- !u!4 &286792610
 Transform:
   m_ObjectHideFlags: 0
@@ -3424,9 +3425,7 @@ MonoBehaviour:
   descpopup: {fileID: 1142494197}
   pictures:
   - name: glasses
-    image: {fileID: 21300000, guid: 1ed776bb93d19415a9acaad9a6ff34b6, type: 3}
-  - name: glasses
-    image: {fileID: 21300000, guid: 1ed776bb93d19415a9acaad9a6ff34b6, type: 3}
+    image: {fileID: 21300000, guid: 0728a88b680f54addbf8a301bb9a7170, type: 3}
   - name: spool
     image: {fileID: 21300000, guid: 5ea9348ffae3d4fc78514f6f4dce733c, type: 3}
   - name: noArmTeddyBear

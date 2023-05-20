@@ -1,11 +1,11 @@
 VAR title = "LUGGAGE"
 Your luggage.
 
-* Open it
+* [Open it]
 
 - Inside are your papers, various scientific instruments and other tools of parapsychology. A small vial catches your eye.
 
-* Pick up GHOST POWDER
+* [Pick up GHOST POWDER]
 
 - You lift the GHOST POWDER out of the bag. #gain ghostpowder
 

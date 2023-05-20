@@ -2003,6 +2003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95684a74cd7304d9f85842fd60731ae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  main: {fileID: 0}
   exclamation: {fileID: 178870061}
 --- !u!1 &1139869135 stripped
 GameObject:

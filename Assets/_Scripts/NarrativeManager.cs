@@ -17,11 +17,16 @@ public class NarrativeManager : MonoBehaviour
 
     bool enablednav = false;
 
+    public VolumeController vol;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
-        StartCoroutine(startingSequence());
+        if (!SceneController.dontload)
+        {
+            StartCoroutine(startingSequence());
+        }
     }
 
     // Update is called once per frame
@@ -39,25 +44,15 @@ public class NarrativeManager : MonoBehaviour
 
     IEnumerator startingSequence()
     {
+        vol.sleepVignette();
         yield return new WaitForEndOfFrame();
         player.frozen = true;
         player.gameObject.GetComponent<NavMeshAgent>().enabled = false;
         player.gameObject.GetComponentInChildren<Animator>().ResetTrigger("Idle");
         player.gameObject.GetComponentInChildren<Animator>().SetTrigger("Sit");
         yield return new WaitForSeconds(5);
-        //StartCoroutine(fadeTo(0.6f, 1f));
-        //yield return new WaitForSeconds(1f);
-        //StartCoroutine(fadeTo(0f, 1f));
-        //yield return new WaitForSeconds(1f);
-        //StartCoroutine(fadeTo(0.6f, 2f));
-        //yield return new WaitForSeconds(2f);
-        //StartCoroutine(fadeTo(0f, 2f));
-        //yield return new WaitForSeconds(2f);
-        //StartCoroutine(fadeTo(1f, 1f));
-        //yield return new WaitForSeconds(4f);
-        //StartCoroutine(fadeTo(0f, 2.5f));
-        //yield return new WaitForSeconds(2.5f);
         GameObject.Find("z_particles").SetActive(false);
+        vol.wakeup();
         //player.gameObject.GetComponent<NavMeshAgent>().enabled = true;
         player.frozen = false;
         

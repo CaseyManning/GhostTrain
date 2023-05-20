@@ -207,10 +207,10 @@ public class DialogueManager : MonoBehaviour
     public void optionClicked(int index)
     {
         stories[current].ChooseChoiceIndex(index);
-        if (stories[current].canContinue)
-        {
-            stories[current].Continue();
-        }
+        //if (stories[current].canContinue)
+        //{
+        //    stories[current].Continue();
+        //}
         StartCoroutine(updateStory());
     }
     public void continueClicked()
