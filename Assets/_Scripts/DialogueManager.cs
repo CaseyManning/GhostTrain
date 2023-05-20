@@ -79,6 +79,7 @@ public class DialogueManager : MonoBehaviour
         print(stories[current].variablesState.GlobalVariableExistsWithName("replayable"));
         if (stories[current].canContinue)
         {
+            print("trying to continue");
             conversationScreen.SetActive(true);
             CameraController.main.talkzoom();
             talking = true;
@@ -86,7 +87,7 @@ public class DialogueManager : MonoBehaviour
             StartCoroutine(updateStory());
         } else if ((bool)stories[current].variablesState["replayable"])
              {
-                //stories[current].ResetState();
+                stories[current].ResetState();
                 stories[current].ChoosePathString("replay");
                 conversationScreen.SetActive(true);
                 CameraController.main.talkzoom();

@@ -36,15 +36,17 @@ You hear a low, murmuring sound as you approach.
        
 - Oh. Okay.
 * [I could help you find it though!]
+
 You could? Well, that would be really nice of you.
 
 I'll just be here waiting.
+->END
 
 ===replay===
 
-{completedQuest: Thank you for finding my teddy bear! -> END}
+- {completedQuest: Thank you for finding my teddy bear! -> END}
 
-{not completedQuest: Have you found my teddy bear yet?}
+- {not completedQuest: Have you found my teddy bear yet? -> END}
 
 * { not hasnoArmTeddyBear }{ not hasfullTeddyBear} [No I'm still looking] -> END
 
@@ -53,7 +55,7 @@ I'll just be here waiting.
 * {hasrightArmOfTeddyBear} {hasnoArmTeddyBear}[ I've got the pieces] -> pieces
 
 * { hasfullTeddyBear } [Here it is!] ->foundit
-
+->END
 ===noarm===
 Hey that looks like it! But it's missing one of it's arms...
 
