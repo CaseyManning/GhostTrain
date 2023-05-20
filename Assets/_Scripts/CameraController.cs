@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
 
     float randStrength;
 
-    Vector3 orig;
+    public Vector3 orig;
 
     AudioSource source;
 
@@ -35,7 +35,7 @@ public class CameraController : MonoBehaviour
     Quaternion goalRot;
 
     Vector3 start;
-    Vector3 goal;
+    public Vector3 goal;
 
     float startSize;
 
@@ -78,7 +78,7 @@ public class CameraController : MonoBehaviour
     public void zoomInOnPlayer()
     {
         start = transform.position;
-        goal = PlayerScript.player.transform.position;
+        goal = new Vector3(PlayerScript.player.transform.position.x, transform.position.y, transform.position.z);
         StartCoroutine(zoomIn(1f));
     }
 

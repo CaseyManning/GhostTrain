@@ -9,7 +9,7 @@ public class NarrativeManager : MonoBehaviour
 {
     public GameObject globalVol;
 
-    public bool starting = true;
+    public static bool starting = true;
 
     PlayerScript player;
 
@@ -19,9 +19,14 @@ public class NarrativeManager : MonoBehaviour
 
     public VolumeController vol;
 
+    public static NarrativeManager main;
+
+    public GameObject excMark;
+
     // Start is called before the first frame update
     void Start()
     {
+        main = this;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         if (!SceneController.dontload)
         {
@@ -46,15 +51,25 @@ public class NarrativeManager : MonoBehaviour
     {
         vol.sleepVignette();
         yield return new WaitForEndOfFrame();
+        //Camera.main.transform.position = new Vector3(PlayerScript.player.transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z);
+        //CameraController.main.goal = Camera.main.transform.position;
+        //CameraController.main.orig = Camera.main.transform.position;
+        //Camera.main.orthographicSize = Camera.main.orthographicSize / 2;
         player.frozen = true;
         player.gameObject.GetComponent<NavMeshAgent>().enabled = false;
         player.gameObject.GetComponentInChildren<Animator>().ResetTrigger("Idle");
         player.gameObject.GetComponentInChildren<Animator>().SetTrigger("Sit");
         yield return new WaitForSeconds(5);
         GameObject.Find("z_particles").SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        //CameraController.main.talkZoomOut();
+        excMark.SetActive(true);
+        yield return new WaitForSeconds(0.4f);
+        Destroy(excMark);
         vol.wakeup();
         //player.gameObject.GetComponent<NavMeshAgent>().enabled = true;
         player.frozen = false;
+        starting = false;
         
     }
 

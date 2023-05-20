@@ -3,76 +3,71 @@ VAR replayable = true
 VAR hasnoArmTeddyBear = false
 VAR hasrightArmOfTeddyBear = false
 VAR hasfullTeddyBear = false
-VAR completedQuest = true
+VAR completedQuest = false
 
-Hi!
+You hear a low, murmuring sound as you approach.
 
-*[Do you like my new goggles?]
-*[Hey, you seem sad… ]-> Ghost_Child_2
+* [Hello!] 
+    Oh hi! How are you?
+    ** [Pretty good!]
+        Oh. Well I guess that's good to hear.
+    ** [I'm not too sure. I think I just woke up?]
+        I guess I just woke up as well, depending on how you think about it.
+* [Wow! A real ghost!]
+    Oh. Are ghosts surprising?
+    ** [Of course!]
+        I guess I was also a bit surprised to be a ghost. 
+        
+        I did watch you just put on a pair of ghost glasses though, so you could've been expecting it a little bit.
+    ** [I guess not really]
+        Well that's good. I wouldn't want to be going around surprising people forever.
+        
+- Have you seen a teddy bear anywhere around here? It was sitting on the table next to me just recently, and it can't have gone far.
 
-- Yes, I love them! They look spooky.
+* [No I haven't.]
 
-*[That’s because they let me see ghosts!]
-*[You wouldn’t happen to be a ghost, would you?] -> 1_1
+* [Yeah, I've seen one.]
+    That's so good to hear. Where?
+        ** [Well,]
+            Hm?
+            *** [Okay I guess I didn't actually see one. I lied.]
+                Why would you do that? This teddy bear is important to me, you know.
+                    **** [I'm not sure]
+       
+- Oh. Okay.
+* [I could help you find it though!]
+You could? Well, that would be really nice of you.
 
-- Coooool! That must come in handy around here! 
+I'll just be here waiting.
 
-*[You wouldn’t happen to be a ghost, would you?] -> 1_1
-
-===1_1===
-
-I am a ghost! 
-
-*[Is that why you’re sad?] -> Ghost_Child_2
-*[What’s it like being a ghost?] 
-
-- I don’t know. What’s it like being anything? I’m kinda sad.
-
-*[Why are you sad?] -> Ghost_Child_2
-
-===Ghost_Child_2===
-
-I’m just sad because I lost my toy… 
-* [Oooh! With my new kit I can help you find it!]
-
-
-- Really? You would do that for me? 
-
-* [Of course! ]
-
-- Awesome! It is a teddy bear -> Ghost_Child_Task
-
-
-===Ghost_Child_Task===
-Make sure to check everywhere in this carriage, I miss my toy :(
-->END
 ===replay===
-{not completedQuest: Have you found my teddy bear yet?}
 
 {completedQuest: Thank you for finding my teddy bear! -> END}
 
-* { not hasnoArmTeddyBear }{ not hasfullTeddyBear} No I'm still looking -> END
+{not completedQuest: Have you found my teddy bear yet?}
 
-* { hasnoArmTeddyBear } { not hasrightArmOfTeddyBear} I found this! -> noarm
+* { not hasnoArmTeddyBear }{ not hasfullTeddyBear} [No I'm still looking] -> END
 
-* {hasrightArmOfTeddyBear} {hasnoArmTeddyBear} I've got the pieces -> pieces
+* { hasnoArmTeddyBear } { not hasrightArmOfTeddyBear}[I found this!] -> noarm
 
-* { hasfullTeddyBear } Here it is! ->foundit
+* {hasrightArmOfTeddyBear} {hasnoArmTeddyBear}[ I've got the pieces] -> pieces
+
+* { hasfullTeddyBear } [Here it is!] ->foundit
 
 ===noarm===
-- Hey that looks like it! But wait a minute, its missing one of it's arms...
+Hey that looks like it! But it's missing one of it's arms...
 
-- It's not a teddy bear without both arms! Try looking around some more. -> END
+It's not a teddy bear without both arms. Try looking around some more. -> END
 ===foundit===
-- Wow!
+Wow!
 
-you found my teddy bear!! 
+You found my teddy bear!! 
 ~completedQuest = true
 #remove fullTeddyBear
-Thanks so much :D -> END
+Thank you very much. -> END
 
 ===pieces===
-My bear is in pieces! That's no good, what am I supposed to do with two pieces of a teddy bear?
+Well those are the pieces of my teddy bear, but I was sort of hoping for a whole bear.
 
 Do you think you could put it together for me?
 ->END

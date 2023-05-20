@@ -106,10 +106,10 @@ public class PlayerScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.gameObject.CompareTag("Door"))
-        //{
-        //    other.gameObject.GetComponent<TrainDoor>().entered();
-        //}
+        if (other.gameObject.CompareTag("Door"))
+        {
+            other.gameObject.GetComponent<TrainDoor>().entered();
+        }
 
         if (other.gameObject.TryGetComponent<GhostBox>(out GhostBox box))
         {

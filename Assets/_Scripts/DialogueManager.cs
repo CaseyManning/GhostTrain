@@ -124,6 +124,14 @@ public class DialogueManager : MonoBehaviour
                 bodyText.text = stories[current].Continue();
             }
         }
+        if(stories[current].currentText.Length <= 2) //TODO: shouldnt need this
+        {
+            if (stories[current].canContinue)
+            {
+                bodyText.text = stories[current].Continue();
+            }
+        }
+        //print("current body: " + stories[current].currentText);
         bodyText.GetComponent<RectTransform>().ForceUpdateRectTransforms();
         bodyText.GetComponent<ContentSizeFitter>().SetLayoutVertical();
         processTags(stories[current].currentTags);

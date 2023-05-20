@@ -145,6 +145,11 @@ public class InventoryManager : MonoBehaviour
         {
                 DialogueManager.main.startConvo("fixBear");
         }
+        if(selectedItem.name == "glasses")
+        {
+            dropoff(selectedItem.name);
+            FindObjectOfType<Ghost>(true).gameObject.SetActive(true);
+        }
         layoutInventory();
         selectedItem = null;
     }

@@ -1,14 +1,17 @@
 VAR title = "BLUE BOX"
-- Hey look, theres a box next to me!
+
+A blue box sits on the seat next to you. You see the outline of a small ghost drawn on the top.
 
 * [Inspect the box]
 
-- This isn't just any box. That's the  Junior Parapsychologist's Weekly Gift Box that my parents got for me! You read the slogan on the side: "The Essential tools that any ghost reseacher needs!" Maybe one day you'll be a ghost reseacher.
+- You turn the box around in your hands. On the other side you can read the text "The Junior Parapsychologist's Ghost Box"
 
-* [Open the Junior Parapsychologist's Weekly Gift Box]
+* [Open the box]
 
-- You rip open the paper wrapping and find a round case inside. The case reads: Parapsychological Ghost Glasses #delete ghostbox
+- You tear off the lid. An informational slip of paper describes the box as "containing everything an aspiring ghost researcher might need". You discard the slip immediately.
 
-*[Put on Ghost Glasses]
+    Behind it, you find a long round case. The top reads: Parapsychological Ghost Glasses #delete ghostbox
 
-- You put on the glasses and look around. #gain glasses
+*[Take Ghost Glasses]
+
+- You pocket the glasses and stand up. #gain glasses

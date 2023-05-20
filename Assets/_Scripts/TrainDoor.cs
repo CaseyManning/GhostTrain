@@ -21,15 +21,16 @@ public class TrainDoor : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && inside && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) < 0.5f)
         {
-            if (!changed)
-            {
-                entered();
-            }
+            entered();
         }
     }
 
     public void entered()
     {
+        if(changed)
+        {
+            return;
+        }
         changed = true;
         SceneController.main.change(right);
     }
