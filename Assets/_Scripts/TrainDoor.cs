@@ -39,6 +39,7 @@ public class TrainDoor : MonoBehaviour
         }
         changed = true;
         SceneController.main.change(right);
+        CameraController.main.resetZoom();
     }
 
     private void OnMouseEnter()
