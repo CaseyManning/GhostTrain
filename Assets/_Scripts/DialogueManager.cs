@@ -25,7 +25,7 @@ public class DialogueManager : MonoBehaviour
     List<GameObject> currOptions;
 
     public List<TextAsset> storyFiles;
-    Dictionary<string, Story> stories;
+    public Dictionary<string, Story> stories;
     public string current;
 
     public bool firstGhostInteraction = false;
