@@ -25,13 +25,19 @@ public class DialogueManager : MonoBehaviour
     List<GameObject> currOptions;
 
     public List<TextAsset> storyFiles;
-    Dictionary<string, Story> stories;
+    public Dictionary<string, Story> stories;
     public string current;
 
     public bool firstGhostInteraction = false;
 
     bool textwriting = false;
 
+
+    void storyerror(string h, Ink.ErrorType e)
+    {
+        stopConvo();
+        Debug.LogError(h);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +49,7 @@ public class DialogueManager : MonoBehaviour
         {
             Story s = new Story(storyFiles[i].text);
             stories.Add(storyFiles[i].name, s);
+            s.onError += new Ink.ErrorHandler(storyerror);
         }
         print("loaded " + storyFiles.Count + " stories.");
 
@@ -121,6 +128,7 @@ public class DialogueManager : MonoBehaviour
             }
         } else
         {
+            print(current);
             if (stories[current].canContinue)
             {
                 bodyText.text = stories[current].Continue();
@@ -171,7 +179,7 @@ public class DialogueManager : MonoBehaviour
             GameObject optionObj = Instantiate(option);
             optionObj.transform.SetParent(conversationScreen.transform);
             optionObj.GetComponent<TMP_Text>().text = "Continue";
-            optionObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(xpos, start - optHeight);
+            optionObj.GetComponent<RectTransform>().anchoredPosition = new Vector2(xpos, start);
             optionObj.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
             currOptions.Add(optionObj);
             optionObj.name = "END";

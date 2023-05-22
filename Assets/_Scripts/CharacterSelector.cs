@@ -78,6 +78,7 @@ public class CharacterSelector : MonoBehaviour
 
     public void right()
     {
+        GetComponent<AudioSource>().Play();
         characters[current].SetActive(false);
         current += 1;
         if (current >= characters.Count)
@@ -97,6 +98,7 @@ public class CharacterSelector : MonoBehaviour
 
     public void left()
     {
+        GetComponent<AudioSource>().Play();
         characters[current].SetActive(false);
         current -= 1;
         if (current < 0)

@@ -38,6 +38,7 @@ public class CameraController : MonoBehaviour
     public Vector3 goal;
 
     float startSize;
+    Vector3 startPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +49,7 @@ public class CameraController : MonoBehaviour
 
         cam = GetComponent<Camera>();
         startSize = cam.orthographicSize;
-
+        startPosition = transform.position;
 
         source.Play();
         source.Pause();
@@ -73,6 +74,13 @@ public class CameraController : MonoBehaviour
     {
         StartCoroutine(zoomOut(1f));
 
+    }
+
+    public void resetZoom()
+    {
+        cam.orthographicSize = startSize;
+        transform.position = startPosition;
+        orig = transform.position;
     }
 
     public void zoomInOnPlayer()

@@ -43,9 +43,9 @@ public class Pancake : MonoBehaviour
         startPos_local = transform.localPosition;
         startRot_local = transform.localRotation;
 
-        Vector3 p1 = new Vector3(FlipperController.main.transform.position.x, 0, FlipperController.main.transform.position.z);
-        Vector3 p2 = new Vector3(transform.position.x, 0, transform.position.z);
-        radius = Vector3.Distance(p1, p2);
+        //Vector3 p1 = new Vector3(FlipperController.main.transform.position.x, 0, FlipperController.main.transform.position.z);
+        //Vector3 p2 = new Vector3(transform.position.x, 0, transform.position.z);
+        //radius = Vector3.Distance(p1, p2);
     }
 
     // Update is called once per frame
