@@ -120,7 +120,10 @@ public class PlayerScript : MonoBehaviour
     public void stopMoving()
     {
         nav.destination = transform.position;
-        anim.ResetTrigger("Walk");
-        anim.SetTrigger("Idle");
+        if (!CameraController.main.dontzoom)
+        {
+            anim.ResetTrigger("Walk");
+            anim.SetTrigger("Idle");
+        }
     }
 }

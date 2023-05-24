@@ -10,12 +10,15 @@ public class CameraController : MonoBehaviour
     public float shakeFreq = 5f;
     float timer;
 
+    public bool dontzoom = false;
+
     public float shakeStrength;
     public float shakeSpeed;
 
     public UniversalRendererData settings;
 
     bool shaking;
+    bool zoomedin = false;
 
     float randStrength;
 
@@ -59,8 +62,13 @@ public class CameraController : MonoBehaviour
 
     public void talkzoom()
     {
+        if(dontzoom)
+        {
+            return;
+        }
         if(talkother == null)
         {
+            Debug.LogWarning("no talk other specified, zoomin aborting");
             return;
         }
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -72,8 +80,12 @@ public class CameraController : MonoBehaviour
 
     public void talkZoomOut()
     {
+        if(dontzoom || !zoomedin)
+        {
+            return;
+        }
         StartCoroutine(zoomOut(1f));
-
+        zoomedin = false;
     }
 
     public void resetZoom()
@@ -92,6 +104,7 @@ public class CameraController : MonoBehaviour
 
     IEnumerator zoomIn(float time)
     {
+        zoomedin = true;
         float i = 0;
         while (i < 1)
         {

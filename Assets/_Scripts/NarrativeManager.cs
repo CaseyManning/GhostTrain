@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class NarrativeManager : MonoBehaviour
 {
     public GameObject globalVol;
+    public GameObject zparticles;
 
     public static bool starting = true;
 
@@ -51,21 +52,42 @@ public class NarrativeManager : MonoBehaviour
     {
         vol.sleepVignette();
         yield return new WaitForEndOfFrame();
-        //Camera.main.transform.position = new Vector3(PlayerScript.player.transform.position.x, Camera.main.transform.position.y, Camera.main.transform.position.z);
-        //CameraController.main.goal = Camera.main.transform.position;
-        //CameraController.main.orig = Camera.main.transform.position;
-        //Camera.main.orthographicSize = Camera.main.orthographicSize / 2;
+        //player.transform.rotation = Quaternion.Euler(0, -90, 0);
         player.frozen = true;
         player.gameObject.GetComponent<NavMeshAgent>().enabled = false;
         player.gameObject.GetComponentInChildren<Animator>().ResetTrigger("Idle");
         player.gameObject.GetComponentInChildren<Animator>().SetTrigger("Sit");
-        yield return new WaitForSeconds(5);
-        GameObject.Find("z_particles").SetActive(false);
+        zparticles.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        CameraController.main.dontzoom = true;
+        WalkingIn.main.go = true;
+        while((bool)DialogueManager.main.stories["introChat"].variablesState["completed"] == false)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        yield return new WaitForSeconds(3f);
+        zparticles.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        StartCoroutine(fadeTo(1, 3f));
+        yield return new WaitForSeconds(3f);
+        //delete people
+        deletePeople();
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(fadeTo(0, 1f));
+        yield return new WaitForSeconds(3f);
+        zparticles.SetActive(false);
         yield return new WaitForSeconds(0.3f);
         //CameraController.main.talkZoomOut();
         excMark.SetActive(true);
         yield return new WaitForSeconds(0.4f);
         Destroy(excMark);
+        DialogueManager.main.startConvo("thoughts");
+        while ((bool)DialogueManager.main.stories["thoughts"].variablesState["completed"] == false)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        yield return new WaitForSeconds(0.4f);
+        CameraController.main.dontzoom = false;
         vol.wakeup();
         //player.gameObject.GetComponent<NavMeshAgent>().enabled = true;
         player.frozen = false;
@@ -73,14 +95,19 @@ public class NarrativeManager : MonoBehaviour
         
     }
 
+    void deletePeople()
+    {
+        Destroy(GameObject.FindGameObjectWithTag("People"));
+    }
+
     IEnumerator fadeTo(float endAlpha, float fadeTime)
     {
         float i = 0;
         Color c = fadeImg.color;
         float startAlpha = c.a;
-        while(i < fadeTime)
+        while(i < 1)
         {
-            i += Time.deltaTime;
+            i += Time.deltaTime / fadeTime;
             c.a = Mathf.Lerp(startAlpha, endAlpha, i);
             fadeImg.color = c;
             yield return new WaitForEndOfFrame();
