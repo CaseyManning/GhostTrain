@@ -10,6 +10,7 @@ public class IntroObjects : MonoBehaviour
         if(!NarrativeManager.starting)
         {
             Destroy(gameObject);
+            Destroy(GameObject.Find("People"));
         }
     }
 

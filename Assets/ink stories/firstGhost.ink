@@ -1,4 +1,4 @@
-VAR title="GHOST CHILD"
+VAR title="GHOST"
 VAR replayable = true
 VAR hasnoArmTeddyBear = false
 VAR hasrightArmOfTeddyBear = false

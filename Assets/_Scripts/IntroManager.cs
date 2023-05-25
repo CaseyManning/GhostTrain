@@ -4,12 +4,14 @@ using TMPro;
 public class IntroManager : MonoBehaviour
 {
     public GameObject introText;
+    public GameObject buttons;
 
     AudioSource source;
 
     string[] text = {
         "Eastern Intercapital Express",
-        "November 1977"
+        "November 1977",
+        "24 Hours After Departure"
     };
     // Start is called before the first frame update
     void Start()
@@ -41,6 +43,13 @@ public class IntroManager : MonoBehaviour
             source.Stop();
             yield return new WaitForSeconds(3);
         }
+        start();
+        //buttons.SetActive(true);
+        
+    }
+
+    public void start()
+    {
         MenuSceneManager.main.fadeOut();
     }
 }

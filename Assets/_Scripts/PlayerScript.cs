@@ -19,13 +19,21 @@ public class PlayerScript : MonoBehaviour
 
     public static GameObject player;
 
+    private void Awake()
+    {
+        player = gameObject;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        if(SceneController.dontload)
+        {
+            transform.position = new Vector3(2.5f, transform.position.y, transform.position.z);
+        }
         models[character_index].SetActive(true);
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
-        player = gameObject;
     }
 
     // Update is called once per frame

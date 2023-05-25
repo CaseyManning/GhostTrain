@@ -32,6 +32,11 @@ public class NarrativeManager : MonoBehaviour
         if (!SceneController.dontload)
         {
             StartCoroutine(startingSequence());
+        }   
+        else {
+            player.gameObject.GetComponent<NavMeshAgent>().enabled = true;
+            player.gameObject.GetComponent<Collider>().enabled = true;
+            GameObject.Find("z_particles").SetActive(true);
         }
     }
 

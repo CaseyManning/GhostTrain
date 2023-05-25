@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SceneGhostt : MonoBehaviour
 {
+
+    public bool went = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +16,14 @@ public class SceneGhostt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(went && DialogueManager.main.talking == false)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().frozen = false;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().nav.enabled = true;
+            VolumeController.main.ghostmode(false);
+
+            StartCoroutine(leave());
+        }
     }
 
     public IEnumerator go()
@@ -26,6 +36,16 @@ public class SceneGhostt : MonoBehaviour
         }
         yield return new WaitForSeconds(0.1f);
         CameraController.main.talkother = gameObject;
+        went = true;
         DialogueManager.main.startConvo("sceneghost");
+    }
+
+    public IEnumerator leave()
+    {
+        while (transform.position.x > -3f)
+        {
+            transform.Translate(Vector3.left * Time.deltaTime * 3f);
+            yield return new WaitForEndOfFrame();
+        }
     }
 }

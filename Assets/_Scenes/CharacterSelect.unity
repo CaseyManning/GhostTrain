@@ -1307,6 +1307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeDuration: 0.3
   shakeFreq: 3
+  dontzoom: 0
   shakeStrength: 0
   shakeSpeed: 30
   settings: {fileID: 0}
