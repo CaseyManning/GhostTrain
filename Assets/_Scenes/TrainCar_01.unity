@@ -6687,6 +6687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 620c917da20c044808b3ecc683bf091f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  went: 0
 --- !u!1 &1768773627
 GameObject:
   m_ObjectHideFlags: 0
@@ -6955,6 +6956,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: addplayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 605374641053363112, guid: c0de61bcf0c3641eaa75ef639173a375,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 605374641053363114, guid: c0de61bcf0c3641eaa75ef639173a375,
         type: 3}
