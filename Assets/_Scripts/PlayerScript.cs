@@ -19,6 +19,8 @@ public class PlayerScript : MonoBehaviour
 
     public static GameObject player;
 
+    public Talkable walkingTowards;
+
     private void Awake()
     {
         player = gameObject;
@@ -67,8 +69,8 @@ public class PlayerScript : MonoBehaviour
                     } else
                     {
                         print("setting");
-                        //TODO: not working
                         nav.SetDestination(hitt.point);
+                        walkingTowards = t;
                     }
                 }
             }
@@ -81,6 +83,14 @@ public class PlayerScript : MonoBehaviour
             transform.rotation = Quaternion.Slerp(orig, transform.rotation, 0.25f);
             anim.ResetTrigger("Idle");
             anim.SetTrigger("Walk");
+
+            if (walkingTowards != null && Vector3.Distance(walkingTowards.gameObject.transform.position, transform.position) < talkDist)
+            {
+                CameraController.main.talkother = walkingTowards.gameObject;
+                DialogueManager.main.startConvo(walkingTowards.convoName);
+                walkingTowards = null;
+            }
+
         } else
         {
             if (nav.enabled == true)
@@ -127,7 +137,10 @@ public class PlayerScript : MonoBehaviour
 
     public void stopMoving()
     {
-        nav.destination = transform.position;
+        if (nav.isActiveAndEnabled)
+        {
+            nav.destination = transform.position;
+        }
         if (!CameraController.main.dontzoom)
         {
             anim.ResetTrigger("Walk");
