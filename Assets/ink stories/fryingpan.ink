@@ -1,2 +1,2 @@
-You take the frying pan from the counter. #gain fryingpan #delete fryingpan
+You take Gordon's frying pan from the counter. #gain fryingpan #delete fryingpan
 ->END

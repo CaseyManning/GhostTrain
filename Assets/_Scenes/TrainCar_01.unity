@@ -6688,6 +6688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   went: 0
+  left: 0
 --- !u!1 &1768773627
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,6 +24,8 @@ public class NarrativeManager : MonoBehaviour
 
     public GameObject excMark;
 
+    public bool completedsequence = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -97,7 +99,7 @@ public class NarrativeManager : MonoBehaviour
         //player.gameObject.GetComponent<NavMeshAgent>().enabled = true;
         player.frozen = false;
         starting = false;
-        
+        completedsequence = true;
     }
 
     void deletePeople()

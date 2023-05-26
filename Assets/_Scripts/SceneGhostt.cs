@@ -6,6 +6,7 @@ public class SceneGhostt : MonoBehaviour
 {
 
     public bool went = false;
+    public bool left = false;
 
     // Start is called before the first frame update
     void Start()
@@ -16,22 +17,23 @@ public class SceneGhostt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(went && DialogueManager.main.talking == false)
+        if(went && !DialogueManager.main.talking && !left)
         {
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().frozen = false;
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().nav.enabled = true;
             VolumeController.main.ghostmode(false);
 
             StartCoroutine(leave());
+            left = true;
         }
     }
 
     public IEnumerator go()
     {
         gameObject.SetActive(true);
-        while(transform.position.x < -0.75f)
+        while(transform.position.x < -0f)
         {
-            transform.Translate(Vector3.right * Time.deltaTime * 3f);
+            transform.Translate(Vector3.right * Time.deltaTime * 2f);
             yield return new WaitForEndOfFrame();
         }
         yield return new WaitForSeconds(0.1f);
@@ -42,9 +44,9 @@ public class SceneGhostt : MonoBehaviour
 
     public IEnumerator leave()
     {
-        while (transform.position.x > -3f)
+        while (transform.position.x > -4f)
         {
-            transform.Translate(Vector3.left * Time.deltaTime * 3f);
+            transform.Translate(Vector3.left * Time.deltaTime * 2f);
             yield return new WaitForEndOfFrame();
         }
     }

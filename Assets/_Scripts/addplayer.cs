@@ -13,7 +13,7 @@ public class addplayer : MonoBehaviour
     void Start()
     {
         SceneManager.LoadScene("Player", LoadSceneMode.Additive);
-        PlayerScript.player.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        PlayerScript.player.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
     // Update is called once per frame

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Pancake : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class Pancake : MonoBehaviour
 
     float radius;
 
+    int everCaught = 0;
+
     Vector3 endPos;
 
     float travelled = 0;
@@ -27,6 +30,8 @@ public class Pancake : MonoBehaviour
     public GameObject exclamation;
 
     bool grounded = false;
+
+    float timespent = 0;
 
     Vector3 launchForce = new Vector3(0, 30, 0);
     // Start is called before the first frame update
@@ -43,6 +48,9 @@ public class Pancake : MonoBehaviour
         startPos_local = transform.localPosition;
         startRot_local = transform.localRotation;
 
+        CanvasElements.main.scoreText.SetActive(true);
+        timespent = 0;
+
         //Vector3 p1 = new Vector3(FlipperController.main.transform.position.x, 0, FlipperController.main.transform.position.z);
         //Vector3 p2 = new Vector3(transform.position.x, 0, transform.position.z);
         //radius = Vector3.Distance(p1, p2);
@@ -51,6 +59,16 @@ public class Pancake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timespent += Time.deltaTime;
+        if(timespent > 7 && everCaught == 0)
+        {
+            CanvasElements.main.scoreText.GetComponent<TMP_Text>().text = "Press and hold the mouse to lift the pan!";
+        }
+        if (timespent > 20 && everCaught < 3)
+        {
+            CanvasElements.main.scoreText.GetComponent<TMP_Text>().text = "Release and move the mouse to rotate and catch the pancake!";
+        }
+
         Vector3 pp1 = new Vector3(FlipperController.main.transform.position.x, 0, FlipperController.main.transform.position.z);
         Vector3 pp2 = new Vector3(transform.position.x, 0, transform.position.z);
         radius = Vector3.Distance(pp1, pp2);
@@ -102,6 +120,8 @@ public class Pancake : MonoBehaviour
         if (flying && launchTime > 0.3f && Vector3.Distance(righthand.TransformPoint(startPos_local), transform.position) < 0.1f)
         {
             timesCaught += 1;
+            everCaught += 1;
+            CanvasElements.main.scoreText.GetComponent<TMP_Text>().text = "Flips: " + timesCaught.ToString() + "/6";
             resetcake();
             if(timesCaught > 5)
             {
@@ -109,6 +129,7 @@ public class Pancake : MonoBehaviour
                 PlayerScript.player.SetActive(true);
                 CameraController.main.talkother = GameObject.Find("gordon");
                 DialogueManager.main.startConvo("finishpancake");
+                CanvasElements.main.scoreText.SetActive(false);
                 //CameraController.main.talkZoomOut();
             }
         }
