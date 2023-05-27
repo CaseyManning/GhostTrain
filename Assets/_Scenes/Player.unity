@@ -817,6 +817,7 @@ MonoBehaviour:
   - {fileID: 2072103670}
   - {fileID: 1448175488}
   frozen: 0
+  walkingTowards: {fileID: 0}
 --- !u!136 &467454514
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3418,6 +3419,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 67374848cce9841c08d61974b84f0f7b, type: 3}
   - {fileID: 4900000, guid: 774338513ddc246aea56c1ec1fbd3df4, type: 3}
   - {fileID: 4900000, guid: 83eef1c21d6c34c13b9e747020ae93e2, type: 3}
+  - {fileID: 4900000, guid: 43fc6108700604fb2a6f3853fd62197f, type: 3}
   current: 
   firstGhostInteraction: 0
 --- !u!4 &2057475981

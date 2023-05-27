@@ -13,7 +13,13 @@ public class DialogueOption : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(gameObject.name == "0" || gameObject.name == "END")
+        {
+            if(Input.GetKey(KeyCode.Alpha1))
+            {
+                clicked();
+            }
+        }
     }
 
     public void clicked()
