@@ -54,6 +54,7 @@ public class PlayerScript : MonoBehaviour
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100, 1 << 3))
                 {
                     nav.SetDestination(hit.point);
+                    walkingTowards = null;
                     print("setting dest");
                     //anim.SetTrigger("Walk");
                 }

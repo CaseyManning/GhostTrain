@@ -44,6 +44,7 @@ public class SceneGhostt : MonoBehaviour
 
     public IEnumerator leave()
     {
+        GetComponent<Talkable>().enabled = false;
         while (transform.position.x > -4f)
         {
             transform.Translate(Vector3.left * Time.deltaTime * 2f);

@@ -13,7 +13,7 @@ Oh hi.
 
 * [What are you doing with that fork?]
 
-Well you see, when I was alive, I'd always wanted to give my self a good stab in the arm with a fork. One of those nice sharp ones, just really dig it in deep. 
+Well you see, when I was alive, I'd always wanted to give myself a good stab in the arm with a fork. One of those nice sharp ones, just really dig it in deep. 
 
 Of course, I never quite got up the courage to actually do it, much to the satisfaction of everyone around me.
 
