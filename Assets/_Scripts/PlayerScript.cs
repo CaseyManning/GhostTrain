@@ -12,6 +12,7 @@ public class PlayerScript : MonoBehaviour
     public Animator anim;
 
     public static int character_index = 0;
+    public static string character_name = "";
 
     public List<GameObject> models;
 

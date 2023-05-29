@@ -5,8 +5,8 @@ using UnityEngine;
 public class SceneGhostt : MonoBehaviour
 {
 
-    public bool went = false;
-    public bool left = false;
+    public static bool went = false;
+    public static bool left = false;
 
     // Start is called before the first frame update
     void Start()

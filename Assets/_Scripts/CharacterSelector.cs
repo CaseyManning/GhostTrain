@@ -111,6 +111,7 @@ public class CharacterSelector : MonoBehaviour
     public void startgame()
     {
         PlayerScript.character_index = current;
+        PlayerScript.character_name = names[current];
         StartCoroutine(fade(0.7f));
     }
 

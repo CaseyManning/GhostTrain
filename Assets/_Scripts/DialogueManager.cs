@@ -81,6 +81,13 @@ public class DialogueManager : MonoBehaviour
                 stories[current].variablesState["has" + i.name] = true;
             }
         }
+        if(stories[current].variablesState.GlobalVariableExistsWithName("useplayername"))
+        {
+            if((bool) stories[current].variablesState["useplayername"] == true)
+            {
+                stories[current].variablesState["title"] = PlayerScript.character_name.ToUpper();
+            }
+        }
         print(current);
         print(stories[current].path);
         print(stories[current].variablesState.GlobalVariableExistsWithName("replayable"));
