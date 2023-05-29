@@ -201,6 +201,10 @@ public class DialogueManager : MonoBehaviour
             if (tag.StartsWith("gain"))
             {
                 InventoryManager.main.pickup(tag.Split(" ")[1]);
+                if(tag.IndexOf("glasses") >= 0)
+                {
+                    StartCoroutine(glassesPopup());
+                }
             }
             if (tag.StartsWith("delete"))
             {
@@ -258,5 +262,14 @@ public class DialogueManager : MonoBehaviour
             obj.text += c;
             yield return new WaitForSeconds(0.015f);
         }
+    }
+
+    IEnumerator glassesPopup()
+    {
+        while (DialogueManager.main.talking == true)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        Popup.main.open("Ghost glasses were added to your inventory! You can use inventory items by clicking on their icons on the bottom of the screen.", false);
     }
 }
