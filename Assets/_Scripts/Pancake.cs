@@ -113,6 +113,7 @@ public class Pancake : MonoBehaviour
             {
                 grounded = true;
                 timesCaught = 0;
+                CanvasElements.main.scoreText.GetComponent<TMP_Text>().text = "Flips: " + timesCaught.ToString() + "/5";
                 StartCoroutine(fallen());
             }
         }
@@ -121,9 +122,9 @@ public class Pancake : MonoBehaviour
         {
             timesCaught += 1;
             everCaught += 1;
-            CanvasElements.main.scoreText.GetComponent<TMP_Text>().text = "Flips: " + timesCaught.ToString() + "/6";
+            CanvasElements.main.scoreText.GetComponent<TMP_Text>().text = "Flips: " + timesCaught.ToString() + "/5";
             resetcake();
-            if(timesCaught > 5)
+            if(timesCaught >= 5)
             {
                 FlipperController.main.gameObject.SetActive(false);
                 PlayerScript.player.SetActive(true);

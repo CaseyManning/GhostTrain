@@ -1,1 +1,1 @@
-﻿{"inkVersion":20,"root":[["^You take Gordon's frying pan from the counter. ",{"#":"gain fryingpan"},{"#":"delete fryingpan"},"\n","end",["done",{"#f":5,"#n":"g-0"}],null],"done",{"#f":1}],"listDefs":{}}
+﻿{"inkVersion":20,"root":[["^You take frying pan from the counter. This looks like just what Gordon was looking for! ",{"#":"gain fryingpan"},{"#":"delete fryingpan"},"\n","end",["done",{"#f":5,"#n":"g-0"}],null],"done",{"#f":1}],"listDefs":{}}

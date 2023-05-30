@@ -2490,7 +2490,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 631907e7abeb8604ba5e49585e895c93,
         type: 3}
       propertyPath: m_Name
-      value: needleThread
+      value: spool
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 631907e7abeb8604ba5e49585e895c93, type: 3}
@@ -2527,6 +2527,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.022710778, y: 0.022710774, z: 0.023322467}
   m_Center: {x: 0.0029852106, y: 0.009698892, z: -0.0002791788}
+--- !u!114 &2067412125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067412122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c629b7ed22842de99048e64d5b3f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &543450652521500637
 Transform:
   m_ObjectHideFlags: 0

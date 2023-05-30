@@ -37,23 +37,15 @@ public class SceneController : MonoBehaviour
 
     public void change(bool right)
     {
-        //if (DialogueManager.main.firstGhostInteraction){
-            StartCoroutine(fadeOutIn(0.35f, right));
-        //}
-        //if(right)
-        //{
-        //    if (current < scenes.Length - 1)
-        //    {
-        //        current += 1;
-        //    }
-        //} else
-        //{
-        //    if(current > 0)
-        //    {
-        //        current -= 1;
-        //        StartCoroutine(fadeOutIn(0.35f, right));
-        //    }
-        //}
+        StartCoroutine(fadeOutIn(0.35f, right));
+
+        foreach(GameObject g in GameObject.FindGameObjectsWithTag("Temporary"))
+        {
+            if(g.activeInHierarchy)
+            {
+                Destroy(g);
+            }
+        }
     }
 
     IEnumerator fadeOutIn(float fadeTime, bool right)

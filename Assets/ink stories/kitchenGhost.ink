@@ -41,7 +41,7 @@ Excellent, now lets get cooking! #remove fryingpan
 
 * [How can I help?]
 
-- My special pancakes need to be flipped six times before they are ready. Just take the pan and keep flipping until it looks done!
+- My special pancakes need to be flipped five times before they are ready. Just take the pan and keep flipping until it looks done!
 
 My pancakes have a tendency to go flying, so make sure you catch them on the way down! #startcooking 
 ~cooked = true
