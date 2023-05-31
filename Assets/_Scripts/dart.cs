@@ -16,7 +16,7 @@ public class dart : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "DartBoard")
+        if (collision.gameObject.name == "dartboard")
         {
             // Calculate score based on distance from center of dartboard
             Vector3 hitPoint = collision.contacts[0].point;
