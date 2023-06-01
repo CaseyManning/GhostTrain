@@ -14,12 +14,13 @@ public class DartController : MonoBehaviour
     public float maxHoldTime = 5.0f;
     public float throwForce = 400;
 
-    private int dartCount = 10000;
-    private int currentDart = 0;
+    public int dartCount = 5;
+    public int currentDart = 0;
     private GameObject dart;
 
     public float totalScore = 0;
-    public float scoreToBeat = 1000000000000;
+    public float priorDartScore = 0;
+    public float scoreToBeat = 100;
 
     //bounded by the dartboard
     public Vector3 throwDirection;
@@ -33,6 +34,7 @@ public class DartController : MonoBehaviour
     public float horizontalAngle;
 
     private DartScoreManager scoreManager;
+    private Canvas myCanvas;
 
     //dart prefab needs have a scripts that calls Calculate score when it hits the dartboard
     //dart baord, dart prefab, player, main camera needs to be set in the inspector
@@ -41,7 +43,7 @@ public class DartController : MonoBehaviour
     //Mathf.PingPong gives the oscialltion 
     void Start()
     {
-
+        myCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
 
         // playerInPosition();
         ZoomIn();
@@ -59,7 +61,6 @@ public class DartController : MonoBehaviour
     void Update()
     {
         horizontalSlider.value = (horizontalAngle + 30) / 60;
-        //verticalSlider.value = verticalAngle;
 
         Debug.Log("Update started");
 
@@ -77,21 +78,9 @@ public class DartController : MonoBehaviour
 
         if (!isThrowing)
         {
-
-            // Oscillate the direction of the dart throw from left to right
-
-            //   throwDirection = new Vector3(0, 0, Mathf.PingPong(Time.time, -1));
-
-            //dart.transform.LookAt(dartBoard.transform.position + throwDirection);
             horizontalAngle = maxHorizontalAngle * (Mathf.PingPong(Time.time, 1) - 0.5f) * 2;
-
-
             throwDirection = new Vector3(0, horizontalAngle - 90, 0);
-
-            // Rotate the dart according to the throwDirection
             dart.transform.rotation = Quaternion.Euler(throwDirection);
-
-
         }
 
         if (Input.GetMouseButtonDown(0) && currentDart < dartCount)
@@ -104,7 +93,6 @@ public class DartController : MonoBehaviour
             float verticalAngle = maxVerticalAngle * (Mathf.PingPong(Time.time, 1) - 0.5f) * 2;
             throwDirection = new Vector3(0, horizontalAngle - 90, verticalAngle);
 
-            // Rotate the dart according to the throwDirection
             dart.transform.rotation = Quaternion.Euler(throwDirection);
             verticalSlider.value = (verticalAngle + 15) / 30;
         }
@@ -116,10 +104,9 @@ public class DartController : MonoBehaviour
 
             if (currentDart < dartCount)
             {
-                Invoke("InstantiateDart", 1f); // Delay of 1 second
+                Invoke("InstantiateDart", 1.5f); // Delay of 1.5 seconds
 
             }
-
             isThrowing = false;
         }
 
@@ -130,15 +117,29 @@ public class DartController : MonoBehaviour
             //turn off this dartplayer and then enable the normal players
             this.gameObject.SetActive(false);
 
+            //turn off canvas
+            myCanvas.gameObject.SetActive(false);
+
+
+
+
+
             //has been beaten 
             if (scoreToBeat < totalScore)
             {
                 //then set the state variable to completed gameplay in the inventory manager
 
+
+
+                //start WIN dialogue on ink 
+
             }
             //ran out of darts -> should refill the darts at the player position
             else
             {
+                //start LOST dialogue on ink
+
+               
 
             }
 
@@ -206,6 +207,7 @@ public class DartController : MonoBehaviour
     {
         totalScore += score;
         scoreManager.score = totalScore;
+        priorDartScore = score;
     }
 }
 

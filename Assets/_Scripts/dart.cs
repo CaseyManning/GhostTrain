@@ -6,11 +6,13 @@ public class dart : MonoBehaviour
 {
     private Rigidbody rb;
     private DartController dartController;
+    private Collider collider;
 
     private void Start()
     {
-        // Get references to the Rigidbody and DartController
+        // Get references to the Rigidbody, Collider and DartController
         rb = GetComponent<Rigidbody>();
+        collider = GetComponent<Collider>();
         dartController = GameObject.FindObjectOfType<DartController>();
     }
 
@@ -25,11 +27,13 @@ public class dart : MonoBehaviour
             float distanceFromCenter = Vector3.Distance(hitPoint, dartBoardCenter);
 
             // calculate score - this is just an example, you'll need to replace this with your own scoring logic
-            float score = 100 - distanceFromCenter * 10;  // each unit of distance from the center deducts 10 points
+            float rawScore= 30 - (distanceFromCenter * 20);  // each unit of distance from the center deducts 10 points
 
             // you might want to cap this at zero so you don't get negative scores
-            score = Mathf.Max(score, 0);
+            rawScore = Mathf.Max(rawScore, 0);
 
+
+            int score = Mathf.RoundToInt(rawScore);
             // Notify the DartController of the score
             dartController.AddScore(score);
 
@@ -38,15 +42,14 @@ public class dart : MonoBehaviour
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
 
-            // Make the dart a child of the dartboard
-           // transform.SetParent(collision.transform, true);
-
-        } else
+            // Disable the collider of the dart
+            collider.enabled = false;
+        }
+        else
         {
             rb.isKinematic = true;
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
-
         }
     }
 }
