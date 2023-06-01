@@ -39,7 +39,13 @@ public class dart : MonoBehaviour
             rb.angularVelocity = Vector3.zero;
 
             // Make the dart a child of the dartboard
-            transform.SetParent(collision.transform, true);
+           // transform.SetParent(collision.transform, true);
+
+        } else
+        {
+            rb.isKinematic = true;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
 
         }
     }

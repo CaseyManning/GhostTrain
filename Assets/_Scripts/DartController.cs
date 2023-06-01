@@ -116,11 +116,7 @@ public class DartController : MonoBehaviour
 
             if (currentDart < dartCount)
             {
-                Vector3 dartStartPosition = dartBoard.transform.position + dartBoard.transform.forward * 2;// + dartBoard.transform.up;
-                Quaternion dartStartRotation = Quaternion.LookRotation(dartBoard.transform.position - dartStartPosition);
-                dart = Instantiate(dartPrefab, dartStartPosition, dartStartRotation);
-                dart.transform.Rotate(0, 90, 0);
-                dart.GetComponent<Rigidbody>().isKinematic = true;
+                Invoke("InstantiateDart", 1f); // Delay of 1 second
 
             }
 
@@ -184,6 +180,15 @@ public class DartController : MonoBehaviour
         }
     }
 
+    void InstantiateDart()
+    {
+        Vector3 dartStartPosition = dartBoard.transform.position + dartBoard.transform.forward * 2;
+        Quaternion dartStartRotation = Quaternion.LookRotation(dartBoard.transform.position - dartStartPosition);
+        dart = Instantiate(dartPrefab, dartStartPosition, dartStartRotation);
+        dart.transform.Rotate(0, 90, 0);
+        dart.GetComponent<Rigidbody>().isKinematic = true;
+    }
+
     void ThrowDart()
     {
         Rigidbody rb = dart.GetComponent<Rigidbody>();
@@ -192,7 +197,7 @@ public class DartController : MonoBehaviour
                                  //    throwDirectionVector.z = -Mathf.Abs(throwDirectionVector.z);
 
         Vector3 forceDirection = Vector3.back;
-        rb.AddForce(forceDirection * throwForce);
+        rb.AddForce(-dart.transform.right * throwForce);
         //  rb.AddForce(throwDirection * throwForce);
     }
 
