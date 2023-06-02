@@ -29,7 +29,6 @@ public class InventoryManager : MonoBehaviour
 
     float startPos;
 
-    // Start is called before the first frame update
     void Start()
     {
         startPos = inventorySlot.GetComponent<RectTransform>().anchoredPosition.x;
@@ -41,7 +40,7 @@ public class InventoryManager : MonoBehaviour
         items.Add("firstGhost", new Item("firstGhost", "First Ghost", false));
         items.Add("spool", new Item("spool", "Spool of Thread and Needle", true));
         items.Add("noArmTeddyBear", new Item("noArmTeddyBear", "Teddy Bear without an arm", false));
-        items.Add("rightArmOfTeddyBear", new Item("rightArmOfTeddyBear", "Right arm of a Teddy Bear", false));
+        items.Add("rightArmOfTeddyBear", new Item("rightArmOfTeddyBear", "Left arm of a Teddy Bear", false));
         items.Add("fullTeddyBear", new Item("fullTeddyBear", "Ghosty's TeddyBear", false));
         items.Add("fryingpan", new Item("fryingpan", "A Frying Pan", false));
         items.Add("lemonade", new Item("lemonade", "A cold glass of lemonade", true));
