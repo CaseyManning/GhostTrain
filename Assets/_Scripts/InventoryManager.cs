@@ -44,6 +44,7 @@ public class InventoryManager : MonoBehaviour
         items.Add("fullTeddyBear", new Item("fullTeddyBear", "Ghosty's TeddyBear", false));
         items.Add("fryingpan", new Item("fryingpan", "A Frying Pan", false));
         items.Add("lemonade", new Item("lemonade", "A cold glass of lemonade", true));
+        items.Add("darts", new Item("darts", "5 Darts", true));
  
     }
 
@@ -154,6 +155,13 @@ public class InventoryManager : MonoBehaviour
         {
             dropoff(selectedItem.name);
             //FindObjectOfType<Ghost>(true).gameObject.SetActive(true);
+        }
+        if(selectedItem.name == "darts")
+        {
+            //here i should start the game?
+            FindObjectOfType<Ghost>(true).gameObject.SetActive(true);
+            dropoff(selectedItem.name);
+
         }
         layoutInventory();
         selectedItem = null;
