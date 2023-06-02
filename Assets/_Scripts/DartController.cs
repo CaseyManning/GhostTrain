@@ -19,7 +19,7 @@ public class DartController : MonoBehaviour
     private GameObject dart;
 
     public float totalScore = 0;
-    public float priorDartScore = 0;
+    public float priorDartScore;
     public float scoreToBeat = 100;
 
     //bounded by the dartboard
@@ -34,7 +34,7 @@ public class DartController : MonoBehaviour
     public float horizontalAngle;
 
     private DartScoreManager scoreManager;
-    private Canvas myCanvas;
+    public Canvas myCanvas;
 
     //dart prefab needs have a scripts that calls Calculate score when it hits the dartboard
     //dart baord, dart prefab, player, main camera needs to be set in the inspector
@@ -43,7 +43,8 @@ public class DartController : MonoBehaviour
     //Mathf.PingPong gives the oscialltion 
     void Start()
     {
-        myCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        
+        Invoke("ShowCanvas", 2f);
 
         // playerInPosition();
         ZoomIn();
@@ -55,7 +56,7 @@ public class DartController : MonoBehaviour
         dart = Instantiate(dartPrefab, dartStartPosition, dartStartRotation);
         dart.transform.Rotate(0, 90, 0);
         dart.GetComponent<Rigidbody>().isKinematic = true;
-        scoreManager = GameObject.Find("Canvas").GetComponent<DartScoreManager>();
+        scoreManager = GameObject.Find("Canvas").transform.GetChild(0).GetComponent<DartScoreManager>();
     }
 
     void Update()
@@ -118,7 +119,7 @@ public class DartController : MonoBehaviour
             this.gameObject.SetActive(false);
 
             //turn off canvas
-            myCanvas.gameObject.SetActive(false);
+            Invoke("HideCanvas", 3f);
 
 
 
@@ -188,6 +189,17 @@ public class DartController : MonoBehaviour
         dart = Instantiate(dartPrefab, dartStartPosition, dartStartRotation);
         dart.transform.Rotate(0, 90, 0);
         dart.GetComponent<Rigidbody>().isKinematic = true;
+    }
+
+    void ShowCanvas()
+    {
+        myCanvas.transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    void HideCanvas()
+    {
+        myCanvas.transform.GetChild(0).gameObject.SetActive(false);
+
     }
 
     void ThrowDart()

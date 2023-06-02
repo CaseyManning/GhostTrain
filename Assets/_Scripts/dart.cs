@@ -35,6 +35,7 @@ public class dart : MonoBehaviour
 
             int score = Mathf.RoundToInt(rawScore);
             // Notify the DartController of the score
+            Debug.Log("Score added successfullly");
             dartController.AddScore(score);
 
             // Stop all movement of the dart

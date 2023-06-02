@@ -223,6 +223,11 @@ public class DialogueManager : MonoBehaviour
                 GameObject.Find("minigame").transform.GetChild(0).gameObject.SetActive(true);
                 //CameraController.main.zoomInOnPlayer();
             }
+            if (tag.StartsWith("startthrowing"))
+            {
+                GameObject.FindGameObjectWithTag("Player").SetActive(false);
+                GameObject.Find("minigame").transform.GetChild(0).gameObject.SetActive(true);
+            }
         }
     }
 
