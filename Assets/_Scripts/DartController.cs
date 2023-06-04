@@ -37,6 +37,9 @@ public class DartController : MonoBehaviour
     private DartScoreManager scoreManager;
     public Canvas myCanvas;
 
+    private List<GameObject> instantiatedDarts = new List<GameObject>();
+
+
     //dart prefab needs have a scripts that calls Calculate score when it hits the dartboard
     //dart baord, dart prefab, player, main camera needs to be set in the inspector
     //rigidBody needs to attached to the dart prefab for throwDart to wrok
@@ -56,6 +59,7 @@ public class DartController : MonoBehaviour
         Quaternion dartStartRotation = Quaternion.LookRotation(dartBoard.transform.position - dartStartPosition);
         scoreManager = GameObject.Find("Canvas").transform.GetChild(0).GetComponent<DartScoreManager>();
         dart = Instantiate(dartPrefab, dartStartPosition, dartStartRotation);
+        instantiatedDarts.Add(dart);
         dart.transform.Rotate(0, 90, 0);
         dart.GetComponent<Rigidbody>().isKinematic = true;
         userIsReady = false;
@@ -125,20 +129,15 @@ public class DartController : MonoBehaviour
 
     void ResetGame()
     {
+        clearDarts();
         totalScore = 0;
         currentDart = 0;
         isThrowing = false;
-        //destroy the darts //if there are gameobjects
-        destroyAllDarts();
         Invoke("ShowCanvas", 2f);
         ZoomIn();
     }
 
-    void destroyAllDarts()
-    {
-        //if the dartboard has any child objects, destroy all child objects
-       
-    }
+ 
 
     void updateGame()
     {
@@ -207,6 +206,17 @@ public class DartController : MonoBehaviour
         dart = Instantiate(dartPrefab, dartStartPosition, dartStartRotation);
         dart.transform.Rotate(0, 90, 0);
         dart.GetComponent<Rigidbody>().isKinematic = true;
+        instantiatedDarts.Add(dart);
+    }
+
+    void clearDarts()
+    {
+        foreach (GameObject dart in instantiatedDarts)
+        {
+            Destroy(dart);
+        }
+        // Clear the list
+        instantiatedDarts.Clear();
     }
 
     void ShowCanvas()
