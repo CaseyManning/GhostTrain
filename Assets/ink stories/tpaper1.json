@@ -1,0 +1,1 @@
+﻿{"inkVersion":20,"root":[[{"->":"replay"},["done",{"#f":5,"#n":"g-0"}],null],"done",{"replay":["^A couple pieces of paper piled together on the floor.","\n","^You can't read it. Kids don't know how to read.","\n","end",{"#f":1}],"global decl":["ev","str","^SHEETS OF PAPER","/str",{"VAR=":"title"},true,{"VAR=":"replayable"},"/ev","end",null],"#f":1}],"listDefs":{}}

@@ -15,7 +15,7 @@ public class SceneController : MonoBehaviour
 
     public static bool dontload = false;
 
-    string[] scenes = { "IntroCar", "TeddyCar", "Kitchen", "TrainCar_01", "BarCar"};
+    string[] scenes = { "IntroCar", "Balcony", "TeddyCar", "Kitchen", "TrainCar_01", "BarCar"};
 
     // Start is called before the first frame update
     void Start()
@@ -71,15 +71,16 @@ public class SceneController : MonoBehaviour
         {
             current -= 1;
         }
+        print("changing to scene:" + scenes[current]);
         SceneManager.LoadScene(scenes[current], LoadSceneMode.Additive);
 
         if (right)
         {
-            player.transform.position = new Vector3(3, 0, 0);
+            player.transform.position = new Vector3(2.9f, 0, 0);
         }
         else
         {
-            player.transform.position = new Vector3(-3, 0, 0);
+            player.transform.position = new Vector3(-2.9f, 0, 0);
         }
         player.GetComponent<NavMeshAgent>().enabled = true;
         player.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);

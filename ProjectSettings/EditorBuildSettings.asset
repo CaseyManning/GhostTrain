@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/TeddyCar.unity
     guid: 800add76d374fd04b807939072bcba66
+  - enabled: 1
+    path: Assets/_Scenes/Balcony.unity
+    guid: 6436164118ba34def94ef77478274e39
   m_configObjects: {}
