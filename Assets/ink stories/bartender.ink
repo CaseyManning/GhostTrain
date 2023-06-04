@@ -1,5 +1,4 @@
 VAR title = "BARTENDER"
-VAR beatScore = false
 VAR replayable = true
 
 -Hey Kid! Not much I can offer you but how ‘bout a lemonade? 
@@ -26,21 +25,18 @@ But I have been playing a lot of darts. Mighta been distracted.
 
 *[Woo my first time trying but I will give it a shot!]
 
--If you think so! 
-#startthrowing
+-If you think so! #startthrowing
 -> END
 
 
 ==replay==
-{beatScore: You are a rockstar! Wanna keep playing?}
-*Yes, I'd love to! #startthrowing 
+Hey! You are back again! Wanna play darts again?
+
+*[Yes pls, I think I can do better this time!] #startthrowing 
 ->END
-*No thanks, I really have to find my parents. Thanks for the distraction though-> END
-{not beatScore: Well, you are just a beginner. You can try again!}
-*Where can I find more darts?
-- I have plenty for both of us! 
-*Perfect. I will give it a another try!
- #startthrowing
+*[No thanks, I came to ask about my parents]
+
+-Hmm, I still haven't seen your parents, come back to play darts anytime!
 ->END
 
 
