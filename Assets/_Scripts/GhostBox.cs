@@ -6,6 +6,9 @@ public class GhostBox : MonoBehaviour
 {
     public SceneGhostt ghost;
     public ParticleSystem particles;
+
+    public static bool everRan = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +28,11 @@ public class GhostBox : MonoBehaviour
 
     public void entered()
     {
-        StartCoroutine(ghostMode());
+        if (!everRan)
+        {
+            StartCoroutine(ghostMode());
+            everRan = true;
+        }
     }
 
     IEnumerator ghostMode()
