@@ -15,7 +15,7 @@ public class SceneController : MonoBehaviour
 
     public static bool dontload = false;
 
-    string[] scenes = { "IntroCar", "Balcony", "TeddyCar", "Kitchen", "TrainCar_01", "BarCar"};
+    string[] scenes = { "IntroCar", "TeddyCar", "Kitchen", "TrainCar_01", "BarCar", "Balcony" };
 
     // Start is called before the first frame update
     void Start()
