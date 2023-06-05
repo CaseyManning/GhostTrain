@@ -1671,6 +1671,46 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3052620019110686800, guid: 333e929bf54654af8be49949d2bba91d,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 312.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052620019110686800, guid: 333e929bf54654af8be49949d2bba91d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 186.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052620019110686801, guid: 333e929bf54654af8be49949d2bba91d,
+        type: 3}
+      propertyPath: m_text
+      value: TASKS
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052620019110686801, guid: 333e929bf54654af8be49949d2bba91d,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.9716981
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052620019110686801, guid: 333e929bf54654af8be49949d2bba91d,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0.9716981
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052620019110686801, guid: 333e929bf54654af8be49949d2bba91d,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.9716981
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052620019110686801, guid: 333e929bf54654af8be49949d2bba91d,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294506744
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052620019110686801, guid: 333e929bf54654af8be49949d2bba91d,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 333e929bf54654af8be49949d2bba91d, type: 3}
 --- !u!114 &869505042 stripped
@@ -2900,7 +2940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
+  m_Color: {r: 0.8301887, g: 0.6899785, b: 0.4816661, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
