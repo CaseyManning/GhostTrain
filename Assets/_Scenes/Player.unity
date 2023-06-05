@@ -2940,7 +2940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8301887, g: 0.6899785, b: 0.4816661, a: 1}
+  m_Color: {r: 0.81960785, g: 0.81960785, b: 0.81960785, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4821,13 +4821,13 @@ MonoBehaviour:
   - name: glasses
     image: {fileID: 21300000, guid: 0728a88b680f54addbf8a301bb9a7170, type: 3}
   - name: spool
-    image: {fileID: 21300000, guid: 5ea9348ffae3d4fc78514f6f4dce733c, type: 3}
+    image: {fileID: 21300000, guid: a69466522a00640a9b2d4670a5a32369, type: 3}
   - name: noArmTeddyBear
-    image: {fileID: 21300000, guid: 0f47248ecbdaa43bf87b652f6ffe844c, type: 3}
+    image: {fileID: 21300000, guid: b50cc0eddee01439faee27de0bc085bb, type: 3}
   - name: rightArmOfTeddyBear
-    image: {fileID: 21300000, guid: bcb92a834fcd94c0989b8cddda65183b, type: 3}
+    image: {fileID: 21300000, guid: 69b2fa7027e1d4843862b871a0d7bb15, type: 3}
   - name: fullTeddyBear
-    image: {fileID: 21300000, guid: 5a598adc6223d4ec08a3751b445a9e2d, type: 3}
+    image: {fileID: 21300000, guid: dfa8ccbd974c243ca875df7024d2fc2c, type: 3}
   - name: fryingpan
     image: {fileID: 21300000, guid: 23877e6c506664436b9c866a8a142369, type: 3}
 --- !u!4 &2141255644
