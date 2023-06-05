@@ -16,7 +16,7 @@ VAR playername = "Brick"
 * [Okay]
 
 * [Can you get me a snack?]
-    {playername}, you had a snack just half an hour ago. Maybe if you're good.
+    Sure, love. I'll see what I can find.
 
 - I'll see you soon. Try to see if you can get some sleep.
 ->END
