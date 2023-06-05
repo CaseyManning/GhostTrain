@@ -169,12 +169,14 @@ public class InventoryManager : MonoBehaviour
 
     public void slotClicked(string name)
     {
+        print("slot clicked");
         for(int i = 0; i < inventory.Count; i++)
         {
             if(inventory[i].name == name)
             {
                 if (inventory[i].usable)
                 {
+                    print("showing the popup");
                     popup.GetComponent<Popup>().open("Use " + inventory[i].displayname + "?", true);
                     selectedItem = inventory[i];
                 } else

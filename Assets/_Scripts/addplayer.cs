@@ -12,8 +12,14 @@ public class addplayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SceneManager.LoadScene("Player", LoadSceneMode.Additive);
-        PlayerScript.player.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        if (Time.time < 20)
+        {
+            SceneManager.LoadScene("Player", LoadSceneMode.Additive);
+            PlayerScript.player.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        } else
+        {
+            SceneController.dontload = false;
+        }
     }
 
     // Update is called once per frame
