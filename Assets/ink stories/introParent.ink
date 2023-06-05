@@ -7,9 +7,9 @@ VAR playername = "Brick"
 
     Thats good to hear. 
 
-* [The seat is too hard]
+* [The seat is too big for me]
 
-    The seats are fine. It won't be too much longer.
+    The seats are fine, maybe you'll grow into it. Anyways it won't be too much longer.
     
 - I need to leave in a few minutes to go check something in the other car. Just stay here and wait for me to get back, ok?
 

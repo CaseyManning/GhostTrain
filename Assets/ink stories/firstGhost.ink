@@ -37,10 +37,9 @@ You hear a low, murmuring sound as you approach.
 - Oh. Okay.
 * [I could help you find it though!]
 
-You could? Well, that would be really nice of you.
+You could? Well, that would be really nice of you. 
 
-I'll just be here waiting.
-#task teddybear
+I'll just be here waiting. #task teddybear 
 ->END
 
 ===replay===

@@ -24,6 +24,9 @@ public class ListManager : MonoBehaviour
 
     //float startPos;
 
+    public Sprite buttonOpen;
+    public Sprite buttonClose;
+
 
     // Start is called before the first frame update
     void Start()
@@ -138,9 +141,11 @@ public class ListManager : MonoBehaviour
         }*/
         if (taskListUI.activeSelf) {
             taskListUI.SetActive(false);
+            listButton.image.sprite = buttonOpen;
             //Debug.Log("task list disabled");
         } else {
             taskListUI.SetActive(true);
+            listButton.image.sprite = buttonClose;
             //Debug.Log("task list enabled");
         }
     }

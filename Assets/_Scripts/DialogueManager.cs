@@ -16,7 +16,7 @@ public class DialogueManager : MonoBehaviour
 
     public GameObject option;
 
-    public GameObject teddyBear;
+    public GameObject taskBox;
 
     public bool talking = false;
 
@@ -127,6 +127,7 @@ public class DialogueManager : MonoBehaviour
             Destroy(g);
         }
         titleText.text = (string)stories[current].variablesState["title"];
+        taskBox.SetActive(false);
         currOptions = new List<GameObject>();
         if (textwriting)
         {
@@ -154,7 +155,6 @@ public class DialogueManager : MonoBehaviour
         //print("current body: " + stories[current].currentText);
         bodyText.GetComponent<RectTransform>().ForceUpdateRectTransforms();
         bodyText.GetComponent<ContentSizeFitter>().SetLayoutVertical();
-        processTags(stories[current].currentTags);
         
         float height = bodyText.GetComponent<RectTransform>().rect.height;
         float optHeight = 35;
@@ -181,7 +181,7 @@ public class DialogueManager : MonoBehaviour
             {
                 optionObj.GetComponent<TMP_Text>().text = (i + 1) + ". " + c.text;
             }
-            yield return new WaitForSeconds(0.05f);
+            //yield return new WaitForSeconds(0.05f);
         }
 
         if(stories[current].currentChoices.Count == 0)
@@ -194,6 +194,12 @@ public class DialogueManager : MonoBehaviour
             currOptions.Add(optionObj);
             optionObj.name = "END";
         }
+        processTags(stories[current].currentTags);
+    }
+
+    public void addTaskBox(string name)
+    {
+        taskBox.SetActive(true);
     }
 
     public void processTags(List<string> tags)
@@ -235,6 +241,7 @@ public class DialogueManager : MonoBehaviour
             if(tag.StartsWith("task"))
             {
                 ListManager.main.addList(tag.Split(" ")[1]);
+                addTaskBox(tag.Split(" ")[1]);
             }
             // add tag to complete task
             if(tag.StartsWith("completetask"))
