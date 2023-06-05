@@ -228,6 +228,16 @@ public class DialogueManager : MonoBehaviour
                 GameObject.FindGameObjectWithTag("Player").SetActive(false);
                 GameObject.Find("minigame").transform.GetChild(0).gameObject.SetActive(true);
             }
+            // add tag to add to task list
+            if(tag.StartsWith("task"))
+            {
+                ListManager.main.addList(tag.Split(" ")[1]);
+            }
+            // add tag to complete task
+            if(tag.StartsWith("completetask"))
+            {
+                ListManager.main.removeList(tag.Split(" ")[1]);
+            }
         }
     }
 
