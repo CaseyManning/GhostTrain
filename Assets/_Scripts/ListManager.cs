@@ -83,10 +83,10 @@ public class ListManager : MonoBehaviour
 
     public void writeTaskInfo() {
         Debug.Log(taskList.Count);
+        bodyText.text = "";
         if (taskList.Count == 0) {
             bodyText.text = "You have no current tasks.";
-        } else {
-            bodyText.text = "";
+        } else {  
             for(int i = 0; i < taskList.Count; i++)
             {
                 Task task = taskList[i];
@@ -138,10 +138,10 @@ public class ListManager : MonoBehaviour
         }*/
         if (taskListUI.activeSelf) {
             taskListUI.SetActive(false);
-            Debug.Log("task list disabled");
+            //Debug.Log("task list disabled");
         } else {
             taskListUI.SetActive(true);
-            Debug.Log("task list enabled");
+            //Debug.Log("task list enabled");
         }
     }
 
