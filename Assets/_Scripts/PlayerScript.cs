@@ -144,9 +144,10 @@ public class PlayerScript : MonoBehaviour
         {
             nav.destination = transform.position;
         }
-        if (!CameraController.main.dontzoom)
+        if (!CameraController.main.dontzoom && NarrativeManager.main.completedsequence)
         {
             anim.ResetTrigger("Walk");
+
             anim.SetTrigger("Idle");
         }
     }

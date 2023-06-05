@@ -68,7 +68,15 @@ public class NarrativeManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         CameraController.main.dontzoom = true;
         WalkingIn.main.go = true;
-        while((bool)DialogueManager.main.stories["introChat"].variablesState["completed"] == false)
+        while((bool)DialogueManager.main.stories["introChat"].variablesState["completed"] == false || DialogueManager.main.talking == true)
+        {
+            yield return new WaitForEndOfFrame();
+        }
+        yield return new WaitForSeconds(4.5f);
+        CameraController.main.dontzoom = false;
+        CameraController.main.talkother = GameObject.Find("Parent");
+        DialogueManager.main.startConvo("introParent");
+        while(DialogueManager.main.talking)
         {
             yield return new WaitForEndOfFrame();
         }
@@ -77,7 +85,7 @@ public class NarrativeManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         StartCoroutine(fadeTo(1, 3f));
         yield return new WaitForSeconds(3f);
-        //delete people
+        Parentl.main.change();
         deletePeople();
         yield return new WaitForSeconds(1f);
         StartCoroutine(fadeTo(0, 1f));

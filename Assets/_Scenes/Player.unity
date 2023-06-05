@@ -3732,6 +3732,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 60b8530c2a00e46039e54670bf780fab, type: 3}
   - {fileID: 4900000, guid: 06daf9292f32446e388c1247515b6564, type: 3}
   - {fileID: 4900000, guid: 3fd55f4b69fd14c12ad51e7610ee597d, type: 3}
+  - {fileID: 4900000, guid: 611ba41783802447b989247b60afc7f3, type: 3}
   current: 
   firstGhostInteraction: 0
 --- !u!4 &2057475981
