@@ -35,7 +35,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Balcony.unity
     guid: 6436164118ba34def94ef77478274e39
-  - enabled: 1
-    path: Assets/_Scenes/PreBalcony.unity
-    guid: 8711b2242fda5462295abab740e7c63b
   m_configObjects: {}

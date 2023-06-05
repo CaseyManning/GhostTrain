@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ListManager : MonoBehaviour
+public class TaskManager : MonoBehaviour
 {
-    public static ListManager main;
+    public static TaskManager main;
 
     public Button listButton;
 
@@ -38,8 +38,8 @@ public class ListManager : MonoBehaviour
         // listButton.GetComponent<Image>().enabled = false;
         taskList = new List<Task>();
         tasks = new Dictionary<string, Task>();
-        tasks.Add("teddybear", new Task("teddybear", "Find teddy bear and give it back to ghost child.")); 
-        tasks.Add("pancakes", new Task("pancakes", "Flip pancake for 6 consecutive times."));  
+        tasks.Add("teddybear", new Task("teddybear", "Find Teddy Bear", "Find teddy bear and give it back to ghost child.")); 
+        tasks.Add("pancakes", new Task("pancakes", "", "Flip pancake for 6 consecutive times."));  
 
         // when click on button
         Button button = listButton.GetComponent<Button>();
@@ -50,39 +50,17 @@ public class ListManager : MonoBehaviour
     {
         public string name;
         public string taskDisplay;
+        public string shortDesc;
        //public GameObject obj;
        
-        public Task(string name, string taskDisplay)
+        public Task(string name, string shortDesc, string taskDisplay)
         {
             this.name = name;
             this.taskDisplay = taskDisplay;
-        }
+            this.shortDesc = shortDesc;
 
-        /*public GameObject create(GameObject slot)
-        {
-            obj = Instantiate(slot);
-            obj.name = name;
-            // obj.transform.GetChild(0).GetComponent<text or something>().sprite = taskDisplay;
-            return obj;
-        }*/
+        }
     }
-
-    //code for displaying all tasks on canva. 
-    /*public void layoutTask()
-    {
-        Debug.Log(taskList.Count);
-        for(int i = 0; i < taskList.Count; i++)
-        {
-            float slotLength = 50;
-            float offset = startPos + i * slotLength;
-            Vector2 anchored = taskList[i].obj.GetComponent<RectTransform>().anchoredPosition;
-            anchored.y = offset;
-            print(offset);
-            print(slotLength);
-            print(startPos);
-            taskList[i].obj.GetComponent<RectTransform>().anchoredPosition = anchored;
-        }
-    }*/
 
     public void writeTaskInfo() {
         Debug.Log(taskList.Count);
@@ -98,11 +76,11 @@ public class ListManager : MonoBehaviour
         }
     }
 
-    public void addList(string name)
+    public Task addTask(string name)
     {
         if(!tasks.ContainsKey(name)) {
             Debug.LogWarning("No such task to add: " + name);
-            return;
+            return null;
         }
 
         // set button to true initially
@@ -116,6 +94,7 @@ public class ListManager : MonoBehaviour
         //task.obj.transform.SetParent(taskListUI.transform);
         taskList.Add(task);
         writeTaskInfo();
+        return task;
     }
 
     public void removeList(string name)

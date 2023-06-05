@@ -240,13 +240,16 @@ public class DialogueManager : MonoBehaviour
             // add tag to add to task list
             if(tag.StartsWith("task"))
             {
-                ListManager.main.addList(tag.Split(" ")[1]);
-                addTaskBox(tag.Split(" ")[1]);
+                TaskManager.Task t = TaskManager.main.addTask(tag.Split(" ")[1]);
+                if (t != null) {
+                    addTaskBox(tag.Split(" ")[1]);
+                    taskBox.GetComponentInChildren<TMP_Text>().text = "New Task: " + t.shortDesc;
+                }
             }
             // add tag to complete task
             if(tag.StartsWith("completetask"))
             {
-                ListManager.main.removeList(tag.Split(" ")[1]);
+                TaskManager.main.removeList(tag.Split(" ")[1]);
             }
         }
     }
