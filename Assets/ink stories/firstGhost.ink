@@ -40,6 +40,7 @@ You hear a low, murmuring sound as you approach.
 You could? Well, that would be really nice of you.
 
 I'll just be here waiting.
+#task teddybear
 ->END
 
 ===replay===
@@ -66,6 +67,7 @@ Wow!
 You found my teddy bear!! 
 ~completedQuest = true
 #remove fullTeddyBear
+#completetask teddybear
 Thank you very much. -> END
 
 ===pieces===
