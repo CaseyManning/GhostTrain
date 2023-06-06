@@ -66,9 +66,12 @@ public class PlayerScript : MonoBehaviour
                 {
                     if (Vector3.Distance(hitt.collider.gameObject.transform.position, transform.position) < talkDist)
                     {
-                        CameraController.main.talkother = hitt.collider.gameObject;
-                        transform.LookAt(hitt.collider.gameObject.transform.position);
-                        DialogueManager.main.startConvo(t.convoName);
+                        if (!DialogueManager.main.talking)
+                        {
+                            CameraController.main.talkother = hitt.collider.gameObject;
+                            transform.LookAt(hitt.collider.gameObject.transform.position);
+                            DialogueManager.main.startConvo(t.convoName);
+                        }
                     } else
                     {
                         print("setting");
