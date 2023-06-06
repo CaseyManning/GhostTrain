@@ -36,6 +36,7 @@ public class DartController : MonoBehaviour
     public float horizontalAngle;
     public bool userIsReady = false;
     private bool runItOnce = true;
+    public bool isDartReady = true;
 
     public bool playedTwice = false;
 
@@ -90,10 +91,11 @@ public class DartController : MonoBehaviour
                 }
             }
 
-             if (Input.GetMouseButtonDown(0) && currentDart < dartCount )
+             if (Input.GetMouseButtonDown(0) && currentDart < dartCount  && isDartReady)
             {
                 Debug.Log(userIsReady.ToString());
                 isThrowing = true;
+                isDartReady = false;
             }
             else
             if (Input.GetMouseButton(0) && isThrowing )
@@ -113,6 +115,7 @@ public class DartController : MonoBehaviour
             {
                 ThrowDart();
                 currentDart++;
+                isDartReady = false;
 
                 if (currentDart < dartCount)
                 {
@@ -133,17 +136,21 @@ public class DartController : MonoBehaviour
                     {
                         //exit the game
                         //turn off this dartplayer and then enable the normal players
-                        Debug.Log("game not updated1");
+                        Debug.Log("game not updating");
                         Invoke("updateGame", 1.0f);
-                        
 
+                        playedTwice = true;
                     }
                     else
                     {
+                        Debug.Log("game not ended");
                         Invoke("endGame", 1.0f);
                        
-                    }
+                    } 
                 }
+            }else
+            {
+                Debug.Log("it broke here");
             }
         }
 
@@ -182,6 +189,8 @@ public class DartController : MonoBehaviour
         Invoke("ShowCanvas", 1f);
         ZoomIn();
         runItOnce = true;
+        isDartReady = true;
+       
 
         Debug.Log("game not updated2");
     }
@@ -207,6 +216,7 @@ public class DartController : MonoBehaviour
             //start LOST dialogue on ink
         }
         this.gameObject.SetActive(false);
+        Debug.Log("this is not running");
     }
 
     void updateGame()
@@ -236,7 +246,7 @@ public class DartController : MonoBehaviour
             //start LOST dialogue on ink
         }
         this.gameObject.SetActive(false);
-        playedTwice = true;
+      
         
     }
 
@@ -291,7 +301,7 @@ public class DartController : MonoBehaviour
         {
             Debug.LogWarning("DartHolder GameObject could not be found in the scene.");
         }
-
+        isDartReady = true;
         instantiatedDarts.Add(dart);
     }
 

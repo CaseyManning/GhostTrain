@@ -4955,7 +4955,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6849124576754430572, guid: 8315076b99e964a4e90b28aec8f6d1af, type: 3}
 --- !u!1 &2131099593
@@ -5050,6 +5050,7 @@ MonoBehaviour:
   maxVerticalAngle: 15
   horizontalAngle: 0
   userIsReady: 0
+  isDartReady: 1
   playedTwice: 0
   scoreManager: {fileID: 772029839}
   myCanvas: {fileID: 468878549}
