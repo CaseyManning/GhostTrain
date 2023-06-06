@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DartController : MonoBehaviour
 {
     public GameObject dartBoard;
     public GameObject dartPrefab;
 
+    
     public Slider horizontalSlider;
     public Slider verticalSlider;
 
@@ -37,7 +39,7 @@ public class DartController : MonoBehaviour
 
     public bool playedTwice = false;
 
-    private DartScoreManager scoreManager;
+    public DartScoreManager scoreManager;
     public Canvas myCanvas;
 
     private List<GameObject> instantiatedDarts = new List<GameObject>();
@@ -60,8 +62,9 @@ public class DartController : MonoBehaviour
        ZoomIn();
         //one prefab at a time
         
-       scoreManager = GameObject.Find("Canvas").transform.GetChild(0).GetComponent<DartScoreManager>();
+       
         userIsReady = false;
+       // scoreManager = GameObject.Find("Canvas").transform.GetChild(0).GetComponent<DartScoreManager>();
     }
 
     void Update()
@@ -155,6 +158,16 @@ public class DartController : MonoBehaviour
         instantiatedDarts.Add(dart);
         dart.transform.Rotate(0, 90, 0);
         dart.GetComponent<Rigidbody>().isKinematic = true;
+        GameObject dartHolder = GameObject.Find("DartHolder");
+        if (dartHolder != null)
+        {
+            dart.transform.SetParent(dartHolder.transform);
+        }
+        else
+        {
+            Debug.LogWarning("DartHolder GameObject could not be found in the scene.");
+        }
+       // scoreManager = GameObject.Find("Canvas").transform.GetChild(0).GetComponent<DartScoreManager>();
 
     }
 
@@ -268,6 +281,17 @@ public class DartController : MonoBehaviour
         dart = Instantiate(dartPrefab, dartStartPosition, dartStartRotation);
         dart.transform.Rotate(0, 90, 0);
         dart.GetComponent<Rigidbody>().isKinematic = true;
+
+        GameObject dartHolder = GameObject.Find("DartHolder");
+        if (dartHolder != null)
+        {
+            dart.transform.SetParent(dartHolder.transform);
+        }
+        else
+        {
+            Debug.LogWarning("DartHolder GameObject could not be found in the scene.");
+        }
+
         instantiatedDarts.Add(dart);
     }
 
@@ -299,7 +323,6 @@ public class DartController : MonoBehaviour
         rb.AddForce(-dart.transform.right * throwForce);
         //rb.freezeRotation = true;
         dart.GetComponent<dart>().thrown = true;
- 
         //  rb.AddForce(throwDirection * throwForce);
     }
 
