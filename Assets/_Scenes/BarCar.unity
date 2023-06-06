@@ -2251,9 +2251,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Click and hold the mouse to aim your dart; release to throw.
-
-'
+  m_text: "Click and hold the mouse to aim your dart; release to throw. \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2345,7 +2343,7 @@ PrefabInstance:
     - target: {fileID: 605374641053363112, guid: c0de61bcf0c3641eaa75ef639173a375,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 605374641053363114, guid: c0de61bcf0c3641eaa75ef639173a375,
         type: 3}
@@ -4946,7 +4944,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 691249521}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &2043517980
+--- !u!64 &2043517977
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4955,24 +4953,42 @@ MeshCollider:
   m_GameObject: {fileID: 2043517976}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6849124576754430572, guid: 8315076b99e964a4e90b28aec8f6d1af, type: 3}
---- !u!65 &2043517984
-BoxCollider:
+--- !u!1 &2131099593
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2043517976}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.003513004, y: 0.00350864, z: 0.00020000001}
-  m_Center: {x: -0.0000021820886, y: -2.3283062e-10, z: 0.00011999932}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2131099594}
+  m_Layer: 0
+  m_Name: DartHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2131099594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131099593}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.000000059604645, y: 0.9704728, z: -1.4213054}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &543450652922175552
 Transform:
   m_ObjectHideFlags: 0
@@ -5035,6 +5051,7 @@ MonoBehaviour:
   horizontalAngle: 0
   userIsReady: 0
   playedTwice: 0
+  scoreManager: {fileID: 772029839}
   myCanvas: {fileID: 468878549}
 --- !u!1001 &1988407200851755789
 PrefabInstance:
