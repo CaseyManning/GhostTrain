@@ -27,6 +27,8 @@ public class TaskManager : MonoBehaviour
     public Sprite buttonOpen;
     public Sprite buttonClose;
 
+    private bool hasInitialTask;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,8 +36,8 @@ public class TaskManager : MonoBehaviour
         //startPos = listSlot.GetComponent<RectTransform>().anchoredPosition.x; 
         taskListUI.SetActive(false);
         main = this;
-        listButton.GetComponent<Button>().enabled = true;
-        // listButton.GetComponent<Image>().enabled = false;
+        listButton.GetComponent<Button>().enabled = false;
+        listButton.GetComponent<Image>().enabled = false;
         taskList = new List<Task>();
         tasks = new Dictionary<string, Task>();
         tasks.Add("teddybear", new Task("teddybear", "Find Teddy Bear", "Find teddy bear and give it back to ghost child.")); 
@@ -44,6 +46,14 @@ public class TaskManager : MonoBehaviour
         // when click on button
         Button button = listButton.GetComponent<Button>();
         button.onClick.AddListener(taskOnClick); 
+        hasInitialTask = false;
+    }
+
+    void Update() {
+        if (hasInitialTask) {
+            listButton.GetComponent<Button>().enabled = true;
+            listButton.GetComponent<Image>().enabled = true;
+        }
     }
 
     public class Task
@@ -77,7 +87,8 @@ public class TaskManager : MonoBehaviour
     }
 
     public Task addTask(string name)
-    {
+    {   
+        hasInitialTask = true;
         if(!tasks.ContainsKey(name)) {
             Debug.LogWarning("No such task to add: " + name);
             return null;
