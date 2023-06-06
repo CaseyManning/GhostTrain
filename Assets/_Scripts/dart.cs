@@ -7,6 +7,8 @@ public class dart : MonoBehaviour
     private Rigidbody rb;
     private DartController dartController;
     private Collider collider;
+    public bool collided = false;
+    public bool thrown = false;
 
     private void Start()
     {
@@ -14,10 +16,12 @@ public class dart : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         collider = GetComponent<Collider>();
         dartController = GameObject.FindObjectOfType<DartController>();
+        collided = false;
     }
 
     void OnCollisionEnter(Collision collision)
     {
+        collided = true;
         if (collision.gameObject.name == "dartboard")
         {
             // Calculate score based on distance from center of dartboard
@@ -27,7 +31,7 @@ public class dart : MonoBehaviour
             float distanceFromCenter = Vector3.Distance(hitPoint, dartBoardCenter);
 
             // calculate score - this is just an example, you'll need to replace this with your own scoring logic
-            float rawScore= 30 - (distanceFromCenter * 20);  // each unit of distance from the center deducts 10 points
+            float rawScore= 40 - (distanceFromCenter * 50);  // each unit of distance from the center deducts 10 points
 
             // you might want to cap this at zero so you don't get negative scores
             rawScore = Mathf.Max(rawScore, 0);
@@ -46,8 +50,9 @@ public class dart : MonoBehaviour
             // Disable the collider of the dart
             collider.enabled = false;
         }
-        else
+        else if (collision.gameObject.name != "dart")
         {
+            dartController.AddScore(0f);
             rb.isKinematic = true;
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;

@@ -15,7 +15,7 @@ public class DartController : MonoBehaviour
     public float throwForce = 400;
 
     public int dartCount = 5;
-    public int currentDart = 0;
+    public float currentDart = 0;
     private GameObject dart;
 
     public float totalScore = 0;
@@ -33,6 +33,9 @@ public class DartController : MonoBehaviour
     private bool isThrowing = false;
     public float horizontalAngle;
     public bool userIsReady = false;
+    private bool runItOnce = true;
+
+    public bool playedTwice = false;
 
     private DartScoreManager scoreManager;
     public Canvas myCanvas;
@@ -49,75 +52,96 @@ public class DartController : MonoBehaviour
 
     void Start()
     {
-        
-        Invoke("ShowCanvas", 1.5f);
+
+        // Invoke("ShowCanvas", 1.5f);
 
         // playerInPosition();
-        ZoomIn();
+        runItOnce = true;
+       ZoomIn();
         //one prefab at a time
-        Vector3 dartStartPosition = dartBoard.transform.position + dartBoard.transform.forward * 2;//+ dartBoard.transform.up;
-        Quaternion dartStartRotation = Quaternion.LookRotation(dartBoard.transform.position - dartStartPosition);
-        scoreManager = GameObject.Find("Canvas").transform.GetChild(0).GetComponent<DartScoreManager>();
-        dart = Instantiate(dartPrefab, dartStartPosition, dartStartRotation);
-        instantiatedDarts.Add(dart);
-        dart.transform.Rotate(0, 90, 0);
-        dart.GetComponent<Rigidbody>().isKinematic = true;
+        
+       scoreManager = GameObject.Find("Canvas").transform.GetChild(0).GetComponent<DartScoreManager>();
         userIsReady = false;
     }
 
     void Update()
     {
-        horizontalSlider.value = (horizontalAngle + 30) / 60;
-
-        Debug.Log("Update started");
-
-        if (!isThrowing && userIsReady)
+        if (!DialogueManager.main.talking)
         {
-            horizontalAngle = maxHorizontalAngle * (Mathf.PingPong(Time.time, 1) - 0.5f) * 2;
-            throwDirection = new Vector3(0, horizontalAngle - 90, 0);
-            dart.transform.rotation = Quaternion.Euler(throwDirection);
-        }
 
-        if (!userIsReady && Input.GetMouseButtonDown(0))
-        {
-            //turn instructions off.
-            myCanvas.transform.GetChild(0).transform.Find("Instructions").gameObject.SetActive(false);
-            userIsReady = true;
-        }
-        else if (Input.GetMouseButtonDown(0) && currentDart < dartCount && userIsReady)
-        {
-            isThrowing = true;
-        }
-        else
-        if (Input.GetMouseButton(0) && isThrowing && userIsReady)
-        {
-            float verticalAngle = maxVerticalAngle * (Mathf.PingPong(Time.time, 1) - 0.5f) * 2;
-            throwDirection = new Vector3(0, horizontalAngle - 90, verticalAngle);
+           // if (myCanvas.transform.GetChild(0).transform.Find("Instructions").gameObject.active)
+            //{
+                
+            //}
+            horizontalSlider.value = (horizontalAngle + 30) / 60;
 
-            dart.transform.rotation = Quaternion.Euler(throwDirection);
-            verticalSlider.value = (verticalAngle + 15) / 30;
-        }
+            Debug.Log("Update started");
 
-        if (Input.GetMouseButtonUp(0) && isThrowing && userIsReady)
-        {
-            ThrowDart();
-            currentDart++;
-
-            if (currentDart < dartCount)
+            if (!isThrowing)
             {
-                Invoke("InstantiateDart", 1.5f); // Delay of 1.5 seconds
-
+                horizontalAngle = maxHorizontalAngle * (Mathf.PingPong(Time.time * (currentDart/5 + 1), 1) - 0.5f) * 2;
+                throwDirection = new Vector3(0, horizontalAngle - 90, 0);
+                if (!dart.GetComponent<dart>().thrown)
+                {
+                    dart.transform.rotation = Quaternion.Euler(throwDirection);
+                }
             }
-            isThrowing = false;
-        }
 
-        //if the player has used up all the max darts = 5
-        if (currentDart == dartCount)
-        {
-            //exit the game
-            //turn off this dartplayer and then enable the normal players
-            Invoke("updateGame", 1.0f);
+             if (Input.GetMouseButtonDown(0) && currentDart < dartCount )
+            {
+                Debug.Log(userIsReady.ToString());
+                isThrowing = true;
+            }
+            else
+            if (Input.GetMouseButton(0) && isThrowing )
+            {
+                Debug.Log(userIsReady.ToString());
+                isThrowing = true;
+                float verticalAngle = maxVerticalAngle * (Mathf.PingPong(Time.time * (currentDart/5 + 1), 1) - 0.5f) * 2;
+                throwDirection = new Vector3(0, horizontalAngle - 90, verticalAngle);
+                if (!dart.GetComponent<dart>().thrown)
+                {
+                    dart.transform.rotation = Quaternion.Euler(throwDirection);
+                }
+                verticalSlider.value = (verticalAngle + 15) / 30;
+            }
 
+            if (Input.GetMouseButtonUp(0) && isThrowing )
+            {
+                ThrowDart();
+                currentDart++;
+
+                if (currentDart < dartCount)
+                {
+                    Invoke("InstantiateDart", 1.0f); // Delay of 1.5 seconds
+
+                }
+                isThrowing = false;
+            }
+
+            //if the player has used up all the max darts = 5
+            //only call this function once
+            if (runItOnce)
+            {
+                if (currentDart == dartCount)
+                {
+                    runItOnce = false;
+                    if (!playedTwice)
+                    {
+                        //exit the game
+                        //turn off this dartplayer and then enable the normal players
+                        Debug.Log("game not updated1");
+                        Invoke("updateGame", 1.0f);
+                        
+
+                    }
+                    else
+                    {
+                        Invoke("endGame", 1.0f);
+                       
+                    }
+                }
+            }
         }
 
     }
@@ -125,6 +149,13 @@ public class DartController : MonoBehaviour
     private void OnEnable()
     {
         ResetGame();
+        Vector3 dartStartPosition = dartBoard.transform.position + dartBoard.transform.forward * 2;//+ dartBoard.transform.up;
+        Quaternion dartStartRotation = Quaternion.LookRotation(dartBoard.transform.position - dartStartPosition);
+        dart = Instantiate(dartPrefab, dartStartPosition, dartStartRotation);
+        instantiatedDarts.Add(dart);
+        dart.transform.Rotate(0, 90, 0);
+        dart.GetComponent<Rigidbody>().isKinematic = true;
+
     }
 
     void ResetGame()
@@ -133,36 +164,67 @@ public class DartController : MonoBehaviour
         totalScore = 0;
         currentDart = 0;
         isThrowing = false;
-        Invoke("ShowCanvas", 2f);
+        userIsReady = false;
+        priorDartScore = 0;
+        Invoke("ShowCanvas", 1f);
         ZoomIn();
+        runItOnce = true;
+
+        Debug.Log("game not updated2");
     }
 
- 
+    void endGame()
+    {
+        myCanvas.transform.GetChild(0).gameObject.SetActive(false);
+        //has been beaten 
+        if (scoreToBeat <= totalScore)
+        {
+            //then set the state variable to completed gameplay in the inventory manager
+            //start WIN dialogue on ink
+
+            PlayerScript.player.SetActive(true);
+            CameraController.main.talkother = GameObject.Find("bartender");
+            DialogueManager.main.startConvo("dartWon1");
+        }
+        else
+        {
+            PlayerScript.player.SetActive(true);
+            CameraController.main.talkother = GameObject.Find("bartender");
+            DialogueManager.main.startConvo("dartLost2");
+            //start LOST dialogue on ink
+        }
+        this.gameObject.SetActive(false);
+    }
 
     void updateGame()
     {
-        this.gameObject.SetActive(false);
+       
 
         //turn off canvas
         myCanvas.transform.GetChild(0).gameObject.SetActive(false);
         Debug.Log(totalScore.ToString());
+        Debug.Log("game not updated3");
 
         //has been beaten 
         if (scoreToBeat <= totalScore)
         {
             //then set the state variable to completed gameplay in the inventory manager
             //start WIN dialogue on ink
+
             PlayerScript.player.SetActive(true);
             CameraController.main.talkother = GameObject.Find("bartender");
             DialogueManager.main.startConvo("dartWon");
         }
         else
         {
-            //start LOST dialogue on ink
             PlayerScript.player.SetActive(true);
             CameraController.main.talkother = GameObject.Find("bartender");
             DialogueManager.main.startConvo("dartLost");
+            //start LOST dialogue on ink
         }
+        this.gameObject.SetActive(false);
+        playedTwice = true;
+        
     }
 
     //when the player clicks on the dart board, the player is moved to the throwing position
@@ -226,12 +288,6 @@ public class DartController : MonoBehaviour
         //turn on instructions if off
     }
 
-    void HideCanvas()
-    {
-       
-
-    }
-
     void ThrowDart()
     {
         Rigidbody rb = dart.GetComponent<Rigidbody>();
@@ -241,6 +297,9 @@ public class DartController : MonoBehaviour
 
         Vector3 forceDirection = Vector3.back;
         rb.AddForce(-dart.transform.right * throwForce);
+        //rb.freezeRotation = true;
+        dart.GetComponent<dart>().thrown = true;
+ 
         //  rb.AddForce(throwDirection * throwForce);
     }
 
