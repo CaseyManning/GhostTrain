@@ -127,10 +127,7 @@ public class DialogueManager : MonoBehaviour
             Destroy(g);
         }
         titleText.text = (string)stories[current].variablesState["title"];
-        if(taskBox.activeInHierarchy)
-        {
-            StartCoroutine(nyoomBox(0.8f));
-        }
+        
         //taskBox.SetActive(false);
         currOptions = new List<GameObject>();
         if (textwriting)
@@ -212,14 +209,19 @@ public class DialogueManager : MonoBehaviour
         Vector2 start = taskBox.GetComponent<RectTransform>().position;
         Vector2 end = GameObject.Find("TaskButton").GetComponent<RectTransform>().position;
         Vector3 startscale = taskBox.GetComponent<RectTransform>().localScale;
+        Vector3 endscale = new Vector3(startscale.x*0.1f, startscale.y, startscale.z);
+
         while (i < 1)
         {
             i += Time.deltaTime / time;
-            yield return new WaitForEndOfFrame();
-
+            print(i);
             taskBox.GetComponent<RectTransform>().position = Vector2.Lerp(start, end, i);
-            taskBox.GetComponent<RectTransform>().localScale = Vector2.Lerp(startscale, 0.1f*startscale, i);
+            taskBox.GetComponent<RectTransform>().localScale = Vector3.Lerp(startscale, endscale, i);
+            yield return new WaitForEndOfFrame();
         }
+        taskBox.SetActive(false);
+        taskBox.GetComponent<RectTransform>().position = start;
+        taskBox.GetComponent<RectTransform>().localScale = startscale;
     }
 
     public void processTags(List<string> tags)
@@ -276,6 +278,10 @@ public class DialogueManager : MonoBehaviour
 
     public void stopConvo()
     {
+        if (taskBox.activeInHierarchy)
+        {
+            StartCoroutine(nyoomBox(0.5f));
+        }
         CameraController.main.talkZoomOut();
         conversationScreen.SetActive(false);
         talking = false;
