@@ -15,7 +15,7 @@ public class addplayer : MonoBehaviour
         if (Time.time < 20)
         {
             SceneManager.LoadScene("Player", LoadSceneMode.Additive);
-            PlayerScript.player.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+           // PlayerScript.player.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         } else
         {
             SceneController.dontload = false;

@@ -31,10 +31,17 @@ public class DartScoreManager : MonoBehaviour
     {
         score = dartController.totalScore;
         priorDartScore = dartController.priorDartScore;
-        dartUsed = dartController.currentDart;
+        dartUsed = (int)dartController.currentDart;
 
         textScore.text = score.ToString() + "/" + dartController.scoreToBeat + "PTS earned.";
         remainingDarts.text = (dartMax - dartUsed).ToString() + "/" + dartMax.ToString() + " Darts Left";
-        priorDartText.text = "Prior Dart: " + priorDartScore.ToString() + "PTS";
+        if(priorDartScore <= 0 && dartUsed > 0)
+        {
+            priorDartText.text = "Prior Dart: MISSED";
+        } else
+        {
+            priorDartText.text = "Prior Dart: " + priorDartScore.ToString() + "PTS";
+        }
+        
     }
 }
