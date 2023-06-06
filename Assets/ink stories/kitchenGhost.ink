@@ -23,7 +23,7 @@ Do you think you could help me make them?
 
 * [Sure]
 
-Oh good! While I start working on the batter, do you think you could find us a good pan to use?
+Oh good! While I start working on the batter, do you think you could find us a good pan to use? #task fryingpan
 ->END
 
 ==replay==

@@ -38,8 +38,10 @@ public class TaskManager : MonoBehaviour
         // listButton.GetComponent<Image>().enabled = false;
         taskList = new List<Task>();
         tasks = new Dictionary<string, Task>();
-        tasks.Add("teddybear", new Task("teddybear", "Find Teddy Bear", "Find teddy bear and give it back to ghost child.")); 
-        tasks.Add("pancakes", new Task("pancakes", "", "Flip pancake for 6 consecutive times."));  
+        tasks.Add("teddybear", new Task("teddybear", "Find Teddy Bear", "Find teddy bear and give it back to ghost child."));
+        tasks.Add("parents", new Task("parents", "Find Your Parent", "What happened to your parent? Where did they go?"));
+        tasks.Add("pancakes", new Task("pancakes", "", "Flip pancake for 6 consecutive times."));
+        tasks.Add("fryingpan", new Task("fryingpan", "Find A Frying Pan", "Find a frying pan and give it to Gordon in the kitchen."));  
 
         // when click on button
         Button button = listButton.GetComponent<Button>();
