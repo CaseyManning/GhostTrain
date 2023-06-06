@@ -127,7 +127,11 @@ public class DialogueManager : MonoBehaviour
             Destroy(g);
         }
         titleText.text = (string)stories[current].variablesState["title"];
-        taskBox.SetActive(false);
+        if(taskBox.activeInHierarchy)
+        {
+            StartCoroutine(nyoomBox(0.8f));
+        }
+        //taskBox.SetActive(false);
         currOptions = new List<GameObject>();
         if (textwriting)
         {
@@ -200,6 +204,22 @@ public class DialogueManager : MonoBehaviour
     public void addTaskBox(string name)
     {
         taskBox.SetActive(true);
+    }
+
+    IEnumerator nyoomBox(float time)
+    {
+        float i = 0;
+        Vector2 start = taskBox.GetComponent<RectTransform>().position;
+        Vector2 end = GameObject.Find("TaskButton").GetComponent<RectTransform>().position;
+        Vector3 startscale = taskBox.GetComponent<RectTransform>().localScale;
+        while (i < 1)
+        {
+            i += Time.deltaTime / time;
+            yield return new WaitForEndOfFrame();
+
+            taskBox.GetComponent<RectTransform>().position = Vector2.Lerp(start, end, i);
+            taskBox.GetComponent<RectTransform>().localScale = Vector2.Lerp(startscale, 0.1f*startscale, i);
+        }
     }
 
     public void processTags(List<string> tags)

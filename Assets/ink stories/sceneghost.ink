@@ -33,8 +33,6 @@ The ghost slides gently to a stop, right beside you.
         you're the parapsychologist, not me.
 - *[where are we going?]
 
-    intercapital.
-    **[intercapital.]
     at least, we're all going there together.
     
 - goodbye.

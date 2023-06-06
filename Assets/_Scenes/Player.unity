@@ -154,7 +154,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1311032485}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -1200,7 +1200,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1311032485}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &490819125
 MonoBehaviour:
@@ -1270,9 +1270,8 @@ RectTransform:
   - {fileID: 2125385277}
   - {fileID: 1225484884}
   - {fileID: 1229459557}
-  - {fileID: 841098812}
   m_Father: {fileID: 1311032485}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1503,12 +1502,12 @@ RectTransform:
   m_Children:
   - {fileID: 1449417744}
   - {fileID: 24274703}
-  m_Father: {fileID: 560652213}
-  m_RootOrder: 6
+  m_Father: {fileID: 1311032485}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -60, y: 86}
+  m_AnchoredPosition: {x: -59.99985, y: 86}
   m_SizeDelta: {x: 246.5552, y: 50.641205}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &841098813
@@ -1569,7 +1568,7 @@ PrefabInstance:
     - target: {fileID: 3052620017832340516, guid: 333e929bf54654af8be49949d2bba91d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3052620017832340516, guid: 333e929bf54654af8be49949d2bba91d,
         type: 3}
@@ -2467,6 +2466,7 @@ RectTransform:
   m_Children:
   - {fileID: 1995111224}
   - {fileID: 1093937104}
+  - {fileID: 841098812}
   - {fileID: 560652213}
   - {fileID: 19425229}
   - {fileID: 869505043}
@@ -2920,7 +2920,7 @@ RectTransform:
   m_Children:
   - {fileID: 1326798264}
   m_Father: {fileID: 1311032485}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}

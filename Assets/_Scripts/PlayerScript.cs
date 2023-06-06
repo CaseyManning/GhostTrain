@@ -136,6 +136,10 @@ public class PlayerScript : MonoBehaviour
         {
             box.entered();
         }
+        if (other.gameObject.TryGetComponent<gameender>(out gameender ender))
+        {
+            ender.entered();
+        }
     }
 
     public void stopMoving()
