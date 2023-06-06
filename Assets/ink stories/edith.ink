@@ -1,43 +1,28 @@
 VAR title = "EDITH"
-VAR haslemonade = false
-VAR asked = false
 VAR replayable = true
 
- While ghost facial expressions are almost entirely uninterpretable, you feel as though you might be able to make out a slight frown.
+While ghost facial expressions are almost entirely uninterpretable, you feel as though you might be able to make out a smile.
 
-* [Hello!]
+* [are you smiling?]
 
-* [Are you my mother?]
+- oh ... I guess I am
 
-    What?
+*[you seem happy]
 
-    **[Just thought I'd ask, you look a little bit like her]
+- Well everyone looks just about the same when they're a ghost, don't they? But somehow...
 
-    Well everyone looks just about the same when they're a ghost, don't they? It still feels to me like I look the same though, somehow.
-    
-    But no, to clear things up for you, I have a feeling that I'm probably not your mother.
-    ~asked = true
-    
-    *** [Oh, okay.]
-    ->replay
+*[somehow?]
+
+- Somehow, I just know I know who that ghost over there is. I've known them since we were kids...
+
+20 years...
+
+I'm glad I'm here with them when this happened.
+->END
 
 ===replay===
-- Can I help you with anything?
+While ghost facial expressions are almost entirely uninterpretable, you feel as though you might be able to make out a smile.
 
-* {haslemonade} [Would you like some of my lemonade?]
+* [I like your smile :)]
 
-    You know, that sounds delicious. I would love a taste.
-    
-    Edith takes the lemonade and pours a little into her mouth. It falls through her directly onto the floor.
-    
-    ** [...]
-    
-        ... ->END
-
-* [do you know where my mother is?]
-
-{asked: Oh, so now because I look like her we must be friends?|Oh, what a terrible thing to be separated.}
-
-No, I don't think I have. You might try looking further down the train though, I know a few folks ended up over there.
-
-->END
+I like your smile :)->END
