@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class gameender : MonoBehaviour
 {
@@ -18,6 +19,14 @@ public class gameender : MonoBehaviour
 
     public void entered()
     {
-        Popup.main.open("You finished the game!", false);
+        InventoryManager.main.descpopup.GetComponent<Popup>().open("You finished the game. Thanks for playing!", false);
+        StartCoroutine(NarrativeManager.main.fadeTo(1, 2f));
+        StartCoroutine(end());
+    }
+
+    public IEnumerator end()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(0);
     }
 }

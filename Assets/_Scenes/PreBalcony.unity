@@ -2016,7 +2016,7 @@ GameObject:
   - component: {fileID: 1936565489}
   - component: {fileID: 1936565488}
   m_Layer: 0
-  m_Name: er
+  m_Name: trigg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

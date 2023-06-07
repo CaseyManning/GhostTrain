@@ -115,7 +115,7 @@ public class NarrativeManager : MonoBehaviour
         Destroy(GameObject.FindGameObjectWithTag("People"));
     }
 
-    IEnumerator fadeTo(float endAlpha, float fadeTime)
+    public IEnumerator fadeTo(float endAlpha, float fadeTime)
     {
         float i = 0;
         Color c = fadeImg.color;
