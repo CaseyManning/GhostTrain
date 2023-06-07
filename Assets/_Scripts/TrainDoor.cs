@@ -20,7 +20,7 @@ public class TrainDoor : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetMouseButtonDown(0) && inside && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) < 0.5f)
+        if (Input.GetMouseButtonDown(0) && inside && Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Player").transform.position) < 0.7f)
         {
             entered();
         }
